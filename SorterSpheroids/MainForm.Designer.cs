@@ -28,35 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.imageBox1 = new Emgu.CV.UI.ImageBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.but_manual = new System.Windows.Forms.Button();
+            this.but_auto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // imageBox1
+            // but_manual
             // 
-            this.imageBox1.Location = new System.Drawing.Point(12, 12);
-            this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(1920, 1080);
-            this.imageBox1.TabIndex = 2;
-            this.imageBox1.TabStop = false;
+            resources.ApplyResources(this.but_manual, "but_manual");
+            this.but_manual.Name = "but_manual";
+            this.but_manual.UseVisualStyleBackColor = true;
+            this.but_manual.Click += new System.EventHandler(this.but_manual_Click);
+            // 
+            // but_auto
+            // 
+            resources.ApplyResources(this.but_auto, "but_auto");
+            this.but_auto.Name = "but_auto";
+            this.but_auto.UseVisualStyleBackColor = true;
+            this.but_auto.Click += new System.EventHandler(this.but_auto_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2484, 1361);
-            this.Controls.Add(this.imageBox1);
+            this.Controls.Add(this.but_auto);
+            this.Controls.Add(this.but_manual);
             this.Name = "MainForm";
-            this.Text = "Сортер сфероидов";
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Move += new System.EventHandler(this.MainForm_Move);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Emgu.CV.UI.ImageBox imageBox1;
+        private System.Windows.Forms.Button but_manual;
+        private System.Windows.Forms.Button but_auto;
     }
 }
 

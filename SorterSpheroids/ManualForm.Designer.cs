@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualForm));
             this.button8 = new System.Windows.Forms.Button();
-            this.but_con_cam_0 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -58,392 +53,285 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.button5 = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(5, 857);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(96, 49);
-            this.button9.TabIndex = 54;
-            this.button9.Text = "Запуск видео";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(356, 886);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(96, 49);
-            this.button7.TabIndex = 53;
-            this.button7.Text = "Остановить запись";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(356, 831);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 49);
-            this.button6.TabIndex = 52;
-            this.button6.Text = "Начать запись";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(0, 831);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(342, 20);
-            this.textBox2.TabIndex = 51;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(0, 621);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 20);
-            this.textBox1.TabIndex = 50;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(154, 12);
+            resources.ApplyResources(this.button8, "button8");
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(110, 49);
-            this.button8.TabIndex = 49;
-            this.button8.Text = "Подключиться";
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // but_con_cam_0
-            // 
-            this.but_con_cam_0.Location = new System.Drawing.Point(108, 606);
-            this.but_con_cam_0.Name = "but_con_cam_0";
-            this.but_con_cam_0.Size = new System.Drawing.Size(96, 49);
-            this.but_con_cam_0.TabIndex = 48;
-            this.but_con_cam_0.Text = "Запуск камеры";
-            this.but_con_cam_0.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(292, 226);
+            resources.ApplyResources(this.button3, "button3");
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(50, 49);
-            this.button3.TabIndex = 46;
-            this.button3.Text = "-Zdm";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(292, 171);
+            resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(50, 49);
-            this.button4.TabIndex = 45;
-            this.button4.Text = "+Zdm";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(236, 226);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 49);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "-Zm";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(236, 171);
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(50, 49);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "+Zm";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // but_home
             // 
-            this.but_home.Location = new System.Drawing.Point(15, 63);
+            resources.ApplyResources(this.but_home, "but_home");
             this.but_home.Name = "but_home";
-            this.but_home.Size = new System.Drawing.Size(50, 49);
-            this.but_home.TabIndex = 42;
-            this.but_home.Text = "Дом";
             this.but_home.UseVisualStyleBackColor = true;
             // 
             // rb_001mm
             // 
-            this.rb_001mm.AutoSize = true;
-            this.rb_001mm.Location = new System.Drawing.Point(39, 424);
+            resources.ApplyResources(this.rb_001mm, "rb_001mm");
             this.rb_001mm.Name = "rb_001mm";
-            this.rb_001mm.Size = new System.Drawing.Size(65, 17);
-            this.rb_001mm.TabIndex = 41;
             this.rb_001mm.TabStop = true;
-            this.rb_001mm.Text = "0.01 мм";
             this.rb_001mm.UseVisualStyleBackColor = true;
             // 
             // rb_01mm
             // 
-            this.rb_01mm.AutoSize = true;
-            this.rb_01mm.Location = new System.Drawing.Point(39, 387);
+            resources.ApplyResources(this.rb_01mm, "rb_01mm");
             this.rb_01mm.Name = "rb_01mm";
-            this.rb_01mm.Size = new System.Drawing.Size(59, 17);
-            this.rb_01mm.TabIndex = 40;
             this.rb_01mm.TabStop = true;
-            this.rb_01mm.Text = "0.1 мм";
             this.rb_01mm.UseVisualStyleBackColor = true;
             // 
             // rb_1mm
             // 
-            this.rb_1mm.AutoSize = true;
-            this.rb_1mm.Location = new System.Drawing.Point(39, 352);
+            resources.ApplyResources(this.rb_1mm, "rb_1mm");
             this.rb_1mm.Name = "rb_1mm";
-            this.rb_1mm.Size = new System.Drawing.Size(50, 17);
-            this.rb_1mm.TabIndex = 39;
             this.rb_1mm.TabStop = true;
-            this.rb_1mm.Text = "1 мм";
             this.rb_1mm.UseVisualStyleBackColor = true;
             // 
             // rb_10mm
             // 
-            this.rb_10mm.AutoSize = true;
-            this.rb_10mm.Location = new System.Drawing.Point(39, 315);
+            resources.ApplyResources(this.rb_10mm, "rb_10mm");
             this.rb_10mm.Name = "rb_10mm";
-            this.rb_10mm.Size = new System.Drawing.Size(56, 17);
-            this.rb_10mm.TabIndex = 38;
             this.rb_10mm.TabStop = true;
-            this.rb_10mm.Text = "10 мм";
             this.rb_10mm.UseVisualStyleBackColor = true;
             // 
             // but_z_neg
             // 
-            this.but_z_neg.Location = new System.Drawing.Point(180, 226);
+            resources.ApplyResources(this.but_z_neg, "but_z_neg");
             this.but_z_neg.Name = "but_z_neg";
-            this.but_z_neg.Size = new System.Drawing.Size(50, 49);
-            this.but_z_neg.TabIndex = 37;
-            this.but_z_neg.Text = "-Zd";
             this.but_z_neg.UseVisualStyleBackColor = true;
             // 
             // but_z_pos
             // 
-            this.but_z_pos.Location = new System.Drawing.Point(180, 171);
+            resources.ApplyResources(this.but_z_pos, "but_z_pos");
             this.but_z_pos.Name = "but_z_pos";
-            this.but_z_pos.Size = new System.Drawing.Size(50, 49);
-            this.but_z_pos.TabIndex = 36;
-            this.but_z_pos.Text = "+Zd";
             this.but_z_pos.UseVisualStyleBackColor = true;
             // 
             // but_e_pos
             // 
-            this.but_e_pos.Location = new System.Drawing.Point(402, 226);
+            resources.ApplyResources(this.but_e_pos, "but_e_pos");
             this.but_e_pos.Name = "but_e_pos";
-            this.but_e_pos.Size = new System.Drawing.Size(50, 49);
-            this.but_e_pos.TabIndex = 35;
-            this.but_e_pos.Text = "+E";
             this.but_e_pos.UseVisualStyleBackColor = true;
             // 
             // but_e_neg
             // 
-            this.but_e_neg.Location = new System.Drawing.Point(402, 171);
+            resources.ApplyResources(this.but_e_neg, "but_e_neg");
             this.but_e_neg.Name = "but_e_neg";
-            this.but_e_neg.Size = new System.Drawing.Size(50, 49);
-            this.but_e_neg.TabIndex = 34;
-            this.but_e_neg.Text = "-E";
             this.but_e_neg.UseVisualStyleBackColor = true;
             // 
             // but_y_neg
             // 
-            this.but_y_neg.Location = new System.Drawing.Point(47, 245);
+            resources.ApplyResources(this.but_y_neg, "but_y_neg");
             this.but_y_neg.Name = "but_y_neg";
-            this.but_y_neg.Size = new System.Drawing.Size(50, 49);
-            this.but_y_neg.TabIndex = 33;
-            this.but_y_neg.Text = "-Y";
             this.but_y_neg.UseVisualStyleBackColor = true;
             // 
             // but_y_pos
             // 
-            this.but_y_pos.Location = new System.Drawing.Point(47, 153);
+            resources.ApplyResources(this.but_y_pos, "but_y_pos");
             this.but_y_pos.Name = "but_y_pos";
-            this.but_y_pos.Size = new System.Drawing.Size(50, 49);
-            this.but_y_pos.TabIndex = 32;
-            this.but_y_pos.Text = "+Y";
             this.but_y_pos.UseVisualStyleBackColor = true;
             // 
             // but_x_pos
             // 
-            this.but_x_pos.Location = new System.Drawing.Point(93, 199);
+            resources.ApplyResources(this.but_x_pos, "but_x_pos");
             this.but_x_pos.Name = "but_x_pos";
-            this.but_x_pos.Size = new System.Drawing.Size(50, 49);
-            this.but_x_pos.TabIndex = 31;
-            this.but_x_pos.Text = "+X";
             this.but_x_pos.UseVisualStyleBackColor = true;
             // 
             // but_x_neg
             // 
-            this.but_x_neg.Location = new System.Drawing.Point(0, 199);
+            resources.ApplyResources(this.but_x_neg, "but_x_neg");
             this.but_x_neg.Name = "but_x_neg";
-            this.but_x_neg.Size = new System.Drawing.Size(50, 49);
-            this.but_x_neg.TabIndex = 30;
-            this.but_x_neg.Text = "-X";
             this.but_x_neg.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 27);
+            resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 55;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(86, 63);
+            resources.ApplyResources(this.button10, "button10");
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(50, 49);
-            this.button10.TabIndex = 56;
-            this.button10.Text = "Дом X";
             this.button10.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(142, 63);
+            resources.ApplyResources(this.button11, "button11");
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(50, 49);
-            this.button11.TabIndex = 57;
-            this.button11.Text = "Дом Y";
             this.button11.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(198, 63);
+            resources.ApplyResources(this.button12, "button12");
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(55, 49);
-            this.button12.TabIndex = 58;
-            this.button12.Text = "Дом Zd";
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(259, 63);
+            resources.ApplyResources(this.button13, "button13");
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(63, 49);
-            this.button13.TabIndex = 59;
-            this.button13.Text = "Дом Zm";
             this.button13.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 465);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
-            this.label1.TabIndex = 60;
-            this.label1.Text = "pos";
             // 
-            // label2
+            // groupBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 679);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 13);
-            this.label2.TabIndex = 62;
-            this.label2.Text = "Показать на изображении";
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.radioButton5);
+            this.groupBox1.Controls.Add(this.radioButton6);
+            this.groupBox1.Controls.Add(this.radioButton7);
+            this.groupBox1.Controls.Add(this.radioButton8);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioButton4);
+            this.groupBox1.Controls.Add(this.but_x_neg);
+            this.groupBox1.Controls.Add(this.but_x_pos);
+            this.groupBox1.Controls.Add(this.but_y_pos);
+            this.groupBox1.Controls.Add(this.but_y_neg);
+            this.groupBox1.Controls.Add(this.but_e_neg);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.but_e_pos);
+            this.groupBox1.Controls.Add(this.button13);
+            this.groupBox1.Controls.Add(this.but_z_pos);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.but_z_neg);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.rb_10mm);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.rb_1mm);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.rb_01mm);
+            this.groupBox1.Controls.Add(this.rb_001mm);
+            this.groupBox1.Controls.Add(this.but_home);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button3);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
-            // checkBox1
+            // radioButton1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(154, 678);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(60, 17);
-            this.checkBox1.TabIndex = 63;
-            this.checkBox1.Text = "Фокус";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // radioButton2
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(154, 701);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(115, 17);
-            this.checkBox2.TabIndex = 64;
-            this.checkBox2.Text = "Границы объекта";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.TabStop = true;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.TabStop = true;
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.TabStop = true;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            resources.ApplyResources(this.radioButton5, "radioButton5");
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.TabStop = true;
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            resources.ApplyResources(this.radioButton6, "radioButton6");
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.TabStop = true;
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton7
+            // 
+            resources.ApplyResources(this.radioButton7, "radioButton7");
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.TabStop = true;
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            resources.ApplyResources(this.radioButton8, "radioButton8");
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.TabStop = true;
+            this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(281, 678);
+            resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(96, 49);
-            this.button5.TabIndex = 65;
-            this.button5.Text = "Автофокус";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(154, 724);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(102, 17);
-            this.checkBox3.TabIndex = 66;
-            this.checkBox3.Text = "Центр объекта";
-            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // ManualForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 1014);
             this.ControlBox = false;
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.but_con_cam_0);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.but_home);
-            this.Controls.Add(this.rb_001mm);
-            this.Controls.Add(this.rb_01mm);
-            this.Controls.Add(this.rb_1mm);
-            this.Controls.Add(this.rb_10mm);
-            this.Controls.Add(this.but_z_neg);
-            this.Controls.Add(this.but_z_pos);
-            this.Controls.Add(this.but_e_pos);
-            this.Controls.Add(this.but_e_neg);
-            this.Controls.Add(this.but_y_neg);
-            this.Controls.Add(this.but_y_pos);
-            this.Controls.Add(this.but_x_pos);
-            this.Controls.Add(this.but_x_neg);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManualForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button but_con_cam_0;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
@@ -467,10 +355,15 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

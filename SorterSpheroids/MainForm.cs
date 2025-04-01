@@ -12,14 +12,63 @@ namespace SorterSpheroids
 {
     public partial class MainForm : Form
     {
-       // AutoForm manual_form;
+        AutoForm auto_form;
+        ManualForm manual_form;
+        CameraForm camera_form;
+        Point[] ps_loc = new Point[2];
         public MainForm()
         {
             InitializeComponent();
-           // manual_form = new ManualForm();
-           // manual_form.Show();
+            ps_loc = new Point[] { new Point(10,10), new Point(2000, 80), new Point(2000, 80), };//camera, manual, auto
+            manual_form = new ManualForm();
+            auto_form = new AutoForm();
+            camera_form = new CameraForm();
+            Console.WriteLine("constr: " + this.Location.X + " " + this.Location.Y);
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            camera_form.Location = add_p(ps_loc[0], this.Location);
+            camera_form.Show(this);
 
+            manual_form.Location = add_p(ps_loc[1],this.Location);
+            manual_form.Show(this);
+
+            auto_form.Location = add_p(ps_loc[2], this.Location);
+            // auto_form.Show(this);
+            Console.WriteLine("load: " + this.Location.X + " " + this.Location.Y);
+            this.Refresh();
+            Application.DoEvents();
+        }
+
+        private void MainForm_Move(object sender, EventArgs e)
+        {
+            if(manual_form == null || camera_form == null) return;
+            camera_form.Location = add_p(ps_loc[0], this.Location);
+            manual_form.Location = add_p(ps_loc[1], this.Location);
+            auto_form.Location = add_p(ps_loc[2], this.Location);
+            Console.WriteLine("move: "+this.Location.X + " " + this.Location.Y);
+        }
+
+        Point add_p(Point p1,Point p2)
+        {
+            return new Point(p1.X + p2.X, p1.Y + p2.Y);
+        }
+
+        private void but_manual_Click(object sender, EventArgs e)
+        {
+            manual_form.Visible = false;
+            manual_form.Show(this);
+            auto_form.Hide();
+           
+        }
+
+        private void but_auto_Click(object sender, EventArgs e)
+        {
+            auto_form.Visible = false;
+            auto_form.Show(this);
+            manual_form.Hide();
+           
+        }
     }
 }
