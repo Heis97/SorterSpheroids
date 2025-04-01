@@ -22,8 +22,8 @@ namespace SorterSpheroids
         VideoCapture capture;
         Size  cameraSize = new Size(1920,1080);
         List<Mat> video_mats = new List<Mat>();
-        int videoframe_counts = 0;
-        int videoframe_counts_stop = 100000;
+        int videoframe_counts = -1;
+        int videoframe_counts_stop = 10000;
         int fps = 30;
         public CameraForm()
         {
@@ -40,7 +40,7 @@ namespace SorterSpheroids
         {
             capture = new VideoCapture(number);
             capture.Set(CapProp.FrameWidth, cameraSize.Width);
-
+           
             cameraSize.Width = (int)capture.Get(CapProp.FrameWidth);
             cameraSize.Height = (int)capture.Get(CapProp.FrameHeight);
             fps = (int)capture.Get(CapProp.Fps);
@@ -63,34 +63,31 @@ namespace SorterSpheroids
         }
         void imProcess(Mat mat)
         {
-
-            if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
+            if (mat == null) return;
+            if (video_mats != null)
             {
-
-            }
-            else
-            {
-                if (video_mats != null)
+                if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
                 {
-                    try
-                    {
-                        save_video(cameraSize.Width, cameraSize.Height); 
-                    }
-                    catch
-                    {
-                    }
+
+                    video_mats.Add(mat.Clone());
+                }
+                else if(videoframe_counts > videoframe_counts_stop)
+                {
+                    save_video(cameraSize.Width, cameraSize.Height);
                 }
             }
+
+
+            
                 
         }
         void save_video(int w, int h)
         {
 
             int fcc = VideoWriter.Fourcc('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
-            int fps = 30;
             var dir = "recordings";
             Directory.CreateDirectory(dir);
-            var video_scan_name = "viseo_"+(new DateTime()).ToLongDateString();
+            var video_scan_name = "viseo_"+ DateTime.Now.ToString("hh_mm_ss"); ;
             string name = dir + "\\" + video_scan_name + ".mp4";
             Console.WriteLine("wr" + " " + w + " " + h + " " + fps);
             var video_writer = new VideoWriter(name, -1, fps, new Size(w, h), true);
@@ -111,8 +108,10 @@ namespace SorterSpheroids
 
         private void but_start_recording_Click(object sender, EventArgs e)
         {
+            video_mats = new List<Mat>();
             videoframe_counts = 0;
             videoframe_counts_stop = 10000;
+            
         }
 
         private void but_stop_recording_Click(object sender, EventArgs e)
