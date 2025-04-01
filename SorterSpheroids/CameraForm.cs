@@ -51,8 +51,9 @@ namespace SorterSpheroids
         void drawCameras(VideoCapture cap)
         {
             //Console.WriteLine("dr_cam");
-            var mat = (Mat)imageBox_main.Image;
+            var mat = new Mat();
             cap.Retrieve(mat);
+            imageBox_main.Image = mat;
             imProcess(mat);
             videoframe_counts++;
         }

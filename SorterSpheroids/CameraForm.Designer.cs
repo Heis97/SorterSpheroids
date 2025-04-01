@@ -48,6 +48,7 @@
             // 
             // imageBox_main
             // 
+            this.imageBox_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageBox_main.Location = new System.Drawing.Point(12, 12);
             this.imageBox_main.Name = "imageBox_main";
             this.imageBox_main.Size = new System.Drawing.Size(1920, 1080);
