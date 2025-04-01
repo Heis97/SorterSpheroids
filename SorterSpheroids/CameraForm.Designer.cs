@@ -72,7 +72,7 @@
             this.checkBox_centr_object.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox_centr_object.Location = new System.Drawing.Point(186, 1249);
             this.checkBox_centr_object.Name = "checkBox_centr_object";
-            this.checkBox_centr_object.Size = new System.Drawing.Size(127, 20);
+            this.checkBox_centr_object.Size = new System.Drawing.Size(102, 17);
             this.checkBox_centr_object.TabIndex = 77;
             this.checkBox_centr_object.Text = "Центр объекта";
             this.checkBox_centr_object.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             this.checkBox_boarder_object.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox_boarder_object.Location = new System.Drawing.Point(186, 1226);
             this.checkBox_boarder_object.Name = "checkBox_boarder_object";
-            this.checkBox_boarder_object.Size = new System.Drawing.Size(143, 20);
+            this.checkBox_boarder_object.Size = new System.Drawing.Size(115, 17);
             this.checkBox_boarder_object.TabIndex = 75;
             this.checkBox_boarder_object.Text = "Границы объекта";
             this.checkBox_boarder_object.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             this.checkBox_focal_area.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.checkBox_focal_area.Location = new System.Drawing.Point(186, 1203);
             this.checkBox_focal_area.Name = "checkBox_focal_area";
-            this.checkBox_focal_area.Size = new System.Drawing.Size(70, 20);
+            this.checkBox_focal_area.Size = new System.Drawing.Size(60, 17);
             this.checkBox_focal_area.TabIndex = 74;
             this.checkBox_focal_area.Text = "Фокус";
             this.checkBox_focal_area.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(34, 1204);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 16);
+            this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 73;
             this.label2.Text = "Показать на изображении";
             // 
@@ -128,6 +128,7 @@
             this.but_start_video.TabIndex = 72;
             this.but_start_video.Text = "Запуск видео";
             this.but_start_video.UseVisualStyleBackColor = true;
+            this.but_start_video.Click += new System.EventHandler(this.but_start_video_Click);
             // 
             // but_stop_recording
             // 
@@ -144,14 +145,14 @@
             // 
             this.textBox_video_name.Location = new System.Drawing.Point(530, 1146);
             this.textBox_video_name.Name = "textBox_video_name";
-            this.textBox_video_name.Size = new System.Drawing.Size(342, 22);
+            this.textBox_video_name.Size = new System.Drawing.Size(342, 20);
             this.textBox_video_name.TabIndex = 69;
             // 
             // textBox_camera_number
             // 
             this.textBox_camera_number.Location = new System.Drawing.Point(32, 1146);
             this.textBox_camera_number.Name = "textBox_camera_number";
-            this.textBox_camera_number.Size = new System.Drawing.Size(80, 22);
+            this.textBox_camera_number.Size = new System.Drawing.Size(80, 20);
             this.textBox_camera_number.TabIndex = 68;
             // 
             // but_con_cam
@@ -169,7 +170,7 @@
             // 
             this.textBox_set_exposit.Location = new System.Drawing.Point(1091, 1216);
             this.textBox_set_exposit.Name = "textBox_set_exposit";
-            this.textBox_set_exposit.Size = new System.Drawing.Size(80, 22);
+            this.textBox_set_exposit.Size = new System.Drawing.Size(80, 20);
             this.textBox_set_exposit.TabIndex = 79;
             // 
             // button1

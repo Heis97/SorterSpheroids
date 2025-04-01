@@ -118,5 +118,10 @@ namespace SorterSpheroids
         {
             videoframe_counts_stop = 0;
         }
+
+        private void but_start_video_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
