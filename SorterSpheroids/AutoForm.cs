@@ -12,9 +12,11 @@ namespace SorterSpheroids
 {
     public partial class AutoForm : Form
     {
-        public AutoForm()
+        MainForm mainForm;
+        public AutoForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
     }
 }

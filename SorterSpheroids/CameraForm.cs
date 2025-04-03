@@ -25,9 +25,13 @@ namespace SorterSpheroids
         int videoframe_counts = -1;
         int videoframe_counts_stop = 10000;
         int fps = 30;
-        public CameraForm()
+        bool focal_area = false;
+        double cur_contr = 0;
+        MainForm mainForm;
+        public CameraForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void but_con_cam_Click(object sender, EventArgs e)
@@ -66,6 +70,10 @@ namespace SorterSpheroids
             if (mat == null) return;
             if (video_mats != null)
             {
+                if(focal_area)
+                {
+                   ( imageBox_main.Image, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
+                }
                 if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
                 {
 
@@ -75,12 +83,9 @@ namespace SorterSpheroids
                 {
                     save_video(cameraSize.Width, cameraSize.Height);
                 }
-            }
-
-
-            
-                
+            }       
         }
+
         void save_video(int w, int h)
         {
 
@@ -101,9 +106,6 @@ namespace SorterSpheroids
             }
             video_mats = null;
             video_writer.Dispose();
-
-
-
         }
 
         private void but_start_recording_Click(object sender, EventArgs e)
@@ -122,6 +124,11 @@ namespace SorterSpheroids
         private void but_start_video_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox_focal_area_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

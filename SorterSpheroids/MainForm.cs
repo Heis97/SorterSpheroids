@@ -19,10 +19,10 @@ namespace SorterSpheroids
         public MainForm()
         {
             InitializeComponent();
-            ps_loc = new Point[] { new Point(10,10), new Point(2000, 80), new Point(2000, 80), };//camera, manual, auto
-            manual_form = new ManualForm();
-            auto_form = new AutoForm();
-            camera_form = new CameraForm();
+            ps_loc = new Point[] { new Point(10,40), new Point(1970, 120), new Point(1970, 120), };//camera, manual, auto
+            manual_form = new ManualForm(this);
+            auto_form = new AutoForm(this);
+            camera_form = new CameraForm(this);
             Console.WriteLine("constr: " + this.Location.X + " " + this.Location.Y);
         }
 

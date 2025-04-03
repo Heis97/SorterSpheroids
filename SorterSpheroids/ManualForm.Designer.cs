@@ -29,184 +29,227 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualForm));
-            this.button8 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.but_home = new System.Windows.Forms.Button();
-            this.rb_001mm = new System.Windows.Forms.RadioButton();
-            this.rb_01mm = new System.Windows.Forms.RadioButton();
-            this.rb_1mm = new System.Windows.Forms.RadioButton();
-            this.rb_10mm = new System.Windows.Forms.RadioButton();
-            this.but_z_neg = new System.Windows.Forms.Button();
-            this.but_z_pos = new System.Windows.Forms.Button();
+            this.but_ard_con = new System.Windows.Forms.Button();
+            this.but_zdm_neg = new System.Windows.Forms.Button();
+            this.but_zdm_pos = new System.Windows.Forms.Button();
+            this.but_zm_neg = new System.Windows.Forms.Button();
+            this.but_zm_pos = new System.Windows.Forms.Button();
+            this.but_home_XYZA = new System.Windows.Forms.Button();
+            this.rb_xy_001mm = new System.Windows.Forms.RadioButton();
+            this.rb_xy_01mm = new System.Windows.Forms.RadioButton();
+            this.rb_xy_1mm = new System.Windows.Forms.RadioButton();
+            this.rb_xy_10mm = new System.Windows.Forms.RadioButton();
+            this.but_zd_neg = new System.Windows.Forms.Button();
+            this.but_zd_pos = new System.Windows.Forms.Button();
             this.but_e_pos = new System.Windows.Forms.Button();
             this.but_e_neg = new System.Windows.Forms.Button();
             this.but_y_neg = new System.Windows.Forms.Button();
             this.but_y_pos = new System.Windows.Forms.Button();
             this.but_x_pos = new System.Windows.Forms.Button();
             this.but_x_neg = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.comboBox_ports = new System.Windows.Forms.ComboBox();
+            this.but_home_X = new System.Windows.Forms.Button();
+            this.but_home_Y = new System.Windows.Forms.Button();
+            this.but_home_Z = new System.Windows.Forms.Button();
+            this.but_home_A = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.button5 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rb_e_10mm = new System.Windows.Forms.RadioButton();
+            this.rb_e_1mm = new System.Windows.Forms.RadioButton();
+            this.rb_e_01mm = new System.Windows.Forms.RadioButton();
+            this.rb_e_001mm = new System.Windows.Forms.RadioButton();
+            this.textBox_e_vel = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_z_vel = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rb_z_10mm = new System.Windows.Forms.RadioButton();
+            this.rb_z_1mm = new System.Windows.Forms.RadioButton();
+            this.rb_z_01mm = new System.Windows.Forms.RadioButton();
+            this.rb_z_001mm = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox_xy_vel = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.but_auto_focus = new System.Windows.Forms.Button();
+            this.but_find_ports = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button8
+            // but_ard_con
             // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_ard_con, "but_ard_con");
+            this.but_ard_con.Name = "but_ard_con";
+            this.but_ard_con.UseVisualStyleBackColor = true;
+            this.but_ard_con.Click += new System.EventHandler(this.but_ard_con_Click);
             // 
-            // button3
+            // but_zdm_neg
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zdm_neg, "but_zdm_neg");
+            this.but_zdm_neg.Name = "but_zdm_neg";
+            this.but_zdm_neg.UseVisualStyleBackColor = true;
+            this.but_zdm_neg.Click += new System.EventHandler(this.but_zdm_neg_Click);
             // 
-            // button4
+            // but_zdm_pos
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zdm_pos, "but_zdm_pos");
+            this.but_zdm_pos.Name = "but_zdm_pos";
+            this.but_zdm_pos.UseVisualStyleBackColor = true;
+            this.but_zdm_pos.Click += new System.EventHandler(this.but_zdm_pos_Click);
             // 
-            // button1
+            // but_zm_neg
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zm_neg, "but_zm_neg");
+            this.but_zm_neg.Name = "but_zm_neg";
+            this.but_zm_neg.UseVisualStyleBackColor = true;
+            this.but_zm_neg.Click += new System.EventHandler(this.but_zm_neg_Click);
             // 
-            // button2
+            // but_zm_pos
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zm_pos, "but_zm_pos");
+            this.but_zm_pos.Name = "but_zm_pos";
+            this.but_zm_pos.UseVisualStyleBackColor = true;
+            this.but_zm_pos.Click += new System.EventHandler(this.but_zm_pos_Click);
             // 
-            // but_home
+            // but_home_XYZA
             // 
-            resources.ApplyResources(this.but_home, "but_home");
-            this.but_home.Name = "but_home";
-            this.but_home.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_home_XYZA, "but_home_XYZA");
+            this.but_home_XYZA.Name = "but_home_XYZA";
+            this.but_home_XYZA.UseVisualStyleBackColor = true;
+            this.but_home_XYZA.Click += new System.EventHandler(this.but_home_XYZA_Click);
             // 
-            // rb_001mm
+            // rb_xy_001mm
             // 
-            resources.ApplyResources(this.rb_001mm, "rb_001mm");
-            this.rb_001mm.Name = "rb_001mm";
-            this.rb_001mm.TabStop = true;
-            this.rb_001mm.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_xy_001mm, "rb_xy_001mm");
+            this.rb_xy_001mm.Name = "rb_xy_001mm";
+            this.rb_xy_001mm.UseVisualStyleBackColor = true;
+            this.rb_xy_001mm.CheckedChanged += new System.EventHandler(this.rb_xy_mm_CheckedChanged);
             // 
-            // rb_01mm
+            // rb_xy_01mm
             // 
-            resources.ApplyResources(this.rb_01mm, "rb_01mm");
-            this.rb_01mm.Name = "rb_01mm";
-            this.rb_01mm.TabStop = true;
-            this.rb_01mm.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_xy_01mm, "rb_xy_01mm");
+            this.rb_xy_01mm.Name = "rb_xy_01mm";
+            this.rb_xy_01mm.UseVisualStyleBackColor = true;
+            this.rb_xy_01mm.CheckedChanged += new System.EventHandler(this.rb_xy_mm_CheckedChanged);
             // 
-            // rb_1mm
+            // rb_xy_1mm
             // 
-            resources.ApplyResources(this.rb_1mm, "rb_1mm");
-            this.rb_1mm.Name = "rb_1mm";
-            this.rb_1mm.TabStop = true;
-            this.rb_1mm.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_xy_1mm, "rb_xy_1mm");
+            this.rb_xy_1mm.Checked = true;
+            this.rb_xy_1mm.Name = "rb_xy_1mm";
+            this.rb_xy_1mm.TabStop = true;
+            this.rb_xy_1mm.UseVisualStyleBackColor = true;
+            this.rb_xy_1mm.CheckedChanged += new System.EventHandler(this.rb_xy_mm_CheckedChanged);
             // 
-            // rb_10mm
+            // rb_xy_10mm
             // 
-            resources.ApplyResources(this.rb_10mm, "rb_10mm");
-            this.rb_10mm.Name = "rb_10mm";
-            this.rb_10mm.TabStop = true;
-            this.rb_10mm.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_xy_10mm, "rb_xy_10mm");
+            this.rb_xy_10mm.Name = "rb_xy_10mm";
+            this.rb_xy_10mm.TabStop = true;
+            this.rb_xy_10mm.UseVisualStyleBackColor = true;
+            this.rb_xy_10mm.CheckedChanged += new System.EventHandler(this.rb_xy_mm_CheckedChanged);
             // 
-            // but_z_neg
+            // but_zd_neg
             // 
-            resources.ApplyResources(this.but_z_neg, "but_z_neg");
-            this.but_z_neg.Name = "but_z_neg";
-            this.but_z_neg.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zd_neg, "but_zd_neg");
+            this.but_zd_neg.Name = "but_zd_neg";
+            this.but_zd_neg.UseVisualStyleBackColor = true;
+            this.but_zd_neg.Click += new System.EventHandler(this.but_zd_neg_Click);
             // 
-            // but_z_pos
+            // but_zd_pos
             // 
-            resources.ApplyResources(this.but_z_pos, "but_z_pos");
-            this.but_z_pos.Name = "but_z_pos";
-            this.but_z_pos.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_zd_pos, "but_zd_pos");
+            this.but_zd_pos.Name = "but_zd_pos";
+            this.but_zd_pos.UseVisualStyleBackColor = true;
+            this.but_zd_pos.Click += new System.EventHandler(this.but_zd_pos_Click);
             // 
             // but_e_pos
             // 
             resources.ApplyResources(this.but_e_pos, "but_e_pos");
             this.but_e_pos.Name = "but_e_pos";
             this.but_e_pos.UseVisualStyleBackColor = true;
+            this.but_e_pos.Click += new System.EventHandler(this.but_e_pos_Click);
             // 
             // but_e_neg
             // 
             resources.ApplyResources(this.but_e_neg, "but_e_neg");
             this.but_e_neg.Name = "but_e_neg";
             this.but_e_neg.UseVisualStyleBackColor = true;
+            this.but_e_neg.Click += new System.EventHandler(this.but_e_neg_Click);
             // 
             // but_y_neg
             // 
             resources.ApplyResources(this.but_y_neg, "but_y_neg");
             this.but_y_neg.Name = "but_y_neg";
             this.but_y_neg.UseVisualStyleBackColor = true;
+            this.but_y_neg.Click += new System.EventHandler(this.but_y_neg_Click);
             // 
             // but_y_pos
             // 
             resources.ApplyResources(this.but_y_pos, "but_y_pos");
             this.but_y_pos.Name = "but_y_pos";
             this.but_y_pos.UseVisualStyleBackColor = true;
+            this.but_y_pos.Click += new System.EventHandler(this.but_y_pos_Click);
             // 
             // but_x_pos
             // 
             resources.ApplyResources(this.but_x_pos, "but_x_pos");
             this.but_x_pos.Name = "but_x_pos";
             this.but_x_pos.UseVisualStyleBackColor = true;
+            this.but_x_pos.Click += new System.EventHandler(this.but_x_pos_Click);
             // 
             // but_x_neg
             // 
             resources.ApplyResources(this.but_x_neg, "but_x_neg");
             this.but_x_neg.Name = "but_x_neg";
             this.but_x_neg.UseVisualStyleBackColor = true;
+            this.but_x_neg.Click += new System.EventHandler(this.but_x_neg_Click);
             // 
-            // comboBox1
+            // comboBox_ports
             // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Name = "comboBox1";
+            this.comboBox_ports.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_ports, "comboBox_ports");
+            this.comboBox_ports.Name = "comboBox_ports";
             // 
-            // button10
+            // but_home_X
             // 
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_home_X, "but_home_X");
+            this.but_home_X.Name = "but_home_X";
+            this.but_home_X.UseVisualStyleBackColor = true;
+            this.but_home_X.Click += new System.EventHandler(this.but_home_X_Click);
             // 
-            // button11
+            // but_home_Y
             // 
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_home_Y, "but_home_Y");
+            this.but_home_Y.Name = "but_home_Y";
+            this.but_home_Y.UseVisualStyleBackColor = true;
+            this.but_home_Y.Click += new System.EventHandler(this.but_home_Y_Click);
             // 
-            // button12
+            // but_home_Z
             // 
-            resources.ApplyResources(this.button12, "button12");
-            this.button12.Name = "button12";
-            this.button12.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_home_Z, "but_home_Z");
+            this.but_home_Z.Name = "but_home_Z";
+            this.but_home_Z.UseVisualStyleBackColor = true;
+            this.but_home_Z.Click += new System.EventHandler(this.but_home_Z_Click);
             // 
-            // button13
+            // but_home_A
             // 
-            resources.ApplyResources(this.button13, "button13");
-            this.button13.Name = "button13";
-            this.button13.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_home_A, "but_home_A");
+            this.but_home_A.Name = "but_home_A";
+            this.but_home_A.UseVisualStyleBackColor = true;
+            this.but_home_A.Click += new System.EventHandler(this.but_home_A_Click);
             // 
             // label1
             // 
@@ -215,104 +258,219 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.radioButton5);
-            this.groupBox1.Controls.Add(this.radioButton6);
-            this.groupBox1.Controls.Add(this.radioButton7);
-            this.groupBox1.Controls.Add(this.radioButton8);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.but_x_neg);
-            this.groupBox1.Controls.Add(this.but_x_pos);
-            this.groupBox1.Controls.Add(this.but_y_pos);
-            this.groupBox1.Controls.Add(this.but_y_neg);
-            this.groupBox1.Controls.Add(this.but_e_neg);
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.but_auto_focus);
+            this.groupBox1.Controls.Add(this.but_find_ports);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.but_e_pos);
-            this.groupBox1.Controls.Add(this.button13);
-            this.groupBox1.Controls.Add(this.but_z_pos);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Controls.Add(this.but_z_neg);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.rb_10mm);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.rb_1mm);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.rb_01mm);
-            this.groupBox1.Controls.Add(this.rb_001mm);
-            this.groupBox1.Controls.Add(this.but_home);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.but_home_A);
+            this.groupBox1.Controls.Add(this.but_home_Z);
+            this.groupBox1.Controls.Add(this.but_home_Y);
+            this.groupBox1.Controls.Add(this.but_home_X);
+            this.groupBox1.Controls.Add(this.comboBox_ports);
+            this.groupBox1.Controls.Add(this.but_home_XYZA);
+            this.groupBox1.Controls.Add(this.but_ard_con);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // radioButton1
+            // groupBox4
             // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.TabStop = true;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.flowLayoutPanel3);
+            this.groupBox4.Controls.Add(this.textBox_e_vel);
+            this.groupBox4.Controls.Add(this.but_e_pos);
+            this.groupBox4.Controls.Add(this.but_e_neg);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
             // 
-            // radioButton2
+            // label4
             // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.TabStop = true;
-            this.radioButton2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
-            // radioButton3
+            // flowLayoutPanel3
             // 
-            resources.ApplyResources(this.radioButton3, "radioButton3");
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.TabStop = true;
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel3.Controls.Add(this.rb_e_10mm);
+            this.flowLayoutPanel3.Controls.Add(this.rb_e_1mm);
+            this.flowLayoutPanel3.Controls.Add(this.rb_e_01mm);
+            this.flowLayoutPanel3.Controls.Add(this.rb_e_001mm);
+            resources.ApplyResources(this.flowLayoutPanel3, "flowLayoutPanel3");
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
-            // radioButton4
+            // rb_e_10mm
             // 
-            resources.ApplyResources(this.radioButton4, "radioButton4");
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.TabStop = true;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_e_10mm, "rb_e_10mm");
+            this.rb_e_10mm.Name = "rb_e_10mm";
+            this.rb_e_10mm.UseVisualStyleBackColor = true;
+            this.rb_e_10mm.CheckedChanged += new System.EventHandler(this.rb_e_mm_CheckedChanged);
             // 
-            // radioButton5
+            // rb_e_1mm
             // 
-            resources.ApplyResources(this.radioButton5, "radioButton5");
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.TabStop = true;
-            this.radioButton5.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_e_1mm, "rb_e_1mm");
+            this.rb_e_1mm.Name = "rb_e_1mm";
+            this.rb_e_1mm.TabStop = true;
+            this.rb_e_1mm.UseVisualStyleBackColor = true;
+            this.rb_e_1mm.CheckedChanged += new System.EventHandler(this.rb_e_mm_CheckedChanged);
             // 
-            // radioButton6
+            // rb_e_01mm
             // 
-            resources.ApplyResources(this.radioButton6, "radioButton6");
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.TabStop = true;
-            this.radioButton6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_e_01mm, "rb_e_01mm");
+            this.rb_e_01mm.Checked = true;
+            this.rb_e_01mm.Name = "rb_e_01mm";
+            this.rb_e_01mm.TabStop = true;
+            this.rb_e_01mm.UseVisualStyleBackColor = true;
+            this.rb_e_01mm.CheckedChanged += new System.EventHandler(this.rb_e_mm_CheckedChanged);
             // 
-            // radioButton7
+            // rb_e_001mm
             // 
-            resources.ApplyResources(this.radioButton7, "radioButton7");
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.TabStop = true;
-            this.radioButton7.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.rb_e_001mm, "rb_e_001mm");
+            this.rb_e_001mm.Name = "rb_e_001mm";
+            this.rb_e_001mm.TabStop = true;
+            this.rb_e_001mm.UseVisualStyleBackColor = true;
+            this.rb_e_001mm.CheckedChanged += new System.EventHandler(this.rb_e_mm_CheckedChanged);
             // 
-            // radioButton8
+            // textBox_e_vel
             // 
-            resources.ApplyResources(this.radioButton8, "radioButton8");
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.TabStop = true;
-            this.radioButton8.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.textBox_e_vel, "textBox_e_vel");
+            this.textBox_e_vel.Name = "textBox_e_vel";
+            this.textBox_e_vel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_e_vel_KeyDown);
             // 
-            // button5
+            // groupBox3
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.but_zdm_neg);
+            this.groupBox3.Controls.Add(this.textBox_z_vel);
+            this.groupBox3.Controls.Add(this.but_zdm_pos);
+            this.groupBox3.Controls.Add(this.but_zm_neg);
+            this.groupBox3.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox3.Controls.Add(this.but_zm_pos);
+            this.groupBox3.Controls.Add(this.but_zd_neg);
+            this.groupBox3.Controls.Add(this.but_zd_pos);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // textBox_z_vel
+            // 
+            resources.ApplyResources(this.textBox_z_vel, "textBox_z_vel");
+            this.textBox_z_vel.Name = "textBox_z_vel";
+            this.textBox_z_vel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_z_vel_KeyDown);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.rb_z_10mm);
+            this.flowLayoutPanel2.Controls.Add(this.rb_z_1mm);
+            this.flowLayoutPanel2.Controls.Add(this.rb_z_01mm);
+            this.flowLayoutPanel2.Controls.Add(this.rb_z_001mm);
+            resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // rb_z_10mm
+            // 
+            resources.ApplyResources(this.rb_z_10mm, "rb_z_10mm");
+            this.rb_z_10mm.Name = "rb_z_10mm";
+            this.rb_z_10mm.UseVisualStyleBackColor = true;
+            this.rb_z_10mm.CheckedChanged += new System.EventHandler(this.rb_z_mm_CheckedChanged);
+            // 
+            // rb_z_1mm
+            // 
+            resources.ApplyResources(this.rb_z_1mm, "rb_z_1mm");
+            this.rb_z_1mm.Checked = true;
+            this.rb_z_1mm.Name = "rb_z_1mm";
+            this.rb_z_1mm.TabStop = true;
+            this.rb_z_1mm.UseVisualStyleBackColor = true;
+            this.rb_z_1mm.CheckedChanged += new System.EventHandler(this.rb_z_mm_CheckedChanged);
+            // 
+            // rb_z_01mm
+            // 
+            resources.ApplyResources(this.rb_z_01mm, "rb_z_01mm");
+            this.rb_z_01mm.Name = "rb_z_01mm";
+            this.rb_z_01mm.TabStop = true;
+            this.rb_z_01mm.UseVisualStyleBackColor = true;
+            this.rb_z_01mm.CheckedChanged += new System.EventHandler(this.rb_z_mm_CheckedChanged);
+            // 
+            // rb_z_001mm
+            // 
+            resources.ApplyResources(this.rb_z_001mm, "rb_z_001mm");
+            this.rb_z_001mm.Name = "rb_z_001mm";
+            this.rb_z_001mm.TabStop = true;
+            this.rb_z_001mm.UseVisualStyleBackColor = true;
+            this.rb_z_001mm.CheckedChanged += new System.EventHandler(this.rb_z_mm_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.textBox_xy_vel);
+            this.groupBox2.Controls.Add(this.but_x_pos);
+            this.groupBox2.Controls.Add(this.but_y_neg);
+            this.groupBox2.Controls.Add(this.but_y_pos);
+            this.groupBox2.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox2.Controls.Add(this.but_x_neg);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // textBox_xy_vel
+            // 
+            resources.ApplyResources(this.textBox_xy_vel, "textBox_xy_vel");
+            this.textBox_xy_vel.Name = "textBox_xy_vel";
+            this.textBox_xy_vel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_xy_vel_KeyDown);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.rb_xy_10mm);
+            this.flowLayoutPanel1.Controls.Add(this.rb_xy_1mm);
+            this.flowLayoutPanel1.Controls.Add(this.rb_xy_01mm);
+            this.flowLayoutPanel1.Controls.Add(this.rb_xy_001mm);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // button9
+            // 
+            resources.ApplyResources(this.button9, "button9");
+            this.button9.Name = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            resources.ApplyResources(this.button7, "button7");
+            this.button7.Name = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            resources.ApplyResources(this.button6, "button6");
+            this.button6.Name = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // but_auto_focus
+            // 
+            resources.ApplyResources(this.but_auto_focus, "but_auto_focus");
+            this.but_auto_focus.Name = "but_auto_focus";
+            this.but_auto_focus.UseVisualStyleBackColor = true;
+            // 
+            // but_find_ports
+            // 
+            resources.ApplyResources(this.but_find_ports, "but_find_ports");
+            this.but_find_ports.Name = "but_find_ports";
+            this.but_find_ports.UseVisualStyleBackColor = true;
+            this.but_find_ports.Click += new System.EventHandler(this.but_find_ports_Click);
             // 
             // ManualForm
             // 
@@ -326,44 +484,72 @@
             this.ShowInTaskbar = false;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button but_home;
-        private System.Windows.Forms.RadioButton rb_001mm;
-        private System.Windows.Forms.RadioButton rb_01mm;
-        private System.Windows.Forms.RadioButton rb_1mm;
-        private System.Windows.Forms.RadioButton rb_10mm;
-        private System.Windows.Forms.Button but_z_neg;
-        private System.Windows.Forms.Button but_z_pos;
+        private System.Windows.Forms.Button but_ard_con;
+        private System.Windows.Forms.Button but_zdm_neg;
+        private System.Windows.Forms.Button but_zdm_pos;
+        private System.Windows.Forms.Button but_zm_neg;
+        private System.Windows.Forms.Button but_zm_pos;
+        private System.Windows.Forms.Button but_home_XYZA;
+        private System.Windows.Forms.RadioButton rb_xy_001mm;
+        private System.Windows.Forms.RadioButton rb_xy_01mm;
+        private System.Windows.Forms.RadioButton rb_xy_1mm;
+        private System.Windows.Forms.RadioButton rb_xy_10mm;
+        private System.Windows.Forms.Button but_zd_neg;
+        private System.Windows.Forms.Button but_zd_pos;
         private System.Windows.Forms.Button but_e_pos;
         private System.Windows.Forms.Button but_e_neg;
         private System.Windows.Forms.Button but_y_neg;
         private System.Windows.Forms.Button but_y_pos;
         private System.Windows.Forms.Button but_x_pos;
         private System.Windows.Forms.Button but_x_neg;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.ComboBox comboBox_ports;
+        private System.Windows.Forms.Button but_home_X;
+        private System.Windows.Forms.Button but_home_Y;
+        private System.Windows.Forms.Button but_home_Z;
+        private System.Windows.Forms.Button but_home_A;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.RadioButton rb_e_10mm;
+        private System.Windows.Forms.RadioButton rb_e_1mm;
+        private System.Windows.Forms.RadioButton rb_e_01mm;
+        private System.Windows.Forms.RadioButton rb_e_001mm;
+        private System.Windows.Forms.RadioButton rb_z_10mm;
+        private System.Windows.Forms.RadioButton rb_z_01mm;
+        private System.Windows.Forms.RadioButton rb_z_001mm;
+        private System.Windows.Forms.Button but_find_ports;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button but_auto_focus;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rb_z_1mm;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox_e_vel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_z_vel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_xy_vel;
     }
 }

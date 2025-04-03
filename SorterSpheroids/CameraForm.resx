@@ -117,4 +117,409 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="imageBox_main.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="imageBox_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 1080</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="imageBox_main.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;imageBox_main.Name" xml:space="preserve">
+    <value>imageBox_main</value>
+  </data>
+  <data name="&gt;&gt;imageBox_main.Type" xml:space="preserve">
+    <value>Emgu.CV.UI.ImageBox, Emgu.CV.UI, Version=4.10.0.5680, Culture=neutral, PublicKeyToken=7281126722ab4438</value>
+  </data>
+  <data name="&gt;&gt;imageBox_main.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imageBox_main.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="but_start_recording.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="but_start_recording.Location" type="System.Drawing.Point, System.Drawing">
+    <value>886, 1146</value>
+  </data>
+  <data name="but_start_recording.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="but_start_recording.TabIndex" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="but_start_recording.Text" xml:space="preserve">
+    <value>Начать запись</value>
+  </data>
+  <data name="&gt;&gt;but_start_recording.Name" xml:space="preserve">
+    <value>but_start_recording</value>
+  </data>
+  <data name="&gt;&gt;but_start_recording.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;but_start_recording.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;but_start_recording.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="checkBox_centr_object.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_centr_object.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_centr_object.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 1249</value>
+  </data>
+  <data name="checkBox_centr_object.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 17</value>
+  </data>
+  <data name="checkBox_centr_object.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="checkBox_centr_object.Text" xml:space="preserve">
+    <value>Центр объекта</value>
+  </data>
+  <data name="&gt;&gt;checkBox_centr_object.Name" xml:space="preserve">
+    <value>checkBox_centr_object</value>
+  </data>
+  <data name="&gt;&gt;checkBox_centr_object.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_centr_object.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_centr_object.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="checkBox_boarder_object.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_boarder_object.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_boarder_object.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 1226</value>
+  </data>
+  <data name="checkBox_boarder_object.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="checkBox_boarder_object.TabIndex" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="checkBox_boarder_object.Text" xml:space="preserve">
+    <value>Границы объекта</value>
+  </data>
+  <data name="&gt;&gt;checkBox_boarder_object.Name" xml:space="preserve">
+    <value>checkBox_boarder_object</value>
+  </data>
+  <data name="&gt;&gt;checkBox_boarder_object.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_boarder_object.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_boarder_object.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBox_focal_area.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_focal_area.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_focal_area.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 1203</value>
+  </data>
+  <data name="checkBox_focal_area.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 17</value>
+  </data>
+  <data name="checkBox_focal_area.TabIndex" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="checkBox_focal_area.Text" xml:space="preserve">
+    <value>Фокус</value>
+  </data>
+  <data name="&gt;&gt;checkBox_focal_area.Name" xml:space="preserve">
+    <value>checkBox_focal_area</value>
+  </data>
+  <data name="&gt;&gt;checkBox_focal_area.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_focal_area.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_focal_area.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 1204</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 13</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Показать на изображении</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="but_start_video.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="but_start_video.Location" type="System.Drawing.Point, System.Drawing">
+    <value>535, 1172</value>
+  </data>
+  <data name="but_start_video.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="but_start_video.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="but_start_video.Text" xml:space="preserve">
+    <value>Запуск видео</value>
+  </data>
+  <data name="&gt;&gt;but_start_video.Name" xml:space="preserve">
+    <value>but_start_video</value>
+  </data>
+  <data name="&gt;&gt;but_start_video.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;but_start_video.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;but_start_video.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="but_stop_recording.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="but_stop_recording.Location" type="System.Drawing.Point, System.Drawing">
+    <value>886, 1201</value>
+  </data>
+  <data name="but_stop_recording.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="but_stop_recording.TabIndex" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="but_stop_recording.Text" xml:space="preserve">
+    <value>Остановить запись</value>
+  </data>
+  <data name="&gt;&gt;but_stop_recording.Name" xml:space="preserve">
+    <value>but_stop_recording</value>
+  </data>
+  <data name="&gt;&gt;but_stop_recording.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;but_stop_recording.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;but_stop_recording.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="textBox_video_name.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 1146</value>
+  </data>
+  <data name="textBox_video_name.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 20</value>
+  </data>
+  <data name="textBox_video_name.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="&gt;&gt;textBox_video_name.Name" xml:space="preserve">
+    <value>textBox_video_name</value>
+  </data>
+  <data name="&gt;&gt;textBox_video_name.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_video_name.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox_video_name.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="textBox_camera_number.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 1146</value>
+  </data>
+  <data name="textBox_camera_number.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="textBox_camera_number.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
+  </data>
+  <data name="&gt;&gt;textBox_camera_number.Name" xml:space="preserve">
+    <value>textBox_camera_number</value>
+  </data>
+  <data name="&gt;&gt;textBox_camera_number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_camera_number.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox_camera_number.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="but_con_cam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="but_con_cam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>129, 1131</value>
+  </data>
+  <data name="but_con_cam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="but_con_cam.TabIndex" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <data name="but_con_cam.Text" xml:space="preserve">
+    <value>Запуск камеры</value>
+  </data>
+  <data name="&gt;&gt;but_con_cam.Name" xml:space="preserve">
+    <value>but_con_cam</value>
+  </data>
+  <data name="&gt;&gt;but_con_cam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;but_con_cam.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;but_con_cam.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="textBox_set_exposit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1091, 1216</value>
+  </data>
+  <data name="textBox_set_exposit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="textBox_set_exposit.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="&gt;&gt;textBox_set_exposit.Name" xml:space="preserve">
+    <value>textBox_set_exposit</value>
+  </data>
+  <data name="&gt;&gt;textBox_set_exposit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_set_exposit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox_set_exposit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1194, 1198</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 58</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Установить экспозицию</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1194, 1117</value>
+  </data>
+  <data name="button14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="button14.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="button14.Text" xml:space="preserve">
+    <value>Калибровка камеры</value>
+  </data>
+  <data name="&gt;&gt;button14.Name" xml:space="preserve">
+    <value>button14</value>
+  </data>
+  <data name="&gt;&gt;button14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button14.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button14.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1091, 1132</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1964, 1280</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CameraForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
