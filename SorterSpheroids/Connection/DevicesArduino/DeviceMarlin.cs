@@ -8,6 +8,63 @@ using System.Diagnostics;
 
 namespace Connection
 {
+    public class GFrame
+    {
+        public double x, y, z, e, a, b;
+        public GFrame(double x = 0, double y = 0, double z = 0, double e = 0, double a = 0, double b = 0) 
+        { 
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.e = e;
+            this.a = a;
+            this.b = b;
+        }
+        public GFrame(double[] vals)
+        {
+            if (vals == null) return;
+            if (vals.Length > 4) return;
+            this.x = vals[0];
+            this.y = vals[1];
+            this.z = vals[2];
+            this.a = vals[3];
+            this.e = vals[4];
+        }
+        public GFrame Clone()
+        {
+            return new GFrame(x,y,z,e,a,b);
+        }
+
+        public double norm_movm()
+        {
+            return Math.Sqrt(x*x + y*y + z*z + a*a + b*b);
+        }
+        public double norm_all()
+        {
+            return Math.Sqrt(x * x + y * y + z * z + e * e + a * a + b * b);
+        }
+        static public GFrame operator- (GFrame left, GFrame right)
+        {
+            return new GFrame(
+                left.x - right.x,
+                left.y - right.y,
+                left.z - right.z,
+                left.e - right.e,
+                left.a - right.a,
+                left.b - right.b);
+        }
+
+        static public GFrame operator +(GFrame left, GFrame right)
+        {
+            return new GFrame(
+                left.x + right.x,
+                left.y + right.y,
+                left.z + right.z,
+                left.e + right.e,
+                left.a + right.a,
+                left.b + right.b);
+        }
+    }
     public class DeviceMarlin : DeviceArduino
     {
         public string port;

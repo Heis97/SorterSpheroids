@@ -11,11 +11,12 @@ namespace SorterSpheroids
 {
     public static class ImageProcessing
     {
-        /*public static Mat get_focal_surface(Mat mat)
+       /* public static Mat get_focal_surface(Mat mat)
         {
             var lapl = new Mat();
+            
             var im = mat.ToImage<Gray, byte>();
-            Cv2.Laplacian(im, lapl, DepthType.Default);
+            Cv2.Laplacian(im, lapl,MatType.CV_8U);
             Cv2.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
             var im_th = lapl.ToImage<Gray, byte>();
             Mat kernel7 = Cv2.GetStructuringElement(ElementShape.Rectangle, new Size(7, 7), new Point(3, 3));
@@ -28,6 +29,7 @@ namespace SorterSpheroids
             Image<Gray, Byte> im_med = im_th;
             for (int i = 0; i < num; i++)
             {
+                Cv2.MorphologyEx()
                 im_med = im_med.MorphologyEx(MorphOp.Dilate, ellips7, new Point(-1, -1), 3, BorderType.Default, new MCvScalar());
                 im_med = im_med.MorphologyEx(MorphOp.Close, ellips7, new Point(-1, -1), 10, BorderType.Default, new MCvScalar());
             }
@@ -37,20 +39,21 @@ namespace SorterSpheroids
             spl[1] += im_med.Mat * 0.3;
             Cv2.Merge(new VectorOfMat(spl), ret);
             return ret;
-        }
+        }*/
 
         public static (Mat,double) get_focal_surface_for_conf(Mat mat)
         {
             var lapl = new Mat();
-            var im = mat.ToImage<Gray, byte>();
-            Cv2.Laplacian(im, lapl, DepthType.Default);
-            var r = im.GetAverage();
-            Cv2.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
-            var conf = new Mat();
-            Cv2.BitwiseAnd(mat, mat, conf, lapl);
 
-            return (conf,r.Intensity);
-        }*/
+            Cv2.Laplacian(mat, lapl, MatType.CV_8UC3);
+            var mean = lapl.Mean();
+            Cv2.Threshold(lapl, lapl, 20, 255,ThresholdTypes.Binary);
+            var conf = mat.Clone();
+            //mat.ConvertTo(mat, MatType.CV_8U);
+            //BitwiseAnd(mat, mat, conf, lapl);
+
+            return (lapl, mean.Val0);
+        }
 
     }
 }

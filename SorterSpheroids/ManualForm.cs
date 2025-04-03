@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Connection;
@@ -184,7 +185,7 @@ namespace SorterSpheroids
         #endregion
 
 
-        double[] cur_pos = new double[5];
+        GFrame cur_pos;
         private void timer_printer_pos_Tick(object sender, EventArgs e)
         {
             var res = Sorter.reseav();
@@ -209,12 +210,13 @@ namespace SorterSpheroids
                             {
                                 if (res_spl_2.Length >= 5)
                                 { 
-                                    
+                                    var double_vals = new double[5];
                                     label_cur_pos.Text = "X: " + res_spl_2[0] + "\nY: " + res_spl_2[1] + "\nZd: " + res_spl_2[2] + "\nZm: " + res_spl_2[3] + "\nE: " + res_spl_2[4];
                                     for(int k=0; k<5;k++)
                                     {
-                                        cur_pos[i] = MainForm.to_double(res_spl_2[i]);
+                                        double_vals[i] = MainForm.to_double(res_spl_2[i]);
                                     }
+                                    cur_pos = new GFrame(double_vals);
                                 }
                             }
                         }
@@ -242,8 +244,8 @@ namespace SorterSpheroids
 
             }
         }
-        double[] start_point = new double[5];
-        double[] stop_point = new double[5];
+        GFrame start_point;
+        GFrame stop_point ;
         double asp_vol = 0.1;
         double dm = 8;
         double z_safe = 2;
@@ -272,15 +274,70 @@ namespace SorterSpheroids
             Sorter?.sendCommand("G1", new string[] { "E", "F" }, new object[] { asp_vol, vel_e });
         }
 
-        private void button_replace_obj_Click(object sender, EventArgs e)
-        {
-            //many commands
-            
-        }
+       
 
         private void button_set_dm_dist_Click(object sender, EventArgs e)
         {
-            dm = cur_pos[3] - cur_pos[2];
+            dm = cur_pos.z - cur_pos.a;
+        }
+        void go_to_pos(GFrame gframe)
+        {
+            var vel = 1d;
+            if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0) vel = vel_z;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 &&) vel = vel_e;
+            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe.x, gframe.y, gframe.z, gframe.a, gframe.e, vel });
+
+        }
+
+        void go_to_pos_wait(GFrame gframe)
+        {
+            var vel = 1d;
+            if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0) vel = vel_z;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 &&) vel = vel_e;
+            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe.x, gframe.y, gframe.z, gframe.a, gframe.e, vel });
+
+        }
+        private void button_replace_obj_Click(object sender, EventArgs e)
+        {
+            var repl_thr = new Thread(replace_obj);
+            repl_thr.Start();
+        }
+        void replace_obj()
+        {
+            //pos under start
+            var pos_execute = start_point;
+            pos_execute.z = start_point.a + dm + z_safe;
+            pos_execute.e = cur_pos.e;
+            var time = (int)(1000* Math.Abs( pos_execute.z - cur_pos.z)/vel_sec(vel_z));
+            go_to_pos(pos_execute);
+            Thread.Sleep(time);
+            //pos start
+            pos_execute.z = start_point.a + dm;
+            go_to_pos(pos_execute);
+            //aspir
+            pos_execute.e -= asp_vol;
+            go_to_pos(pos_execute);
+            //pos under start
+            pos_execute.z = start_point.a + dm + z_safe;
+            go_to_pos(pos_execute);
+            //pos under end
+            pos_execute.z = stop_point.a + dm + z_safe;
+            go_to_pos(pos_execute);
+            //pos end
+            pos_execute.z = stop_point.a + dm;
+            go_to_pos(pos_execute);
+            //push
+            pos_execute.e += asp_vol;
+            go_to_pos(pos_execute);
+            //pos under end
+            pos_execute.z = stop_point.a + dm + z_safe;
+            go_to_pos(pos_execute);
+        }
+        double vel_sec(double vel_minute)
+        {
+            return vel_minute / 60;
         }
     }
 }

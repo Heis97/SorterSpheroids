@@ -30,7 +30,7 @@ namespace SorterSpheroids
         double cur_contr = 0;
         bool recording = false;
         MainForm mainForm;
-
+        OpenCvSharp.Point point_of_center_1;
 
         public CameraForm(MainForm mainForm)
         {
@@ -66,10 +66,13 @@ namespace SorterSpheroids
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             var frameMat = (Mat)e.UserState;
+            //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
             frameMat = imProcess(frameMat);
             if (recording) videoframe_counts++;
             pictureBox1.Image?.Dispose();
-            pictureBox1.Image = BitmapConverter.ToBitmap(frameMat);
+            var bitmap = BitmapConverter.ToBitmap(frameMat);
+            //Console.WriteLine(bitmap.Width + " " + bitmap.Height + " " + fps);
+            pictureBox1.Image = bitmap;
         }
 
         private void videoStart(int number)
@@ -93,6 +96,8 @@ namespace SorterSpheroids
             var fps = capture.Get(VideoCaptureProperties.Fps);
             var w = capture.Get(VideoCaptureProperties.FrameWidth);
             var h = capture.Get(VideoCaptureProperties.FrameHeight);
+
+
 
             ClientSize = new System.Drawing.Size(capture.FrameWidth, capture.FrameHeight);
             backgroundWorker1.RunWorkerAsync();
@@ -118,12 +123,12 @@ namespace SorterSpheroids
 
                 if (focal_area)
                 {
-                   // (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
-                 //   Console.WriteLine(cur_contr.ToString());
+                    (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
+                    Console.WriteLine(cur_contr.ToString());
                 }
                 if (centr_object)
                 {
-                   // Cv2.DrawMarker(mat)
+                    Cv2.DrawMarker(mat,point_of_center_1,new Scalar(255,255,0),MarkerTypes.TiltedCross,40,4);
                     //(mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
                     //Console.WriteLine(cur_contr.ToString());
                 }
@@ -198,7 +203,7 @@ namespace SorterSpheroids
 
         bool focal_area = false;
         bool boarder_object = false;
-        bool centr_object = false;
+        bool centr_object = true;
         private void checkBox_focal_area_CheckedChanged(object sender, EventArgs e)
         {
             focal_area = ((CheckBox)sender).Checked;
@@ -212,6 +217,15 @@ namespace SorterSpheroids
         private void checkBox_centr_object_CheckedChanged(object sender, EventArgs e)
         {
             centr_object = ((CheckBox)sender).Checked;
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            var control = (Control)sender;
+            if (e.Button == MouseButtons.Right)
+            {
+                point_of_center_1 = new OpenCvSharp.Point(e.Location.X , e.Location.Y );
+            }
         }
     }
 }
