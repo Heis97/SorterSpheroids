@@ -178,7 +178,7 @@
     <value>186, 1249</value>
   </data>
   <data name="checkBox_centr_object.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
+    <value>124, 20</value>
   </data>
   <data name="checkBox_centr_object.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -208,7 +208,7 @@
     <value>186, 1226</value>
   </data>
   <data name="checkBox_boarder_object.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>140, 20</value>
   </data>
   <data name="checkBox_boarder_object.TabIndex" type="System.Int32, mscorlib">
     <value>75</value>
@@ -238,7 +238,7 @@
     <value>186, 1203</value>
   </data>
   <data name="checkBox_focal_area.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>67, 20</value>
   </data>
   <data name="checkBox_focal_area.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
@@ -268,7 +268,7 @@
     <value>34, 1204</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 13</value>
+    <value>181, 16</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>73</value>
@@ -346,7 +346,7 @@
     <value>530, 1146</value>
   </data>
   <data name="textBox_video_name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 20</value>
+    <value>342, 22</value>
   </data>
   <data name="textBox_video_name.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -367,7 +367,7 @@
     <value>32, 1146</value>
   </data>
   <data name="textBox_camera_number.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+    <value>80, 22</value>
   </data>
   <data name="textBox_camera_number.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
@@ -415,7 +415,7 @@
     <value>1091, 1216</value>
   </data>
   <data name="textBox_set_exposit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+    <value>80, 22</value>
   </data>
   <data name="textBox_set_exposit.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
@@ -432,31 +432,31 @@
   <data name="&gt;&gt;textBox_set_exposit.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="but_set_exposit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="but_set_exposit.Location" type="System.Drawing.Point, System.Drawing">
     <value>1194, 1198</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="but_set_exposit.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 58</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="but_set_exposit.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="but_set_exposit.Text" xml:space="preserve">
     <value>Установить экспозицию</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;but_set_exposit.Name" xml:space="preserve">
+    <value>but_set_exposit</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;but_set_exposit.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;but_set_exposit.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;but_set_exposit.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="button14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -490,7 +490,7 @@
     <value>1091, 1132</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 20</value>
+    <value>80, 22</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>

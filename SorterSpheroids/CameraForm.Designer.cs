@@ -42,7 +42,7 @@
             this.textBox_camera_number = new System.Windows.Forms.TextBox();
             this.but_con_cam = new System.Windows.Forms.Button();
             this.textBox_set_exposit = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.but_set_exposit = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox_main)).BeginInit();
@@ -122,11 +122,12 @@
             resources.ApplyResources(this.textBox_set_exposit, "textBox_set_exposit");
             this.textBox_set_exposit.Name = "textBox_set_exposit";
             // 
-            // button1
+            // but_set_exposit
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.but_set_exposit, "but_set_exposit");
+            this.but_set_exposit.Name = "but_set_exposit";
+            this.but_set_exposit.UseVisualStyleBackColor = true;
+            this.but_set_exposit.Click += new System.EventHandler(this.but_set_exposit_Click);
             // 
             // button14
             // 
@@ -146,7 +147,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.textBox_set_exposit);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.but_set_exposit);
             this.Controls.Add(this.but_start_recording);
             this.Controls.Add(this.checkBox_centr_object);
             this.Controls.Add(this.checkBox_boarder_object);
@@ -185,7 +186,7 @@
         private System.Windows.Forms.TextBox textBox_camera_number;
         private System.Windows.Forms.Button but_con_cam;
         private System.Windows.Forms.TextBox textBox_set_exposit;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button but_set_exposit;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox1;
     }

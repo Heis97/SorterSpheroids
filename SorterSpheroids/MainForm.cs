@@ -70,5 +70,40 @@ namespace SorterSpheroids
             manual_form.Hide();
            
         }
+
+        public static double to_double_textbox(TextBox textBox, double min, double max)
+        {
+            var val = to_double(textBox.Text);
+            if (val == double.NaN)
+            {
+                val = min;
+            }
+            if (val < min)
+            {
+                val = min;
+            }
+            if (val > max)
+            {
+                val = max;
+            }
+            return val;
+        }
+
+        public static double to_double(string val)
+        {
+            if (val == null) return 0;
+            if (val.Length == 0) return 0;
+            val = val.Replace(',', '.');
+            try
+            {
+                return Convert.ToDouble(val);
+            }
+            catch
+            {
+                return double.NaN;
+            }
+            //return 
+        }
+
     }
 }

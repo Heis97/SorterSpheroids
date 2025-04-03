@@ -27,6 +27,7 @@ namespace SorterSpheroids
         int fps = 30;
         bool focal_area = false;
         double cur_contr = 0;
+        bool recording = false;
         MainForm mainForm;
         public CameraForm(MainForm mainForm)
         {
@@ -57,9 +58,9 @@ namespace SorterSpheroids
             //Console.WriteLine("dr_cam");
             var mat = new Mat();
             cap.Retrieve(mat);
-            imageBox_main.Image = mat;
+            
             imProcess(mat);
-            videoframe_counts++;
+           if(recording) videoframe_counts++;
         }
         void capturingVideo(object sender, EventArgs e)
         {
@@ -67,13 +68,11 @@ namespace SorterSpheroids
         }
         void imProcess(Mat mat)
         {
+            
             if (mat == null) return;
             if (video_mats != null)
             {
-                if(focal_area)
-                {
-                   ( imageBox_main.Image, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
-                }
+                
                 if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
                 {
 
@@ -83,12 +82,19 @@ namespace SorterSpheroids
                 {
                     save_video(cameraSize.Width, cameraSize.Height);
                 }
-            }       
+
+                if (focal_area)
+                {
+                    (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
+                    Console.WriteLine(cur_contr.ToString());
+                }
+            }
+            imageBox_main.Image = mat;
         }
 
         void save_video(int w, int h)
         {
-
+            recording = false;
             int fcc = VideoWriter.Fourcc('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
             var dir = "recordings";
             Directory.CreateDirectory(dir);
@@ -113,6 +119,7 @@ namespace SorterSpheroids
             video_mats = new List<Mat>();
             videoframe_counts = 0;
             videoframe_counts_stop = 10000;
+            recording = true ;
             
         }
 
@@ -128,7 +135,23 @@ namespace SorterSpheroids
 
         private void checkBox_focal_area_CheckedChanged(object sender, EventArgs e)
         {
-           
+            focal_area = ((CheckBox)sender).Checked;
+        }
+
+        private void but_set_exposit_Click(object sender, EventArgs e)
+        {
+            var exp = MainForm.to_double_textbox(textBox_set_exposit, -2, 20);
+            if (exp < 0)
+            {
+
+                capture.Set(CapProp.AutoExposure, 1);
+            }
+            else
+            {
+                capture.Set(CapProp.AutoExposure, 0);
+                capture.Set(CapProp.Exposure, -exp);
+            }
+            
         }
     }
 }
