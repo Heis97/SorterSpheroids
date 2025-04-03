@@ -117,39 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="imageBox_main.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="imageBox_main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 1080</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="imageBox_main.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;imageBox_main.Name" xml:space="preserve">
-    <value>imageBox_main</value>
-  </data>
-  <data name="&gt;&gt;imageBox_main.Type" xml:space="preserve">
-    <value>Emgu.CV.UI.ImageBox, Emgu.CV.UI, Version=4.10.0.5680, Culture=neutral, PublicKeyToken=7281126722ab4438</value>
-  </data>
-  <data name="&gt;&gt;imageBox_main.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;imageBox_main.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="but_start_recording.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="but_start_recording.Location" type="System.Drawing.Point, System.Drawing">
-    <value>886, 1146</value>
+    <value>679, 1146</value>
   </data>
   <data name="but_start_recording.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="but_start_recording.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
@@ -166,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_start_recording.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="checkBox_centr_object.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -175,10 +154,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_centr_object.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 1249</value>
+    <value>171, 1212</value>
   </data>
   <data name="checkBox_centr_object.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
+    <value>102, 17</value>
   </data>
   <data name="checkBox_centr_object.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -196,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_centr_object.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="checkBox_boarder_object.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -205,10 +184,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_boarder_object.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 1226</value>
+    <value>171, 1189</value>
   </data>
   <data name="checkBox_boarder_object.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 20</value>
+    <value>115, 17</value>
   </data>
   <data name="checkBox_boarder_object.TabIndex" type="System.Int32, mscorlib">
     <value>75</value>
@@ -226,7 +205,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_boarder_object.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="checkBox_focal_area.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,10 +214,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_focal_area.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 1203</value>
+    <value>171, 1166</value>
   </data>
   <data name="checkBox_focal_area.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 20</value>
+    <value>60, 17</value>
   </data>
   <data name="checkBox_focal_area.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
@@ -256,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_focal_area.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -265,10 +244,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 1204</value>
+    <value>12, 1172</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 16</value>
+    <value>142, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>73</value>
@@ -286,13 +265,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="but_start_video.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="but_start_video.Location" type="System.Drawing.Point, System.Drawing">
-    <value>535, 1172</value>
+    <value>328, 1172</value>
   </data>
   <data name="but_start_video.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -313,13 +292,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_start_video.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="but_stop_recording.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="but_stop_recording.Location" type="System.Drawing.Point, System.Drawing">
-    <value>886, 1201</value>
+    <value>679, 1201</value>
   </data>
   <data name="but_stop_recording.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -340,13 +319,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_stop_recording.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="textBox_video_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 1146</value>
+    <value>323, 1146</value>
   </data>
   <data name="textBox_video_name.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 22</value>
+    <value>342, 20</value>
   </data>
   <data name="textBox_video_name.TabIndex" type="System.Int32, mscorlib">
     <value>69</value>
@@ -361,16 +340,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_video_name.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="textBox_camera_number.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 1146</value>
+    <value>31, 1118</value>
   </data>
   <data name="textBox_camera_number.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 22</value>
+    <value>80, 20</value>
   </data>
   <data name="textBox_camera_number.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
+  </data>
+  <data name="textBox_camera_number.Text" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBox_camera_number.Name" xml:space="preserve">
     <value>textBox_camera_number</value>
@@ -382,13 +364,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_camera_number.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="but_con_cam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="but_con_cam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 1131</value>
+    <value>128, 1103</value>
   </data>
   <data name="but_con_cam.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -409,13 +391,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_con_cam.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="textBox_set_exposit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1091, 1216</value>
+    <value>884, 1216</value>
   </data>
   <data name="textBox_set_exposit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 22</value>
+    <value>80, 20</value>
   </data>
   <data name="textBox_set_exposit.TabIndex" type="System.Int32, mscorlib">
     <value>79</value>
@@ -430,13 +412,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox_set_exposit.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="but_set_exposit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="but_set_exposit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1194, 1198</value>
+    <value>987, 1198</value>
   </data>
   <data name="but_set_exposit.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 58</value>
@@ -457,13 +439,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_set_exposit.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="button14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1194, 1117</value>
+    <value>987, 1117</value>
   </data>
   <data name="button14.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -484,13 +466,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;button14.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1091, 1132</value>
+    <value>884, 1132</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 22</value>
+    <value>80, 20</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>83</value>
@@ -505,8 +487,80 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button_set_nozzle_centr.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_set_nozzle_centr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1218, 1117</value>
+  </data>
+  <data name="button_set_nozzle_centr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 49</value>
+  </data>
+  <data name="button_set_nozzle_centr.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="button_set_nozzle_centr.Text" xml:space="preserve">
+    <value>Задать центр сопла</value>
+  </data>
+  <data name="&gt;&gt;button_set_nozzle_centr.Name" xml:space="preserve">
+    <value>button_set_nozzle_centr</value>
+  </data>
+  <data name="&gt;&gt;button_set_nozzle_centr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_set_nozzle_centr.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_set_nozzle_centr.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1132, 1132</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 20</value>
+  </data>
+  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
+    <value>textBox2</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 12</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 1080</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>86</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -515,6 +569,12 @@
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
+    <value>backgroundWorker1</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CameraForm</value>

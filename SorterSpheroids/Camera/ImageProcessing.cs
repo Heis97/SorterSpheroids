@@ -1,7 +1,5 @@
-﻿using Emgu.CV.CvEnum;
-using Emgu.CV.Structure;
-using Emgu.CV.Util;
-using Emgu.CV;
+﻿
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,19 +11,19 @@ namespace SorterSpheroids
 {
     public static class ImageProcessing
     {
-        public static Mat get_focal_surface(Mat mat)
+        /*public static Mat get_focal_surface(Mat mat)
         {
             var lapl = new Mat();
             var im = mat.ToImage<Gray, byte>();
-            CvInvoke.Laplacian(im, lapl, DepthType.Default);
-            CvInvoke.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
+            Cv2.Laplacian(im, lapl, DepthType.Default);
+            Cv2.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
             var im_th = lapl.ToImage<Gray, byte>();
-            Mat kernel7 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(7, 7), new Point(3, 3));
+            Mat kernel7 = Cv2.GetStructuringElement(ElementShape.Rectangle, new Size(7, 7), new Point(3, 3));
 
-            Mat kernel5 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(5, 5), new Point(2, 2));
-            Mat kernel3 = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(3, 3), new Point(1, 1));
+            Mat kernel5 = Cv2.GetStructuringElement(ElementShape.Rectangle, new Size(5, 5), new Point(2, 2));
+            Mat kernel3 = Cv2.GetStructuringElement(ElementShape.Rectangle, new Size(3, 3), new Point(1, 1));
 
-            Mat ellips7 = CvInvoke.GetStructuringElement(ElementShape.Ellipse, new Size(7, 7), new Point(1, 1));
+            Mat ellips7 = Cv2.GetStructuringElement(ElementShape.Ellipse, new Size(7, 7), new Point(1, 1));
             int num = 4;
             Image<Gray, Byte> im_med = im_th;
             for (int i = 0; i < num; i++)
@@ -37,7 +35,7 @@ namespace SorterSpheroids
             var ret = new Mat();
             var spl = mat.Split();
             spl[1] += im_med.Mat * 0.3;
-            CvInvoke.Merge(new VectorOfMat(spl), ret);
+            Cv2.Merge(new VectorOfMat(spl), ret);
             return ret;
         }
 
@@ -45,14 +43,14 @@ namespace SorterSpheroids
         {
             var lapl = new Mat();
             var im = mat.ToImage<Gray, byte>();
-            CvInvoke.Laplacian(im, lapl, DepthType.Default);
+            Cv2.Laplacian(im, lapl, DepthType.Default);
             var r = im.GetAverage();
-            CvInvoke.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
+            Cv2.Threshold(lapl, lapl, 20, 255, ThresholdType.Binary);
             var conf = new Mat();
-            CvInvoke.BitwiseAnd(mat, mat, conf, lapl);
+            Cv2.BitwiseAnd(mat, mat, conf, lapl);
 
             return (conf,r.Intensity);
-        }
+        }*/
 
     }
 }

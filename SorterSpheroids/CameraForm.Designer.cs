@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CameraForm));
-            this.imageBox_main = new Emgu.CV.UI.ImageBox();
             this.but_start_recording = new System.Windows.Forms.Button();
             this.checkBox_centr_object = new System.Windows.Forms.CheckBox();
             this.checkBox_boarder_object = new System.Windows.Forms.CheckBox();
@@ -45,15 +43,12 @@
             this.but_set_exposit = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox_main)).BeginInit();
+            this.button_set_nozzle_centr = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // imageBox_main
-            // 
-            this.imageBox_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.imageBox_main, "imageBox_main");
-            this.imageBox_main.Name = "imageBox_main";
-            this.imageBox_main.TabStop = false;
             // 
             // but_start_recording
             // 
@@ -67,12 +62,14 @@
             resources.ApplyResources(this.checkBox_centr_object, "checkBox_centr_object");
             this.checkBox_centr_object.Name = "checkBox_centr_object";
             this.checkBox_centr_object.UseVisualStyleBackColor = true;
+            this.checkBox_centr_object.CheckedChanged += new System.EventHandler(this.checkBox_centr_object_CheckedChanged);
             // 
             // checkBox_boarder_object
             // 
             resources.ApplyResources(this.checkBox_boarder_object, "checkBox_boarder_object");
             this.checkBox_boarder_object.Name = "checkBox_boarder_object";
             this.checkBox_boarder_object.UseVisualStyleBackColor = true;
+            this.checkBox_boarder_object.CheckedChanged += new System.EventHandler(this.checkBox_boarder_object_CheckedChanged);
             // 
             // checkBox_focal_area
             // 
@@ -140,10 +137,38 @@
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
             // 
+            // button_set_nozzle_centr
+            // 
+            resources.ApplyResources(this.button_set_nozzle_centr, "button_set_nozzle_centr");
+            this.button_set_nozzle_centr.Name = "button_set_nozzle_centr";
+            this.button_set_nozzle_centr.UseVisualStyleBackColor = true;
+            this.button_set_nozzle_centr.Click += new System.EventHandler(this.button_set_nozzle_centr_Click);
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            // 
             // CameraForm
             // 
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button_set_nozzle_centr);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.textBox_set_exposit);
@@ -158,7 +183,6 @@
             this.Controls.Add(this.textBox_video_name);
             this.Controls.Add(this.textBox_camera_number);
             this.Controls.Add(this.but_con_cam);
-            this.Controls.Add(this.imageBox_main);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -166,7 +190,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,7 +198,6 @@
 
         #endregion
 
-        private Emgu.CV.UI.ImageBox imageBox_main;
         private System.Windows.Forms.Button but_start_recording;
         private System.Windows.Forms.CheckBox checkBox_centr_object;
         private System.Windows.Forms.CheckBox checkBox_boarder_object;
@@ -189,6 +212,10 @@
         private System.Windows.Forms.Button but_set_exposit;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button_set_nozzle_centr;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

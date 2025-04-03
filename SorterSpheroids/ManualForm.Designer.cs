@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualForm));
             this.but_ard_con = new System.Windows.Forms.Button();
             this.but_zdm_neg = new System.Windows.Forms.Button();
@@ -52,7 +53,7 @@
             this.but_home_Y = new System.Windows.Forms.Button();
             this.but_home_Z = new System.Windows.Forms.Button();
             this.but_home_A = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_cur_pos = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -75,10 +76,19 @@
             this.textBox_xy_vel = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button_push_obj = new System.Windows.Forms.Button();
+            this.button_aspiration_obj = new System.Windows.Forms.Button();
             this.but_auto_focus = new System.Windows.Forms.Button();
             this.but_find_ports = new System.Windows.Forms.Button();
+            this.timer_cur_pos = new System.Windows.Forms.Timer(this.components);
+            this.textBox_volume_apiration = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_memorize_start_point = new System.Windows.Forms.Button();
+            this.button_memorize_stop_point = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button_replace_obj = new System.Windows.Forms.Button();
+            this.button_set_dm_dist = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -251,22 +261,29 @@
             this.but_home_A.UseVisualStyleBackColor = true;
             this.but_home_A.Click += new System.EventHandler(this.but_home_A_Click);
             // 
-            // label1
+            // label_cur_pos
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.label_cur_pos, "label_cur_pos");
+            this.label_cur_pos.Name = "label_cur_pos";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.button_set_dm_dist);
+            this.groupBox1.Controls.Add(this.button_replace_obj);
+            this.groupBox1.Controls.Add(this.button_memorize_stop_point);
+            this.groupBox1.Controls.Add(this.button_memorize_start_point);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox_volume_apiration);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.button9);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button_push_obj);
+            this.groupBox1.Controls.Add(this.button_aspiration_obj);
             this.groupBox1.Controls.Add(this.but_auto_focus);
             this.groupBox1.Controls.Add(this.but_find_ports);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label_cur_pos);
             this.groupBox1.Controls.Add(this.but_home_A);
             this.groupBox1.Controls.Add(this.but_home_Z);
             this.groupBox1.Controls.Add(this.but_home_Y);
@@ -412,6 +429,7 @@
             // 
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.textBox_xy_vel);
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.but_x_pos);
             this.groupBox2.Controls.Add(this.but_y_neg);
             this.groupBox2.Controls.Add(this.but_y_pos);
@@ -447,17 +465,19 @@
             this.button9.Name = "button9";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // button_push_obj
             // 
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button_push_obj, "button_push_obj");
+            this.button_push_obj.Name = "button_push_obj";
+            this.button_push_obj.UseVisualStyleBackColor = true;
+            this.button_push_obj.Click += new System.EventHandler(this.button_push_obj_Click);
             // 
-            // button6
+            // button_aspiration_obj
             // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.button_aspiration_obj, "button_aspiration_obj");
+            this.button_aspiration_obj.Name = "button_aspiration_obj";
+            this.button_aspiration_obj.UseVisualStyleBackColor = true;
+            this.button_aspiration_obj.Click += new System.EventHandler(this.button_aspiration_obj_Click);
             // 
             // but_auto_focus
             // 
@@ -471,6 +491,62 @@
             this.but_find_ports.Name = "but_find_ports";
             this.but_find_ports.UseVisualStyleBackColor = true;
             this.but_find_ports.Click += new System.EventHandler(this.but_find_ports_Click);
+            // 
+            // timer_cur_pos
+            // 
+            this.timer_cur_pos.Interval = 10;
+            this.timer_cur_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
+            // 
+            // textBox_volume_apiration
+            // 
+            resources.ApplyResources(this.textBox_volume_apiration, "textBox_volume_apiration");
+            this.textBox_volume_apiration.Name = "textBox_volume_apiration";
+            this.textBox_volume_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_apiration_KeyDown);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // button_memorize_start_point
+            // 
+            resources.ApplyResources(this.button_memorize_start_point, "button_memorize_start_point");
+            this.button_memorize_start_point.Name = "button_memorize_start_point";
+            this.button_memorize_start_point.UseVisualStyleBackColor = true;
+            this.button_memorize_start_point.Click += new System.EventHandler(this.button_memorize_start_point_Click);
+            // 
+            // button_memorize_stop_point
+            // 
+            resources.ApplyResources(this.button_memorize_stop_point, "button_memorize_stop_point");
+            this.button_memorize_stop_point.Name = "button_memorize_stop_point";
+            this.button_memorize_stop_point.UseVisualStyleBackColor = true;
+            this.button_memorize_stop_point.Click += new System.EventHandler(this.button_memorize_stop_point_Click);
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.but_x_pos_Click);
+            // 
+            // button_replace_obj
+            // 
+            resources.ApplyResources(this.button_replace_obj, "button_replace_obj");
+            this.button_replace_obj.Name = "button_replace_obj";
+            this.button_replace_obj.UseVisualStyleBackColor = true;
+            this.button_replace_obj.Click += new System.EventHandler(this.button_replace_obj_Click);
+            // 
+            // button_set_dm_dist
+            // 
+            resources.ApplyResources(this.button_set_dm_dist, "button_set_dm_dist");
+            this.button_set_dm_dist.Name = "button_set_dm_dist";
+            this.button_set_dm_dist.UseVisualStyleBackColor = true;
+            this.button_set_dm_dist.Click += new System.EventHandler(this.button_set_dm_dist_Click);
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
             // 
             // ManualForm
             // 
@@ -524,7 +600,7 @@
         private System.Windows.Forms.Button but_home_Y;
         private System.Windows.Forms.Button but_home_Z;
         private System.Windows.Forms.Button but_home_A;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_cur_pos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rb_e_10mm;
         private System.Windows.Forms.RadioButton rb_e_1mm;
@@ -535,8 +611,8 @@
         private System.Windows.Forms.RadioButton rb_z_001mm;
         private System.Windows.Forms.Button but_find_ports;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button_push_obj;
+        private System.Windows.Forms.Button button_aspiration_obj;
         private System.Windows.Forms.Button but_auto_focus;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
@@ -551,5 +627,14 @@
         private System.Windows.Forms.TextBox textBox_z_vel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_xy_vel;
+        private System.Windows.Forms.Timer timer_cur_pos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_volume_apiration;
+        private System.Windows.Forms.Button button_memorize_start_point;
+        private System.Windows.Forms.Button button_memorize_stop_point;
+        private System.Windows.Forms.Button button_replace_obj;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_set_dm_dist;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
