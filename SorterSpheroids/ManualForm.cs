@@ -205,16 +205,20 @@ namespace SorterSpheroids
                     {
                         var res_spl_2 = res_spl[i].Split(' ');
                        
-                        if (res_spl_2.Length >= 5)
-                        { 
-                            var double_vals = new double[5];
-                            var text = res_spl_2[0] + "\n" + res_spl_2[1] + "\n" + res_spl_2[2] + "\n" + res_spl_2[3] + "\n" + res_spl_2[4];
-                            label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text)); 
-                                for (int k=0; k<5;k++)
+                        if (res_spl_2.Length >= 6)
+                        {
+
+                            if (res_spl_2[0] == "cur_pos")
                             {
-                                double_vals[k] = MainForm.to_double(res_spl_2[k].Substring(2));
+                                var double_vals = new double[5];
+                                var text = "X: "+ res_spl_2[0] + "\nY:" + res_spl_2[1] + "\nZd:" + res_spl_2[2] + "\nZm" + res_spl_2[3] + "\nE" + res_spl_2[4];
+                                label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
+                                for (int k = 0; k < 5; k++)
+                                {
+                                    double_vals[k] = MainForm.to_double(res_spl_2[k]);
+                                }
+                                cur_pos = new GFrame(double_vals);
                             }
-                            cur_pos = new GFrame(double_vals);
                         }
                           
                         if (res_spl_2.Length >= 4)
