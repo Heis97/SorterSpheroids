@@ -199,7 +199,7 @@ namespace SorterSpheroids
             {
                 if (res.Length != 0)
                 {
-                    Console.Write(res);
+                    //Console.Write(res);
                     var res_spl = res.Split('\n');
                     for (int i = 0; i < res_spl.Length; i++)
                     {
@@ -211,13 +211,15 @@ namespace SorterSpheroids
                             if (res_spl_2[0] == "cur_pos")
                             {
                                 var double_vals = new double[5];
-                                var text = "X: "+ res_spl_2[0] + "\nY:" + res_spl_2[1] + "\nZd:" + res_spl_2[2] + "\nZm" + res_spl_2[3] + "\nE" + res_spl_2[4];
-                                label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
+                               // var text = "X: " + res_spl_2[1] + "\nY:" + res_spl_2[2] + "\nZd:" + res_spl_2[3] + "\nZm" + res_spl_2[4] + "\nE" + res_spl_2[5];
+                               // label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
                                 for (int k = 0; k < 5; k++)
                                 {
-                                    double_vals[k] = MainForm.to_double(res_spl_2[k]);
+                                    double_vals[k] = MainForm.to_double(res_spl_2[k+1]);
                                 }
                                 cur_pos = new GFrame(double_vals);
+                                var text = "X: " + cur_pos.x + "\nY:" + cur_pos.y + "\nZd:" + cur_pos.z + "\nZm" + cur_pos.a + "\nE" + cur_pos.e;
+                                label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
                             }
                         }
                           
@@ -248,16 +250,18 @@ namespace SorterSpheroids
         GFrame start_point;
         GFrame stop_point ;
         double asp_vol = 0.1;
-        double dm = 8;
+        double dm = 2;
         double z_safe = 2;
         private void button_memorize_start_point_Click(object sender, EventArgs e)
         {
-            start_point = cur_pos;
+            start_point = cur_pos.Clone();
+            label_pos_start.Text = start_point.ToString();
         }
 
         private void button_memorize_stop_point_Click(object sender, EventArgs e)
         {
-            stop_point = cur_pos;
+            stop_point = cur_pos.Clone();
+            label_pos_stop.Text = stop_point.ToString();
         }
 
         private void textBox_volume_apiration_KeyDown(object sender, KeyEventArgs e)
@@ -283,12 +287,21 @@ namespace SorterSpheroids
         }
         GFrame go_to_pos(GFrame gframe_dest, GFrame gframe_cur)
         {
-           
+
             var gframe = gframe_dest - gframe_cur;
             var vel = 1d;
-            if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0 && gframe.a != 0) vel = vel_z;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 && gframe.a == 0 && gframe.e != 0) vel = vel_e;
+            Console.WriteLine("_________________");
+            Console.WriteLine("dest: " + gframe_dest + " ");
+            Console.WriteLine("cure: " + gframe_cur + " ");
+            Console.Write("delt: " + gframe + " ");
+            if (gframe.x != 0 || gframe.y != 0) { vel = vel_xy; }
+            else if (gframe.x == 0 && gframe.y == 0 && (gframe.z != 0 || gframe.a != 0)) { vel = vel_z; }
+            else if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 && gframe.a == 0 && gframe.e != 0) { vel = vel_e; }
+            else
+            {
+                return null;
+            }
+            Console.WriteLine("vel: "+ vel);
             Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe_dest.x, gframe_dest.y, gframe_dest.z, gframe_dest.a, gframe_dest.e, vel });
             gframe.f = vel;
             return gframe;
@@ -296,10 +309,14 @@ namespace SorterSpheroids
 
         GFrame go_to_pos_wait(GFrame gframe_dest, GFrame gframe_cur)
         {
+            
             var gframe = go_to_pos( gframe_dest ,gframe_cur);
+            if (gframe == null) return null;
             var dist = gframe.norm_all();
             var time =(int)(1000* dist / vel_sec(gframe.f));
+            Console.WriteLine("sleep:" + time);
             Thread.Sleep(time);
+            
             return gframe;
         }
         private void button_replace_obj_Click(object sender, EventArgs e)
@@ -325,7 +342,10 @@ namespace SorterSpheroids
             pos_execute.z = start_point.a + dm + z_safe;
             go_to_pos_wait(pos_execute, cur_pos);
             //pos under end
+            stop_point.e = pos_execute.e;
+            pos_execute = stop_point;
             pos_execute.z = stop_point.a + dm + z_safe;
+
             go_to_pos_wait(pos_execute, cur_pos);
             //pos end
             pos_execute.z = stop_point.a + dm;

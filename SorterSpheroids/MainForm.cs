@@ -36,7 +36,7 @@ namespace SorterSpheroids
 
             auto_form.Location = add_p(ps_loc[2], this.Location);
             // auto_form.Show(this);
-            Console.WriteLine("load: " + this.Location.X + " " + this.Location.Y);
+           // Console.WriteLine("load: " + this.Location.X + " " + this.Location.Y);
             this.Refresh();
             Application.DoEvents();
         }
@@ -47,7 +47,7 @@ namespace SorterSpheroids
             camera_form.Location = add_p(ps_loc[0], this.Location);
             manual_form.Location = add_p(ps_loc[1], this.Location);
             auto_form.Location = add_p(ps_loc[2], this.Location);
-            Console.WriteLine("move: "+this.Location.X + " " + this.Location.Y);
+           //Console.WriteLine("move: "+this.Location.X + " " + this.Location.Y);
         }
 
         Point add_p(Point p1,Point p2)

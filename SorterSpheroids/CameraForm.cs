@@ -157,6 +157,7 @@ namespace SorterSpheroids
             }
             video_mats = null;
             video_writer.Dispose();
+            videoframe_counts = 0;
         }
 
         private void but_start_recording_Click(object sender, EventArgs e)
@@ -170,7 +171,8 @@ namespace SorterSpheroids
 
         private void but_stop_recording_Click(object sender, EventArgs e)
         {
-            videoframe_counts_stop = 0;
+            videoframe_counts = -1;
+            videoframe_counts_stop = 10000;
         }
 
         private void but_start_video_Click(object sender, EventArgs e)

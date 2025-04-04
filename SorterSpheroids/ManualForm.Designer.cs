@@ -55,6 +55,8 @@
             this.but_home_A = new System.Windows.Forms.Button();
             this.label_cur_pos = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_absolute_movment_mode = new System.Windows.Forms.Button();
+            this.button_relative_movment_mode = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_set_dm_dist = new System.Windows.Forms.Button();
             this.button_replace_obj = new System.Windows.Forms.Button();
@@ -89,8 +91,8 @@
             this.but_auto_focus = new System.Windows.Forms.Button();
             this.but_find_ports = new System.Windows.Forms.Button();
             this.timer_cur_pos = new System.Windows.Forms.Timer(this.components);
-            this.button_relative_movment_mode = new System.Windows.Forms.Button();
-            this.button_absolute_movment_mode = new System.Windows.Forms.Button();
+            this.label_pos_start = new System.Windows.Forms.Label();
+            this.label_pos_stop = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -270,6 +272,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label_pos_stop);
+            this.groupBox1.Controls.Add(this.label_pos_start);
             this.groupBox1.Controls.Add(this.button_absolute_movment_mode);
             this.groupBox1.Controls.Add(this.button_relative_movment_mode);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -298,6 +302,20 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // button_absolute_movment_mode
+            // 
+            resources.ApplyResources(this.button_absolute_movment_mode, "button_absolute_movment_mode");
+            this.button_absolute_movment_mode.Name = "button_absolute_movment_mode";
+            this.button_absolute_movment_mode.UseVisualStyleBackColor = true;
+            this.button_absolute_movment_mode.Click += new System.EventHandler(this.button_absolute_movment_mode_Click);
+            // 
+            // button_relative_movment_mode
+            // 
+            resources.ApplyResources(this.button_relative_movment_mode, "button_relative_movment_mode");
+            this.button_relative_movment_mode.Name = "button_relative_movment_mode";
+            this.button_relative_movment_mode.UseVisualStyleBackColor = true;
+            this.button_relative_movment_mode.Click += new System.EventHandler(this.button_relative_movment_mode_Click);
             // 
             // textBox1
             // 
@@ -552,19 +570,15 @@
             this.timer_cur_pos.Interval = 10;
             this.timer_cur_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
             // 
-            // button_relative_movment_mode
+            // label_pos_start
             // 
-            resources.ApplyResources(this.button_relative_movment_mode, "button_relative_movment_mode");
-            this.button_relative_movment_mode.Name = "button_relative_movment_mode";
-            this.button_relative_movment_mode.UseVisualStyleBackColor = true;
-            this.button_relative_movment_mode.Click += new System.EventHandler(this.button_relative_movment_mode_Click);
+            resources.ApplyResources(this.label_pos_start, "label_pos_start");
+            this.label_pos_start.Name = "label_pos_start";
             // 
-            // button_absolute_movment_mode
+            // label_pos_stop
             // 
-            resources.ApplyResources(this.button_absolute_movment_mode, "button_absolute_movment_mode");
-            this.button_absolute_movment_mode.Name = "button_absolute_movment_mode";
-            this.button_absolute_movment_mode.UseVisualStyleBackColor = true;
-            this.button_absolute_movment_mode.Click += new System.EventHandler(this.button_absolute_movment_mode_Click);
+            resources.ApplyResources(this.label_pos_stop, "label_pos_stop");
+            this.label_pos_stop.Name = "label_pos_stop";
             // 
             // ManualForm
             // 
@@ -656,5 +670,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button_absolute_movment_mode;
         private System.Windows.Forms.Button button_relative_movment_mode;
+        private System.Windows.Forms.Label label_pos_start;
+        private System.Windows.Forms.Label label_pos_stop;
     }
 }

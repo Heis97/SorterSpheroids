@@ -24,7 +24,7 @@ namespace Connection
         public GFrame(double[] vals)
         {
             if (vals == null) return;
-            if (vals.Length > 4) return;
+            if (vals.Length < 5) return;
             this.x = vals[0];
             this.y = vals[1];
             this.z = vals[2];
@@ -65,6 +65,22 @@ namespace Connection
                 left.e + right.e,
                 left.a + right.a,
                 left.b + right.b, left.f);
+        }
+
+        static public GFrame operator -(GFrame left)
+        {
+            return new GFrame(
+                -left.x ,
+                -left.y ,
+                -left.z ,
+                -left.e ,
+                -left.a ,
+                -left.b , left.f);
+        }
+
+        public override string ToString()
+        {
+            return x + " " + y + " " + z + " " + e + " " + a + " " + b + " " + f;
         }
     }
     public class DeviceMarlin : DeviceArduino
@@ -117,7 +133,7 @@ namespace Connection
             if (!serialPort.IsOpen) return;
             var command_marl = "N" + cur_com.ToString() + " " + command;
             command_marl+= "*" + calcSum(command_marl).ToString() + "\n";
-
+            Console.Write(command_marl);
             serialPort.Write(command_marl);
             cur_com++;
             
@@ -128,10 +144,15 @@ namespace Connection
                 (resv.Contains("Re") == false) &&
                 (k<50))
             {
-                sleep100mks();
-                reseav();
-                resv = buff.ToString();
-                k++;
+                try {
+                    sleep100mks();
+                    reseav();
+                    resv = buff.ToString();
+                    k++;
+
+                }
+                catch (Exception e) { }
+                
 
             };
             //Console.WriteLine("k: " + k);
