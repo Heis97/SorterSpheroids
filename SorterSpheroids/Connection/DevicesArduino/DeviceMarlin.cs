@@ -10,8 +10,8 @@ namespace Connection
 {
     public class GFrame
     {
-        public double x, y, z, e, a, b;
-        public GFrame(double x = 0, double y = 0, double z = 0, double e = 0, double a = 0, double b = 0) 
+        public double x, y, z, e, a, b,f;
+        public GFrame(double x = 0, double y = 0, double z = 0, double e = 0, double a = 0, double b = 0, double f = 0) 
         { 
             this.x = x;
             this.y = y;
@@ -19,6 +19,7 @@ namespace Connection
             this.e = e;
             this.a = a;
             this.b = b;
+            this.f = f;
         }
         public GFrame(double[] vals)
         {
@@ -32,7 +33,7 @@ namespace Connection
         }
         public GFrame Clone()
         {
-            return new GFrame(x,y,z,e,a,b);
+            return new GFrame(x,y,z,e,a,b,f);
         }
 
         public double norm_movm()
@@ -51,7 +52,8 @@ namespace Connection
                 left.z - right.z,
                 left.e - right.e,
                 left.a - right.a,
-                left.b - right.b);
+                left.b - right.b,
+                left.f);
         }
 
         static public GFrame operator +(GFrame left, GFrame right)
@@ -62,7 +64,7 @@ namespace Connection
                 left.z + right.z,
                 left.e + right.e,
                 left.a + right.a,
-                left.b + right.b);
+                left.b + right.b, left.f);
         }
     }
     public class DeviceMarlin : DeviceArduino

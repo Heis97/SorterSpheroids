@@ -280,24 +280,25 @@ namespace SorterSpheroids
         {
             dm = cur_pos.z - cur_pos.a;
         }
-        void go_to_pos(GFrame gframe)
+        GFrame go_to_pos(GFrame gframe_dest, GFrame gframe_cur)
         {
+            var gframe = gframe_dest - gframe_cur;
             var vel = 1d;
             if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0) vel = vel_z;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 &&) vel = vel_e;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0 && gframe.a != 0) vel = vel_z;
+            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 && gframe.a == 0 && gframe.e != 0) vel = vel_e;
             Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe.x, gframe.y, gframe.z, gframe.a, gframe.e, vel });
-
+            gframe.f = vel;
+            return gframe;
         }
 
-        void go_to_pos_wait(GFrame gframe)
+        GFrame go_to_pos_wait(GFrame gframe_dest, GFrame gframe_cur)
         {
-            var vel = 1d;
-            if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0) vel = vel_z;
-            if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 &&) vel = vel_e;
-            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe.x, gframe.y, gframe.z, gframe.a, gframe.e, vel });
-
+            var gframe = go_to_pos( gframe_dest ,gframe_cur);
+            var dist = gframe.norm_all();
+            var time =(int)(1000* dist / vel_sec(gframe.f));
+            Thread.Sleep(time);
+            return gframe;
         }
         private void button_replace_obj_Click(object sender, EventArgs e)
         {
@@ -310,30 +311,28 @@ namespace SorterSpheroids
             var pos_execute = start_point;
             pos_execute.z = start_point.a + dm + z_safe;
             pos_execute.e = cur_pos.e;
-            var time = (int)(1000* Math.Abs( pos_execute.z - cur_pos.z)/vel_sec(vel_z));
-            go_to_pos(pos_execute);
-            Thread.Sleep(time);
+            go_to_pos_wait(pos_execute,cur_pos);
             //pos start
             pos_execute.z = start_point.a + dm;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //aspir
             pos_execute.e -= asp_vol;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //pos under start
             pos_execute.z = start_point.a + dm + z_safe;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //pos under end
             pos_execute.z = stop_point.a + dm + z_safe;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //pos end
             pos_execute.z = stop_point.a + dm;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //push
             pos_execute.e += asp_vol;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
             //pos under end
             pos_execute.z = stop_point.a + dm + z_safe;
-            go_to_pos(pos_execute);
+            go_to_pos_wait(pos_execute, cur_pos);
         }
         double vel_sec(double vel_minute)
         {
