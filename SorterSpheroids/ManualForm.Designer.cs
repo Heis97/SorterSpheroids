@@ -55,6 +55,13 @@
             this.but_home_A = new System.Windows.Forms.Button();
             this.label_cur_pos = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button_set_dm_dist = new System.Windows.Forms.Button();
+            this.button_replace_obj = new System.Windows.Forms.Button();
+            this.button_memorize_stop_point = new System.Windows.Forms.Button();
+            this.button_memorize_start_point = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_volume_apiration = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -74,6 +81,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_xy_vel = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button9 = new System.Windows.Forms.Button();
             this.button_push_obj = new System.Windows.Forms.Button();
@@ -81,14 +89,8 @@
             this.but_auto_focus = new System.Windows.Forms.Button();
             this.but_find_ports = new System.Windows.Forms.Button();
             this.timer_cur_pos = new System.Windows.Forms.Timer(this.components);
-            this.textBox_volume_apiration = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button_memorize_start_point = new System.Windows.Forms.Button();
-            this.button_memorize_stop_point = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button_replace_obj = new System.Windows.Forms.Button();
-            this.button_set_dm_dist = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button_relative_movment_mode = new System.Windows.Forms.Button();
+            this.button_absolute_movment_mode = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -268,6 +270,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_absolute_movment_mode);
+            this.groupBox1.Controls.Add(this.button_relative_movment_mode);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button_set_dm_dist);
             this.groupBox1.Controls.Add(this.button_replace_obj);
@@ -294,6 +298,50 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            // 
+            // button_set_dm_dist
+            // 
+            resources.ApplyResources(this.button_set_dm_dist, "button_set_dm_dist");
+            this.button_set_dm_dist.Name = "button_set_dm_dist";
+            this.button_set_dm_dist.UseVisualStyleBackColor = true;
+            this.button_set_dm_dist.Click += new System.EventHandler(this.button_set_dm_dist_Click);
+            // 
+            // button_replace_obj
+            // 
+            resources.ApplyResources(this.button_replace_obj, "button_replace_obj");
+            this.button_replace_obj.Name = "button_replace_obj";
+            this.button_replace_obj.UseVisualStyleBackColor = true;
+            this.button_replace_obj.Click += new System.EventHandler(this.button_replace_obj_Click);
+            // 
+            // button_memorize_stop_point
+            // 
+            resources.ApplyResources(this.button_memorize_stop_point, "button_memorize_stop_point");
+            this.button_memorize_stop_point.Name = "button_memorize_stop_point";
+            this.button_memorize_stop_point.UseVisualStyleBackColor = true;
+            this.button_memorize_stop_point.Click += new System.EventHandler(this.button_memorize_stop_point_Click);
+            // 
+            // button_memorize_start_point
+            // 
+            resources.ApplyResources(this.button_memorize_start_point, "button_memorize_start_point");
+            this.button_memorize_start_point.Name = "button_memorize_start_point";
+            this.button_memorize_start_point.UseVisualStyleBackColor = true;
+            this.button_memorize_start_point.Click += new System.EventHandler(this.button_memorize_start_point_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // textBox_volume_apiration
+            // 
+            resources.ApplyResources(this.textBox_volume_apiration, "textBox_volume_apiration");
+            this.textBox_volume_apiration.Name = "textBox_volume_apiration";
+            this.textBox_volume_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_apiration_KeyDown);
             // 
             // groupBox4
             // 
@@ -450,6 +498,13 @@
             this.textBox_xy_vel.Name = "textBox_xy_vel";
             this.textBox_xy_vel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_xy_vel_KeyDown);
             // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.but_x_pos_Click);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.rb_xy_10mm);
@@ -497,56 +552,19 @@
             this.timer_cur_pos.Interval = 10;
             this.timer_cur_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
             // 
-            // textBox_volume_apiration
+            // button_relative_movment_mode
             // 
-            resources.ApplyResources(this.textBox_volume_apiration, "textBox_volume_apiration");
-            this.textBox_volume_apiration.Name = "textBox_volume_apiration";
-            this.textBox_volume_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_apiration_KeyDown);
+            resources.ApplyResources(this.button_relative_movment_mode, "button_relative_movment_mode");
+            this.button_relative_movment_mode.Name = "button_relative_movment_mode";
+            this.button_relative_movment_mode.UseVisualStyleBackColor = true;
+            this.button_relative_movment_mode.Click += new System.EventHandler(this.button_relative_movment_mode_Click);
             // 
-            // label1
+            // button_absolute_movment_mode
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // button_memorize_start_point
-            // 
-            resources.ApplyResources(this.button_memorize_start_point, "button_memorize_start_point");
-            this.button_memorize_start_point.Name = "button_memorize_start_point";
-            this.button_memorize_start_point.UseVisualStyleBackColor = true;
-            this.button_memorize_start_point.Click += new System.EventHandler(this.button_memorize_start_point_Click);
-            // 
-            // button_memorize_stop_point
-            // 
-            resources.ApplyResources(this.button_memorize_stop_point, "button_memorize_stop_point");
-            this.button_memorize_stop_point.Name = "button_memorize_stop_point";
-            this.button_memorize_stop_point.UseVisualStyleBackColor = true;
-            this.button_memorize_stop_point.Click += new System.EventHandler(this.button_memorize_stop_point_Click);
-            // 
-            // button3
-            // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.but_x_pos_Click);
-            // 
-            // button_replace_obj
-            // 
-            resources.ApplyResources(this.button_replace_obj, "button_replace_obj");
-            this.button_replace_obj.Name = "button_replace_obj";
-            this.button_replace_obj.UseVisualStyleBackColor = true;
-            this.button_replace_obj.Click += new System.EventHandler(this.button_replace_obj_Click);
-            // 
-            // button_set_dm_dist
-            // 
-            resources.ApplyResources(this.button_set_dm_dist, "button_set_dm_dist");
-            this.button_set_dm_dist.Name = "button_set_dm_dist";
-            this.button_set_dm_dist.UseVisualStyleBackColor = true;
-            this.button_set_dm_dist.Click += new System.EventHandler(this.button_set_dm_dist_Click);
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.button_absolute_movment_mode, "button_absolute_movment_mode");
+            this.button_absolute_movment_mode.Name = "button_absolute_movment_mode";
+            this.button_absolute_movment_mode.UseVisualStyleBackColor = true;
+            this.button_absolute_movment_mode.Click += new System.EventHandler(this.button_absolute_movment_mode_Click);
             // 
             // ManualForm
             // 
@@ -636,5 +654,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button_set_dm_dist;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button_absolute_movment_mode;
+        private System.Windows.Forms.Button button_relative_movment_mode;
     }
 }

@@ -282,12 +282,13 @@ namespace SorterSpheroids
         }
         GFrame go_to_pos(GFrame gframe_dest, GFrame gframe_cur)
         {
+           
             var gframe = gframe_dest - gframe_cur;
             var vel = 1d;
             if (gframe.x != 0 || gframe.y != 0) vel = vel_xy;
             if (gframe.x == 0 && gframe.y == 0 && gframe.z != 0 && gframe.a != 0) vel = vel_z;
             if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 && gframe.a == 0 && gframe.e != 0) vel = vel_e;
-            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe.x, gframe.y, gframe.z, gframe.a, gframe.e, vel });
+            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe_dest.x, gframe_dest.y, gframe_dest.z, gframe_dest.a, gframe_dest.e, vel });
             gframe.f = vel;
             return gframe;
         }
@@ -307,6 +308,7 @@ namespace SorterSpheroids
         }
         void replace_obj()
         {
+            Sorter?.sendCommand("G90");
             //pos under start
             var pos_execute = start_point;
             pos_execute.z = start_point.a + dm + z_safe;
@@ -333,10 +335,21 @@ namespace SorterSpheroids
             //pos under end
             pos_execute.z = stop_point.a + dm + z_safe;
             go_to_pos_wait(pos_execute, cur_pos);
+            Sorter?.sendCommand("G91");
         }
         double vel_sec(double vel_minute)
         {
             return vel_minute / 60;
+        }
+
+        private void button_relative_movment_mode_Click(object sender, EventArgs e)
+        {
+            Sorter?.sendCommand("G91");
+        }
+
+        private void button_absolute_movment_mode_Click(object sender, EventArgs e)
+        {
+            Sorter?.sendCommand("G90");
         }
     }
 }
