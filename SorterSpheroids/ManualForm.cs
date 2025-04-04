@@ -199,27 +199,24 @@ namespace SorterSpheroids
             {
                 if (res.Length != 0)
                 {
-                    //Console.Write(res);
+                    Console.Write(res);
                     var res_spl = res.Split('\n');
                     for (int i = 0; i < res_spl.Length; i++)
                     {
                         var res_spl_2 = res_spl[i].Split(' ');
-                        if (res_spl_2.Length > 10)
-                        {
-                            if (res_spl_2[0].Contains("cur_pos"))
+                       
+                        if (res_spl_2.Length >= 5)
+                        { 
+                            var double_vals = new double[5];
+                            var text = res_spl_2[0] + "\n" + res_spl_2[1] + "\n" + res_spl_2[2] + "\n" + res_spl_2[3] + "\n" + res_spl_2[4];
+                            label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text)); 
+                                for (int k=0; k<5;k++)
                             {
-                                if (res_spl_2.Length >= 5)
-                                { 
-                                    var double_vals = new double[5];
-                                    label_cur_pos.Text = "X: " + res_spl_2[0] + "\nY: " + res_spl_2[1] + "\nZd: " + res_spl_2[2] + "\nZm: " + res_spl_2[3] + "\nE: " + res_spl_2[4];
-                                    for(int k=0; k<5;k++)
-                                    {
-                                        double_vals[i] = MainForm.to_double(res_spl_2[i]);
-                                    }
-                                    cur_pos = new GFrame(double_vals);
-                                }
+                                double_vals[k] = MainForm.to_double(res_spl_2[k].Substring(2));
                             }
+                            cur_pos = new GFrame(double_vals);
                         }
+                          
                         if (res_spl_2.Length >= 4)
                         {
 
