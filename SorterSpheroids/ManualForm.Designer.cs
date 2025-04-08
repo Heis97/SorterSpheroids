@@ -93,6 +93,8 @@
             this.timer_cur_pos = new System.Windows.Forms.Timer(this.components);
             this.label_pos_start = new System.Windows.Forms.Label();
             this.label_pos_stop = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_volume_deposition = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -272,6 +274,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.textBox_volume_deposition);
             this.groupBox1.Controls.Add(this.label_pos_stop);
             this.groupBox1.Controls.Add(this.label_pos_start);
             this.groupBox1.Controls.Add(this.button_absolute_movment_mode);
@@ -580,6 +584,17 @@
             resources.ApplyResources(this.label_pos_stop, "label_pos_stop");
             this.label_pos_stop.Name = "label_pos_stop";
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // textBox_volume_deposition
+            // 
+            resources.ApplyResources(this.textBox_volume_deposition, "textBox_volume_deposition");
+            this.textBox_volume_deposition.Name = "textBox_volume_deposition";
+            this.textBox_volume_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_deposition_KeyDown);
+            // 
             // ManualForm
             // 
             resources.ApplyResources(this, "$this");
@@ -672,5 +687,7 @@
         private System.Windows.Forms.Button button_relative_movment_mode;
         private System.Windows.Forms.Label label_pos_start;
         private System.Windows.Forms.Label label_pos_stop;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_volume_deposition;
     }
 }

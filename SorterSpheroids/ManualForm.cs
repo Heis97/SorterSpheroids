@@ -156,9 +156,9 @@ namespace SorterSpheroids
             }
         }
 
-        double vel_xy = 1.5 * 60;
+        double vel_xy = 0.5 * 60;
         double vel_z = 1.5 * 60;
-        double vel_e = 5 * 60;
+        double vel_e = 1 * 60;
         private void textBox_xy_vel_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -249,7 +249,8 @@ namespace SorterSpheroids
         }
         GFrame start_point;
         GFrame stop_point ;
-        double asp_vol = 0.1;
+        double asp_vol = 0.3;
+        double dep_vol = 0.3;
         double dm = 2;
         double z_safe = 2;
         private void button_memorize_start_point_Click(object sender, EventArgs e)
@@ -351,7 +352,7 @@ namespace SorterSpheroids
             pos_execute.z = stop_point.a + dm;
             go_to_pos_wait(pos_execute, cur_pos);
             //push
-            pos_execute.e += asp_vol;
+            pos_execute.e += dep_vol;
             go_to_pos_wait(pos_execute, cur_pos);
             //pos under end
             pos_execute.z = stop_point.a + dm + z_safe;
@@ -371,6 +372,11 @@ namespace SorterSpheroids
         private void button_absolute_movment_mode_Click(object sender, EventArgs e)
         {
             Sorter?.sendCommand("G90");
+        }
+
+        private void textBox_volume_deposition_KeyDown(object sender, KeyEventArgs e)
+        {
+            dep_vol = MainForm.to_double_textbox(textBox_volume_deposition, 0.001, 80);
         }
     }
 }

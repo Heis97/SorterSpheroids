@@ -145,7 +145,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_ard_con.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>28</value>
   </data>
   <data name="but_zdm_neg.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 80</value>
@@ -280,7 +280,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_home_XYZA.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>27</value>
   </data>
   <data name="rb_xy_001mm.AccessibleName" xml:space="preserve">
     <value>0.01</value>
@@ -652,7 +652,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;comboBox_ports.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>26</value>
   </data>
   <data name="but_home_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 106</value>
@@ -679,7 +679,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_home_X.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>25</value>
   </data>
   <data name="but_home_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>251, 106</value>
@@ -706,7 +706,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_home_Y.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>24</value>
   </data>
   <data name="but_home_Z.Location" type="System.Drawing.Point, System.Drawing">
     <value>325, 106</value>
@@ -733,7 +733,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_home_Z.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>23</value>
   </data>
   <data name="but_home_A.Location" type="System.Drawing.Point, System.Drawing">
     <value>407, 106</value>
@@ -760,7 +760,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_home_A.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="label_cur_pos.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -790,7 +790,67 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label_cur_pos.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 737</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 16</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>96</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Объём размещения, мм</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBox_volume_deposition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>505, 734</value>
+  </data>
+  <data name="textBox_volume_deposition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="textBox_volume_deposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 22</value>
+  </data>
+  <data name="textBox_volume_deposition.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="textBox_volume_deposition.Text" xml:space="preserve">
+    <value>0.05</value>
+  </data>
+  <data name="&gt;&gt;textBox_volume_deposition.Name" xml:space="preserve">
+    <value>textBox_volume_deposition</value>
+  </data>
+  <data name="&gt;&gt;textBox_volume_deposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox_volume_deposition.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox_volume_deposition.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label_pos_stop.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -823,7 +883,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label_pos_stop.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="label_pos_start.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -856,7 +916,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label_pos_start.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="button_absolute_movment_mode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -886,7 +946,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_absolute_movment_mode.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="button_relative_movment_mode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -916,7 +976,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_relative_movment_mode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 652</value>
@@ -943,7 +1003,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="button_set_dm_dist.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -973,7 +1033,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_set_dm_dist.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="button_replace_obj.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1003,7 +1063,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_replace_obj.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="button_memorize_stop_point.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1033,7 +1093,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_memorize_stop_point.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="button_memorize_start_point.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1063,7 +1123,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_memorize_start_point.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1072,19 +1132,19 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>479, 723</value>
+    <value>341, 706</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 16</value>
+    <value>149, 16</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Объём, мм</value>
+    <value>Объём аспирации, мм</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -1096,10 +1156,10 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="textBox_volume_apiration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 743</value>
+    <value>504, 703</value>
   </data>
   <data name="textBox_volume_apiration.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -1111,7 +1171,7 @@
     <value>86</value>
   </data>
   <data name="textBox_volume_apiration.Text" xml:space="preserve">
-    <value>0.1</value>
+    <value>0.3</value>
   </data>
   <data name="&gt;&gt;textBox_volume_apiration.Name" xml:space="preserve">
     <value>textBox_volume_apiration</value>
@@ -1123,7 +1183,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;textBox_volume_apiration.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1189,7 +1249,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -1255,7 +1315,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1333,7 +1393,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="button9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1363,7 +1423,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button9.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="button_push_obj.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1393,7 +1453,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_push_obj.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="button_aspiration_obj.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1423,7 +1483,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button_aspiration_obj.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="but_auto_focus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1453,7 +1513,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_auto_focus.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="but_find_ports.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1483,7 +1543,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;but_find_ports.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 15</value>
@@ -1777,7 +1837,7 @@
     <value>86</value>
   </data>
   <data name="textBox_e_vel.Text" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBox_e_vel.Name" xml:space="preserve">
     <value>textBox_e_vel</value>
@@ -2110,7 +2170,7 @@
     <value>82</value>
   </data>
   <data name="textBox_xy_vel.Text" xml:space="preserve">
-    <value>1.5</value>
+    <value>0.5</value>
   </data>
   <data name="&gt;&gt;textBox_xy_vel.Name" xml:space="preserve">
     <value>textBox_xy_vel</value>

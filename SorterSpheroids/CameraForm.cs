@@ -18,6 +18,7 @@ using OpenCvSharp.Extensions;
 
 namespace SorterSpheroids
 {
+    //600 mkm == 1136 pix
     public partial class CameraForm : Form
     {
         VideoCapture capture;
@@ -155,9 +156,11 @@ namespace SorterSpheroids
                 //var p = Detection.detectLineSensor(video_mats[ind - 1][i])[0];
                 //Console.WriteLine(ind + " "  + p);
             }
-            video_mats = null;
+            video_mats = new List<Mat>();
             video_writer.Dispose();
-            videoframe_counts = 0;
+            
+            videoframe_counts = -1;
+            videoframe_counts_stop = 10000;
         }
 
         private void but_start_recording_Click(object sender, EventArgs e)
@@ -171,8 +174,8 @@ namespace SorterSpheroids
 
         private void but_stop_recording_Click(object sender, EventArgs e)
         {
-            videoframe_counts = -1;
-            videoframe_counts_stop = 10000;
+            videoframe_counts = 10000;
+            videoframe_counts_stop = -1;
         }
 
         private void but_start_video_Click(object sender, EventArgs e)
