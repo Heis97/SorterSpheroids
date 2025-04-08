@@ -95,6 +95,10 @@
             this.label_pos_stop = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_volume_deposition = new System.Windows.Forms.TextBox();
+            this.textBox_vel_apiration = new System.Windows.Forms.TextBox();
+            this.textBox_vel_deposition = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -274,6 +278,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBox_vel_deposition);
+            this.groupBox1.Controls.Add(this.textBox_vel_apiration);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox_volume_deposition);
             this.groupBox1.Controls.Add(this.label_pos_stop);
@@ -595,6 +603,28 @@
             this.textBox_volume_deposition.Name = "textBox_volume_deposition";
             this.textBox_volume_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_deposition_KeyDown);
             // 
+            // textBox_vel_apiration
+            // 
+            resources.ApplyResources(this.textBox_vel_apiration, "textBox_vel_apiration");
+            this.textBox_vel_apiration.Name = "textBox_vel_apiration";
+            this.textBox_vel_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_apiration_KeyDown);
+            // 
+            // textBox_vel_deposition
+            // 
+            resources.ApplyResources(this.textBox_vel_deposition, "textBox_vel_deposition");
+            this.textBox_vel_deposition.Name = "textBox_vel_deposition";
+            this.textBox_vel_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_deposition_KeyDown);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
             // ManualForm
             // 
             resources.ApplyResources(this, "$this");
@@ -689,5 +719,9 @@
         private System.Windows.Forms.Label label_pos_stop;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox_volume_deposition;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox_vel_deposition;
+        private System.Windows.Forms.TextBox textBox_vel_apiration;
     }
 }

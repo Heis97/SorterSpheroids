@@ -251,6 +251,8 @@ namespace SorterSpheroids
         GFrame stop_point ;
         double asp_vol = 0.3;
         double dep_vol = 0.3;
+        double asp_vel = 1*60;
+        double dep_vel = 0.3*60;
         double dm = 2;
         double z_safe = 2;
         private void button_memorize_start_point_Click(object sender, EventArgs e)
@@ -269,7 +271,20 @@ namespace SorterSpheroids
         {
             asp_vol = MainForm.to_double_textbox(textBox_volume_apiration, 0.001, 80);
         }
+        private void textBox_volume_deposition_KeyDown(object sender, KeyEventArgs e)
+        {
+            dep_vol = MainForm.to_double_textbox(textBox_volume_deposition, 0.001, 80);
+        }
 
+        private void textBox_vel_apiration_KeyDown(object sender, KeyEventArgs e)
+        {
+            dep_vel = MainForm.to_double_textbox(textBox_vel_deposition, 0.001, 80);
+        }
+
+        private void textBox_vel_deposition_KeyDown(object sender, KeyEventArgs e)
+        {
+            asp_vel = MainForm.to_double_textbox(textBox_vel_apiration, 0.001, 80);
+        }
         private void button_aspiration_obj_Click(object sender, EventArgs e)
         {
             Sorter?.sendCommand("G1", new string[] { "E", "F" }, new object[] { -asp_vol, vel_e });
@@ -374,9 +389,6 @@ namespace SorterSpheroids
             Sorter?.sendCommand("G90");
         }
 
-        private void textBox_volume_deposition_KeyDown(object sender, KeyEventArgs e)
-        {
-            dep_vol = MainForm.to_double_textbox(textBox_volume_deposition, 0.001, 80);
-        }
+       
     }
 }
