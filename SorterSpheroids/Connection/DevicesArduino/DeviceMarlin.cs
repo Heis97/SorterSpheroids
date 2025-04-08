@@ -21,6 +21,18 @@ namespace Connection
             this.b = b;
             this.f = f;
         }
+
+        public GFrame(string data)
+        {
+            var data_s = data.Split(' ');
+            this.x = Convert.ToDouble(data_s[0]);
+            this.y = Convert.ToDouble(data_s[1]);
+            this.z = Convert.ToDouble(data_s[2]);
+            this.e = Convert.ToDouble(data_s[3]);
+            this.a = Convert.ToDouble(data_s[4]);
+            this.b = Convert.ToDouble(data_s[5]);
+            this.f = Convert.ToDouble(data_s[6]);
+        }
         public GFrame(double[] vals)
         {
             if (vals == null) return;

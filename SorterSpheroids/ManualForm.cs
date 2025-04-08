@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Connection;
 
 namespace SorterSpheroids
@@ -185,7 +186,7 @@ namespace SorterSpheroids
         #endregion
 
 
-        GFrame cur_pos;
+        public GFrame cur_pos;
         private void timer_printer_pos_Tick(object sender, EventArgs e)
         {
             var res = Sorter.reseav();
@@ -305,21 +306,13 @@ namespace SorterSpheroids
         {
 
             var gframe = gframe_dest - gframe_cur;
-            var vel = 1d;
             Console.WriteLine("_________________");
             Console.WriteLine("dest: " + gframe_dest + " ");
             Console.WriteLine("cure: " + gframe_cur + " ");
             Console.Write("delt: " + gframe + " ");
-            if (gframe.x != 0 || gframe.y != 0) { vel = vel_xy; }
-            else if (gframe.x == 0 && gframe.y == 0 && (gframe.z != 0 || gframe.a != 0)) { vel = vel_z; }
-            else if (gframe.x == 0 && gframe.y == 0 && gframe.z == 0 && gframe.a == 0 && gframe.e != 0) { vel = vel_e; }
-            else
-            {
-                return null;
-            }
-            Console.WriteLine("vel: "+ vel);
-            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe_dest.x, gframe_dest.y, gframe_dest.z, gframe_dest.a, gframe_dest.e, vel });
-            gframe.f = vel;
+            Console.WriteLine("vel: "+ gframe_dest.f);
+            Sorter?.sendCommand("G1", new string[] { "X", "Y", "Z", "A", "E", "F" }, new object[] { gframe_dest.x, gframe_dest.y, gframe_dest.z, gframe_dest.a, gframe_dest.e, gframe_dest.f });
+            gframe.f = gframe_dest.f;
             return gframe;
         }
 
@@ -343,35 +336,51 @@ namespace SorterSpheroids
         void replace_obj()
         {
             Sorter?.sendCommand("G90");
+
             //pos under start
             var pos_execute = start_point;
             pos_execute.z = start_point.a + dm + z_safe;
             pos_execute.e = cur_pos.e;
+            pos_execute.f = vel_z;
             go_to_pos_wait(pos_execute,cur_pos);
+
             //pos start
             pos_execute.z = start_point.a + dm;
+            pos_execute.f = vel_z;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //aspir
             pos_execute.e -= asp_vol;
+            pos_execute.f = asp_vel;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //pos under start
             pos_execute.z = start_point.a + dm + z_safe;
+            pos_execute.f = vel_z;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //pos under end
-            stop_point.e = pos_execute.e;
+            stop_point.e = pos_execute.e;  
             pos_execute = stop_point;
             pos_execute.z = stop_point.a + dm + z_safe;
-
+            pos_execute.f = vel_xy;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //pos end
             pos_execute.z = stop_point.a + dm;
+            pos_execute.f = vel_z;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //push
+            pos_execute.f = dep_vel;
             pos_execute.e += dep_vol;
             go_to_pos_wait(pos_execute, cur_pos);
+
             //pos under end
+            pos_execute.f = vel_z;
             pos_execute.z = stop_point.a + dm + z_safe;
             go_to_pos_wait(pos_execute, cur_pos);
+
             Sorter?.sendCommand("G91");
         }
         double vel_sec(double vel_minute)
@@ -389,6 +398,32 @@ namespace SorterSpheroids
             Sorter?.sendCommand("G90");
         }
 
-       
+        public void scan_thread(GFrame[] frms, double vel_xy, int dt)
+        {
+            if (frms == null) return;
+            if(frms.Length < 2) return;
+            go_to_pos_wait(frms[0],cur_pos);
+            var photo_thr = new Thread(photo_thr_f);
+            photo_thr.Start();
+            photographing = true;
+            time_delt = dt;
+            for (int i = 1; i < frms.Length; i++)
+            {
+                go_to_pos_wait(frms[i], cur_pos);
+            }
+
+            photographing = false;
+            photo_thr.Abort();
+        }
+        bool photographing = false;
+        int time_delt = 500;
+        void photo_thr_f()
+        {
+            while (photographing)
+            {
+                mainForm.save_photo(cur_pos.ToString());
+                Thread.Sleep(time_delt);
+            }          
+        }
     }
 }

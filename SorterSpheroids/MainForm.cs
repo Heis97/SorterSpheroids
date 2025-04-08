@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -104,6 +105,37 @@ namespace SorterSpheroids
             }
             //return 
         }
+        static public string get_file_name(string init_direct, string extns)
+        {
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = init_direct;
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.Filter = extns + " files (" + extns + ")|" + extns;
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
 
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                }
+            }
+            return filePath;
+        }
+        public void save_photo(string name)
+        {
+            camera_form.save_photo(name);
+        }
+        public void scan_thread(GFrame[] frms,double vel_xy, int dt)
+        {
+
+            manual_form.scan_thread(frms,  vel_xy,  dt);
+        }
+
+        public GFrame get_cur_pos()
+        {
+            return manual_form.cur_pos;
+        }
     }
 }

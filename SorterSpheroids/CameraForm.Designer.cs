@@ -47,6 +47,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBox_images = new System.Windows.Forms.ComboBox();
+            this.textBox_focus_binary = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +105,7 @@
             // 
             resources.ApplyResources(this.textBox_video_name, "textBox_video_name");
             this.textBox_video_name.Name = "textBox_video_name";
+            this.textBox_video_name.DoubleClick += new System.EventHandler(this.textBox_video_name_DoubleClick);
             // 
             // textBox_camera_number
             // 
@@ -165,10 +168,25 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             // 
+            // comboBox_images
+            // 
+            this.comboBox_images.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_images, "comboBox_images");
+            this.comboBox_images.Name = "comboBox_images";
+            this.comboBox_images.SelectedIndexChanged += new System.EventHandler(this.comboBox_images_SelectedIndexChanged);
+            // 
+            // textBox_focus_binary
+            // 
+            resources.ApplyResources(this.textBox_focus_binary, "textBox_focus_binary");
+            this.textBox_focus_binary.Name = "textBox_focus_binary";
+            this.textBox_focus_binary.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_focus_binary_KeyDown);
+            // 
             // CameraForm
             // 
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.textBox_focus_binary);
+            this.Controls.Add(this.comboBox_images);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button_set_nozzle_centr);
@@ -219,6 +237,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ComboBox comboBox_images;
+        private System.Windows.Forms.TextBox textBox_focus_binary;
     }
 }
 

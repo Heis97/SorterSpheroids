@@ -24,9 +24,11 @@ namespace SorterSpheroids
         VideoCapture capture;
         OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080);
         List<Mat> video_mats = new List<Mat>();
+        Mat frameMat = new Mat();
         int videoframe_counts = -1;
         int videoframe_counts_stop = 10000;
-        int fps = 30;
+        int fps = 40;
+        bool saved_video = true;
         enum paint_mode { draw_centr,none};
         double cur_contr = 0;
         bool recording = false;
@@ -50,7 +52,7 @@ namespace SorterSpheroids
 
             while (!bgWorker.CancellationPending)
             {
-                var frameMat = new Mat();
+                frameMat = new Mat();
                 if (capture.Read(frameMat))
                 // using (var frameMat = capture1.RetrieveMat())
                 {
@@ -66,26 +68,29 @@ namespace SorterSpheroids
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            var frameMat = (Mat)e.UserState;
+            frameMat = (Mat)e.UserState;
             //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
             frameMat = imProcess(frameMat);
             if (recording) videoframe_counts++;
             pictureBox1.Image?.Dispose();
-            var bitmap = BitmapConverter.ToBitmap(frameMat);
-            //Console.WriteLine(bitmap.Width + " " + bitmap.Height + " " + fps);
-            pictureBox1.Image = bitmap;
+            try
+            {
+                var bitmap = BitmapConverter.ToBitmap(frameMat);
+                //Console.WriteLine(bitmap.Width + " " + bitmap.Height + " " + fps);
+                pictureBox1.Image = bitmap;
+            }
+            catch { }
+            
         }
 
         private void videoStart(int number)
         {
             capture = new VideoCapture(); // Первая камера
-                                           //  capture2 = new VideoCapture(); // Вторая камера
             capture.Open(number, VideoCaptureAPIs.DSHOW);
-            // capture2.Open(0, VideoCaptureAPIs.ANY);
 
             if (!capture.IsOpened())
             {
-                MessageBox.Show("Не удалось открыть камеру 1 (индекс 1). Проверьте подключение или индекс.");
+                MessageBox.Show("Не удалось открыть камеру "+number);
                 return;
             }
             capture.Set(VideoCaptureProperties.FrameWidth, 1920);
@@ -105,33 +110,49 @@ namespace SorterSpheroids
             Console.WriteLine(w + " " + h + " " + fps);
 
         }
+        private int videoStart_rec(string number)
+        {
+            capture = new VideoCapture(); // Первая камера
+            capture.Open(number, VideoCaptureAPIs.ANY);
+            backgroundWorker1.RunWorkerAsync();
+            if (!capture.IsOpened())
+            {
+                MessageBox.Show("Не удалось открыть видео " + number);
+                return -1;
+            }
+            return (int) capture.Get(VideoCaptureProperties.FrameCount);
+        }
         Mat imProcess(Mat mat)
         {
             
             if (mat == null) return null;
             if (video_mats != null)
             {
-                
+                Console.WriteLine(videoframe_counts + "/ "+videoframe_counts_stop);
+
+
                 if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
                 {
 
                     video_mats.Add(mat.Clone());
                 }
-                else if(videoframe_counts > videoframe_counts_stop)
+                else if(videoframe_counts >= videoframe_counts_stop)
                 {
                     save_video(cameraSize.Width, cameraSize.Height);
                 }
 
                 if (focal_area)
                 {
-                    (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
+                    (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat,bin);
                     Console.WriteLine(cur_contr.ToString());
                 }
                 if (centr_object)
                 {
                     Cv2.DrawMarker(mat,point_of_center_1,new Scalar(255,255,0),MarkerTypes.TiltedCross,40,4);
-                    //(mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat);
-                    //Console.WriteLine(cur_contr.ToString());
+                }
+                if (boarder_object)
+                {
+                    mat = ImageProcessing.get_focal_surface(mat, bin);
                 }
             }
             return mat;
@@ -140,11 +161,17 @@ namespace SorterSpheroids
 
         void save_video(int w, int h)
         {
+            if (!saved_video)
+            {
+                comboBox_images.Items.AddRange(video_mats.ToArray());
+                return;
+            }
+            
             recording = false;
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
             var dir = "recordings";
             Directory.CreateDirectory(dir);
-            var video_scan_name = "viseo_"+ DateTime.Now.ToString("hh_mm_ss"); ;
+            var video_scan_name = "video_"+ DateTime.Now.ToString("hh_mm_ss_U"); ;
             string name = dir + "\\" + video_scan_name + ".mp4";
             Console.WriteLine("wr" + " " + w + " " + h + " " + fps);
             var video_writer = new VideoWriter(name, -1, fps, new OpenCvSharp.Size(w, h), true);
@@ -180,7 +207,12 @@ namespace SorterSpheroids
 
         private void but_start_video_Click(object sender, EventArgs e)
         {
-
+            video_mats = new List<Mat>();
+            recording = true;
+            saved_video = false;
+            videoframe_counts = 0;
+            videoframe_counts_stop = videoStart_rec(textBox_video_name.Text)-1;
+            Console.WriteLine(" videoframe_counts_stop: "+videoframe_counts_stop);
         }
 
         
@@ -205,7 +237,10 @@ namespace SorterSpheroids
 
         }
 
-
+        public void save_photo(string name)
+        {
+            frameMat.SaveImage(name+".png");
+        }
         bool focal_area = false;
         bool boarder_object = false;
         bool centr_object = true;
@@ -231,6 +266,32 @@ namespace SorterSpheroids
             {
                 point_of_center_1 = new OpenCvSharp.Point(e.Location.X , e.Location.Y );
             }
+        }
+
+        private void textBox_video_name_DoubleClick(object sender, EventArgs e)
+        {
+            var video_name = MainForm.get_file_name(Directory.GetCurrentDirectory(), "*.mp4");
+            textBox_video_name.Text = video_name;
+
+        }
+
+        private void comboBox_images_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           var mat = (Mat)comboBox_images.Items[comboBox_images.SelectedIndex];
+            try
+            {
+                var bitmap = BitmapConverter.ToBitmap(imProcess(mat.Clone()));
+                pictureBox1.Image = bitmap;
+            }
+            catch (Exception ex)
+            {
+            }
+            
+        }
+        int bin = 10;
+        private void textBox_focus_binary_KeyDown(object sender, KeyEventArgs e)
+        {
+            bin = (int)MainForm.to_double_textbox(textBox_focus_binary, 0, 255);
         }
     }
 }

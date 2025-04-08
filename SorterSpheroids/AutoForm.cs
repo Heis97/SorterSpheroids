@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,7 +54,13 @@ namespace SorterSpheroids
 
         private void but_scan_cell_Click(object sender, EventArgs e)
         {
+            var p_beg = mainForm.get_cur_pos();
 
+            var p_end = p_beg.Clone();
+            p_end.x += 2;
+            var vel_xy = 0.5;
+            var delt_time = 500;
+            mainForm.scan_thread(new GFrame[] { p_beg, p_end },vel_xy, delt_time);
         }
 
         private void but_choose_cell_Click(object sender, EventArgs e)
