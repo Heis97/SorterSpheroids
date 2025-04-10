@@ -62,8 +62,6 @@
             // checkBox_centr_object
             // 
             resources.ApplyResources(this.checkBox_centr_object, "checkBox_centr_object");
-            this.checkBox_centr_object.Checked = true;
-            this.checkBox_centr_object.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_centr_object.Name = "checkBox_centr_object";
             this.checkBox_centr_object.UseVisualStyleBackColor = true;
             this.checkBox_centr_object.CheckedChanged += new System.EventHandler(this.checkBox_centr_object_CheckedChanged);

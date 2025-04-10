@@ -154,7 +154,7 @@ namespace SorterSpheroids
                 }
                 if (boarder_object)
                 {
-                    mat = ImageProcessing.get_focal_surface(mat, bin);
+                    mat = ImageProcessing.get_board_obj(mat, bin);
                 }
             }
             return mat;
@@ -247,7 +247,7 @@ namespace SorterSpheroids
         }
         bool focal_area = false;
         bool boarder_object = false;
-        bool centr_object = true;
+        bool centr_object = false;
         private void checkBox_focal_area_CheckedChanged(object sender, EventArgs e)
         {
             focal_area = ((CheckBox)sender).Checked;
