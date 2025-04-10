@@ -219,6 +219,7 @@ namespace SorterSpheroids
                                     double_vals[k] = MainForm.to_double(res_spl_2[k+1]);
                                 }
                                 cur_pos = new GFrame(double_vals);
+                                cur_pos.f = vel_xy;
                                 var text = "X: " + cur_pos.x + "\nY:" + cur_pos.y + "\nZd:" + cur_pos.z + "\nZm" + cur_pos.a + "\nE" + cur_pos.e;
                                 label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
                             }
@@ -402,7 +403,30 @@ namespace SorterSpheroids
         {
             if (frms == null) return;
             if(frms.Length < 2) return;
-            go_to_pos_wait(frms[0],cur_pos);
+            var scan_thr = new Thread(scanning_thr_f);
+            scan_thr.Start(new ScanningObject(frms, vel_xy, dt));
+        }
+
+        bool photographing = false;
+        int time_delt = 500;
+        string cur_folder = "test_ph";
+        void photo_thr_f()
+        {
+            while (photographing)
+            {
+                mainForm.save_photo(cur_folder+"\\"+cur_pos.ToString());
+                Thread.Sleep(time_delt);
+            }          
+        }
+
+        void scanning_thr_f(object input)
+        {
+            var scanning_object = (ScanningObject)input;
+            var frms = scanning_object.frms;
+            var vel_xy = scanning_object.vel_xy;
+            var dt = scanning_object.dt;
+            Sorter?.sendCommand("G90");
+            go_to_pos_wait(frms[0], cur_pos);
             var photo_thr = new Thread(photo_thr_f);
             photo_thr.Start();
             photographing = true;
@@ -413,17 +437,24 @@ namespace SorterSpheroids
             }
 
             photographing = false;
+            Sorter?.sendCommand("G91");
             photo_thr.Abort();
+           
         }
-        bool photographing = false;
-        int time_delt = 500;
-        void photo_thr_f()
+
+        
+
+    }
+    public class ScanningObject
+    {
+        public GFrame[] frms;
+        public double vel_xy;
+        public int dt;
+        public ScanningObject(GFrame[] frms, double vel_xy, int dt)
         {
-            while (photographing)
-            {
-                mainForm.save_photo(cur_pos.ToString());
-                Thread.Sleep(time_delt);
-            }          
+            this.frms = frms;
+            this.vel_xy = vel_xy;
+            this.dt = dt;
         }
     }
 }

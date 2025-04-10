@@ -25,6 +25,7 @@ namespace SorterSpheroids
         OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080);
         List<Mat> video_mats = new List<Mat>();
         Mat frameMat = new Mat();
+        Mat frameMat_buf = new Mat();
         int videoframe_counts = -1;
         int videoframe_counts_stop = 10000;
         int fps = 40;
@@ -69,6 +70,7 @@ namespace SorterSpheroids
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             frameMat = (Mat)e.UserState;
+            frameMat_buf = frameMat.Clone();
             //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
             frameMat = imProcess(frameMat);
             if (recording) videoframe_counts++;
@@ -128,7 +130,7 @@ namespace SorterSpheroids
             if (mat == null) return null;
             if (video_mats != null)
             {
-                Console.WriteLine(videoframe_counts + "/ "+videoframe_counts_stop);
+               // Console.WriteLine(videoframe_counts + "/ "+videoframe_counts_stop);
 
 
                 if (videoframe_counts > 0 && videoframe_counts < videoframe_counts_stop)
@@ -239,7 +241,9 @@ namespace SorterSpheroids
 
         public void save_photo(string name)
         {
-            frameMat.SaveImage(name+".png");
+            var folder=  Path.GetDirectoryName(name);
+            Directory.CreateDirectory(folder);
+            frameMat_buf.SaveImage(name+".png");
         }
         bool focal_area = false;
         bool boarder_object = false;
