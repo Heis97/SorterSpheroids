@@ -1,4 +1,5 @@
 ﻿
+using Connection;
 using OpenCvSharp;
 using OpenCvSharp.Internal.Vectors;
 using System;
@@ -93,10 +94,37 @@ namespace SorterSpheroids
 
              return (lapl, mean.Val0);
          }*/
-        /*
-        static public Mat sobel_mat(Mat mat, bool simple = false)
+        public static Mat ConvertFloatArrayToMat(float[,] array)
+        {
+            // Get dimensions of the 2D array
+            int rows = array.GetLength(0);
+            int cols = array.GetLength(1);
+
+            // Create a new Mat with the same dimensions, single channel, 32-bit float type
+            Mat mat = new Mat(rows, cols, MatType.CV_32F);
+
+            // Copy data from float array to Mat
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    mat.Set(i, j, array[i, j]);
+                    Console.WriteLine(array[i, j]);
+                }
+                Console.WriteLine("______");
+            }
+
+            return mat;
+        }
+        static public Mat sobel_mat(Mat mat, int gauss_size = 7,double k = 0.1, bool simple = false)
         {
             simple = false;
+            if(mat.Channels()==3)
+            {
+                Cv2.CvtColor(mat, mat, ColorConversionCodes.RGB2GRAY);
+            }
+           
+            Cv2.GaussianBlur(mat, mat, new OpenCvSharp.Size(gauss_size, gauss_size), -1);
             if (simple)
             {
                 var gray_x0 = new Mat();
@@ -107,15 +135,15 @@ namespace SorterSpheroids
                 Cv2.ConvertScaleAbs(gray_y0, gray_y0, 1, 0);
                 return gray_x0 + gray_y0;
             }
-            var gray_x = mat.Clone();
-            var gray_y = mat.Clone();
-            var gray_xn = mat.Clone();
-            var gray_yn = mat.Clone();
+            var gray_x = new Mat();
+            var gray_y = new Mat();
+            var gray_xn = new Mat();
+            var gray_yn = new Mat();
 
-            var gray_xy_r = mat.Clone();
-            var gray_xy_rn = mat.Clone();
-            var gray_xy_l = mat.Clone();
-            var gray_xy_ln = mat.Clone();
+            var gray_xy_r = new Mat();
+            var gray_xy_rn = new Mat();
+            var gray_xy_l = new Mat();
+            var gray_xy_ln = new Mat();
 
             var med = 10;
             var min = 3;
@@ -124,63 +152,239 @@ namespace SorterSpheroids
             var min_xy = 5;
 
             Point anchor = new Point(-1, -1);
-            var data = new float[,] {
+            
+           
+
+
+            var data_x = new float[3, 3] {
+                { -min, 0f, min },
+                { - med, 0f, med },
+                { -min, 0f, min } };
+            var data_y = new float[3, 3] {
+                { min, med, min },
+                { 0f, 0f, 0f },
+                { -min, -med, -min} };
+
+            var data_xn = new float[3, 3] {
+                { min, 0f, -min },
+                { med, 0f, -med },
+                { min, 0f, -min } };
+
+            var data_yn = new float[3, 3] {
+                { -min, -med, -min },
+                { 0f, 0f, 0f },
+                { min, med, min} };
+
+            var data_xy_r = new float[3, 3] {
+                { 0, min_xy, med_xy },
+                { -min_xy, 0f, min_xy },
+                { -med_xy, -min_xy, 0} };
+
+            var data_xy_rn = new float[3, 3] {
+                { 0, -min_xy,-med_xy },
+                { min_xy, 0f, -min_xy },
+                { med_xy, min_xy, 0} };
+
+            var data_xy_l = new float[3, 3] {
+                {  med_xy, min_xy, 0 },
+                { min_xy, 0f, -min_xy },
+                { 0, -min_xy,  -med_xy } };
+            var data_xy_ln = new float[,] {
                 {  -med_xy,-min_xy, 0 },
                 { -min_xy, 0f, min_xy },
                 { 0, min_xy,  med_xy } };
-            var kernel_xy_ln = new Mat(3, 3, MatType.CV_32FC1, data);
 
+            var kernel_x = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_x);
+            var kernel_y = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_y);
+            var kernel_yn = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_yn);
+            var kernel_xn = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_xn);
 
-            Matrix<float> kernel_x = new Matrix<float>(new float[3, 3] {
-                { -min, 0f, min },
-                { - med, 0f, med },
-                { -min, 0f, min } });
-            Matrix<float> kernel_y = new Matrix<float>(new float[3, 3] {
-                { min, med, min },
-                { 0f, 0f, 0f },
-                { -min, -med, -min} });
+            var kernel_xy_r = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_xy_r);
+            var kernel_xy_rn = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_xy_rn);
+            var kernel_xy_l = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_xy_l);
+            var kernel_xy_ln = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data_xy_ln);
+            
 
-            Matrix<float> kernel_xn = new Matrix<float>(new float[3, 3] {
-                { min, 0f, -min },
-                { med, 0f, -med },
-                { min, 0f, -min } });
+            Cv2.Filter2D(mat, gray_yn, MatType.CV_8UC1, kernel_yn);
+            Cv2.Filter2D(mat, gray_xn, MatType.CV_8UC1, kernel_xn);
+            Cv2.Filter2D(mat, gray_x, MatType.CV_8UC1, kernel_x);
+            Cv2.Filter2D(mat, gray_y, MatType.CV_8UC1, kernel_y);
 
-            Matrix<float> kernel_yn = new Matrix<float>(new float[3, 3] {
-                { -min, -med, -min },
-                { 0f, 0f, 0f },
-                { min, med, min} });
-
-            Matrix<float> kernel_xy_r = new Matrix<float>(new float[3, 3] {
-                { 0, min_xy, med_xy },
-                { -min_xy, 0f, min_xy },
-                { -med_xy, -min_xy, 0} });
-
-            Matrix<float> kernel_xy_rn = new Matrix<float>(new float[3, 3] {
-                { 0, -min_xy,-med_xy },
-                { min_xy, 0f, -min_xy },
-                { med_xy, min_xy, 0} });
-
-            Matrix<float> kernel_xy_l = new Matrix<float>(new float[3, 3] {
-                {  med_xy, min_xy, 0 },
-                { min_xy, 0f, -min_xy },
-                { 0, -min_xy,  -med_xy } });
-           
-            Cv2.Filter2D(mat, gray_yn, MatType.CV_32FC1, kernel_yn, anchor);
-            Cv2.Filter2D(mat, gray_xn, MatType.CV_32FC1, kernel_xn, anchor);
-            Cv2.Filter2D(mat, gray_x, MatType.CV_32FC1, kernel_x, anchor);
-            Cv2.Filter2D(mat, gray_y, MatType.CV_32FC1, kernel_y, anchor);
-
-            Cv2.Filter2D(mat, gray_xy_r, MatType.CV_32FC1, kernel_xy_r, anchor);
-            Cv2.Filter2D(mat, gray_xy_rn, MatType.CV_32FC1, kernel_xy_rn, anchor);
-            Cv2.Filter2D(mat, gray_xy_l, MatType.CV_32FC1, kernel_xy_l, anchor);
-            Cv2.Filter2D(mat, gray_xy_ln, MatType.CV_32FC1, kernel_xy_ln, anchor);
+            Cv2.Filter2D(mat, gray_xy_r, MatType.CV_8UC1, kernel_xy_r);
+            Cv2.Filter2D(mat, gray_xy_rn, MatType.CV_8UC1, kernel_xy_rn);
+            Cv2.Filter2D(mat, gray_xy_l, MatType.CV_8UC1, kernel_xy_l);
+            Cv2.Filter2D(mat, gray_xy_ln, MatType.CV_8UC1, kernel_xy_ln);
 
             //  CvInvoke.ConvertScaleAbs(gray_x, gray_x, 1, 0);
             //CvInvoke.ConvertScaleAbs(gray_y, gray_y, 1, 0);
-            return 0.2 * gray_x + 0.2 * gray_y + 0.2 * gray_xn + 0.2 * gray_yn
-                + 0.2 * gray_xy_r + 0.2 * gray_xy_rn + 0.2 * gray_xy_l + 0.2 * gray_xy_ln;
+
+            return k * gray_x + k * gray_y + k * gray_xn + k * gray_yn
+                + k * gray_xy_r + k * gray_xy_rn + k * gray_xy_l + k * gray_xy_ln;
 
         }
-        */
+
+        public static Mat get_mean(Mat mat,int bin)
+        {
+           // var mean = mat.Mean();
+            Cv2.Threshold(mat, mat, bin, 255, ThresholdTypes.Binary);
+            // var conf = mat.Clone();
+            //mat.ConvertTo(mat, MatType.CV_8U);
+            //BitwiseAnd(mat, mat, conf, lapl);
+           var  mean = mat.Mean();
+            Cv2.PutText(mat, Math.Round(mean.Val0, 3).ToString(), new OpenCvSharp.Point(100, 200), HersheyFonts.HersheyPlain, 5, new Scalar(255), 3);
+            return mat;
+        }
+
+        public static void print_double(double[,] mat)
+        {
+            Console.WriteLine(mat.GetLength(0) + " " + mat.GetLength(1));
+            for (var rowIndex = 0; rowIndex < mat.GetLength(0); rowIndex++)
+            {
+                for (var colIndex = 0; colIndex < mat.GetLength(1); colIndex++)
+                {
+                    Console.Write(Math.Round(mat[rowIndex, colIndex], 4) + " ");
+                }
+                Console.WriteLine("");
+            }
+        }
+
+        public static void print_double(double[] mat)
+        {
+            Console.WriteLine(mat.GetLength(0));
+            for (var rowIndex = 0; rowIndex < mat.GetLength(0); rowIndex++)
+            {
+                Console.Write(Math.Round(mat[rowIndex], 4) + " ");
+            }
+            Console.WriteLine("");
+        }
+        public static void print_float(float[,] mat)
+        {
+            Console.WriteLine(mat.GetLength(0) + " " + mat.GetLength(1));
+            for (var rowIndex = 0; rowIndex < mat.GetLength(0); rowIndex++)
+            {
+                for (var colIndex = 0; colIndex < mat.GetLength(1); colIndex++)
+                {
+                    Console.Write(Math.Round(mat[rowIndex, colIndex], 4) + " ");
+                }
+                Console.WriteLine("");
+            }
+        }
+        public static object to_double(Mat mat)
+        {
+
+            if (mat.Rows == 1)
+            {
+                Console.WriteLine(mat.Rows + " " + mat.Cols);
+                var data = new double[mat.Cols];
+                for (var colIndex = 0; colIndex < mat.Cols; colIndex++)
+                {
+                    data[colIndex] = mat.At<double>(0, colIndex);
+                }
+                return (object)data;
+            }
+            else
+            {
+                Console.WriteLine(mat.Rows + " " + mat.Cols);
+                var data = new double[mat.Rows, mat.Cols];
+
+                for (var rowIndex = 0; rowIndex < mat.Rows; rowIndex++)
+                {
+                    for (var colIndex = 0; colIndex < mat.Cols; colIndex++)
+                    {
+                        data[rowIndex, colIndex] = mat.At<double>(0, colIndex);
+                    }
+                }
+                return (object)data;
+            }
+
+
+        }
+        public static object to_float(Mat mat)
+        {
+
+            if (mat.Rows == 1)
+            {
+                Console.WriteLine(mat.Rows + " " + mat.Cols);
+                var data = new float[mat.Cols];
+                for (var colIndex = 0; colIndex < mat.Cols; colIndex++)
+                {
+                    data[colIndex] = mat.At<float>(0, colIndex);
+                }
+                return (object)data;
+            }
+            else
+            {
+                Console.WriteLine(mat.Rows + " " + mat.Cols);
+                var data = new float[mat.Rows, mat.Cols];
+
+                for (var rowIndex = 0; rowIndex < mat.Rows; rowIndex++)
+                {
+                    for (var colIndex = 0; colIndex < mat.Cols; colIndex++)
+                    {
+                        data[rowIndex, colIndex] = mat.At<float>(rowIndex, colIndex);
+                    }
+                }
+                return (object)data;
+            }
+
+
+        }
+
+
+        
+    }
+
+    public class ImageCoordinatsConverter
+    {
+        public Mat mat_common;
+        public int w_pix, h_pix;
+        public double x_mm, y_mm, w_mm, h_mm, pixel_mm_ratio_default, mm_pixel_ratio_image;
+        public ImageCoordinatsConverter(double x_mm, double y_mm, double  w_mm, double h_mm, int  w_pix,int h_pix,double pixel_mm_ratio = 0.000528169) 
+        {            
+            this.w_pix = w_pix;
+            this.h_pix = h_pix;
+            this.x_mm = x_mm;
+            this.y_mm = y_mm;
+            this.w_mm = w_mm;
+            this.h_mm = h_mm;
+            this.pixel_mm_ratio_default = pixel_mm_ratio;
+            if(w_pix / w_mm > h_pix / h_mm)
+            {
+                this.mm_pixel_ratio_image = w_pix / w_mm;
+            }
+            else
+            {
+                this.mm_pixel_ratio_image = h_pix / h_mm;
+            }
+            mat_common = new Mat((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm), MatType.CV_8UC1);
+        }
+
+        public void add_image(Mat mat, GFrame frame)
+        {
+            var frame_mm = mat.Width * pixel_mm_ratio_default;
+
+
+
+            var scale_f = frame_mm / w_mm;
+            mat.Resize(new OpenCvSharp.Size( mat.Width*scale_f, mat.Height*scale_f));
+            var x = (frame.x - x_mm) * mm_pixel_ratio_image;
+            var y = (frame.y - y_mm) * mm_pixel_ratio_image;
+           
+            var rect_for_ins = new Rect(new Point(x,y),mat.Size());
+           // cv::Rect rectForInsert{ cv::Point{ 100, 100}, imageForInsert.size()};
+           // cv::Mat roi = origImage(rectForInsert);
+           // rectForInsert.copyTo(roi);
+        }
+
+        Vec3f[] get_centres_objects(Point[] points)
+        {
+            return null;
+        }
+
+        public Vec3f[] get_centres_objects()
+        {
+
+            return null;
+        }
     }
 }

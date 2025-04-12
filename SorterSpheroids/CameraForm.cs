@@ -55,8 +55,11 @@ namespace SorterSpheroids
             {
                 frameMat = new Mat();
                 if (capture.Read(frameMat))
+
                 // using (var frameMat = capture1.RetrieveMat())
                 {
+                    if(frameMat==null) return;  
+                    if(frameMat.Empty()) return;
                     if (frameMat.Width != 0)
                     {
                         bgWorker.ReportProgress(0, frameMat);
@@ -128,6 +131,7 @@ namespace SorterSpheroids
         {
             
             if (mat == null) return null;
+            if(mat.Empty()) return null;
             if (video_mats != null)
             {
                // Console.WriteLine(videoframe_counts + "/ "+videoframe_counts_stop);
@@ -145,8 +149,13 @@ namespace SorterSpheroids
 
                 if (focal_area)
                 {
-                    (mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat,bin);
-                    Console.WriteLine(cur_contr.ToString());
+                   //(mat, cur_contr) = ImageProcessing.get_focal_surface_for_conf(mat,bin);
+                    //Console.WriteLine(cur_contr.ToString());
+
+                    mat = ImageProcessing.get_mean( ImageProcessing.sobel_mat(mat),bin);
+                  //  Console.WriteLine("sobel_done");
+                  //  Cv2.ImShow("test", mat);
+                   // Cv2.WaitKey();
                 }
                 if (centr_object)
                 {
