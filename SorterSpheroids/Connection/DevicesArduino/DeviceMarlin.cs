@@ -24,6 +24,7 @@ namespace Connection
 
         public GFrame(string data)
         {
+
             var data_s = data.Split(' ');
             this.x = Convert.ToDouble(data_s[0]);
             this.y = Convert.ToDouble(data_s[1]);

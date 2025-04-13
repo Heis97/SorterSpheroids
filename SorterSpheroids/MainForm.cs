@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,16 @@ namespace SorterSpheroids
             manual_form = new ManualForm(this);
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
-            Console.WriteLine("constr: " + this.Location.X + " " + this.Location.Y);
 
-
-            var med = 10;
+            var common_image = new ImageCoordinatsConverter(-5, -5, 10, 10, 1920, 1080);
+            var mats = ImageProcessing.load_images("test_ph_2");
+            var mat_f = mats.First().Value;
+            foreach(var mat in mats )
+            {
+                common_image.add_image(mat.Value- mat_f, mat.Key);
+            }
+            Cv2.ImShow("common", common_image.mat_common);
+          /*  var med = 10;
             var min = 3;
 
             var med_xy = 14;
@@ -47,7 +54,7 @@ namespace SorterSpheroids
                new Vec3f( 0, min_xy,  med_xy ) };
            var kernel_xy_ln = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data);
            // var kernel_xy_ln = ImageProcessing.ConvertFloatArrayToMat(data);
-          /*  ImageProcessing.print_float((float[,])ImageProcessing.to_float(kernel_xy_ln));
+            ImageProcessing.print_float((float[,])ImageProcessing.to_float(kernel_xy_ln));
             var test_mat = new Mat("test1.png");
             var gray_xy_ln = new Mat();
             Cv2.CvtColor(test_mat, test_mat,ColorConversionCodes.RGB2GRAY);

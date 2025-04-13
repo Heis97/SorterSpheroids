@@ -5,6 +5,7 @@ using OpenCvSharp.Internal.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -330,7 +331,16 @@ namespace SorterSpheroids
 
         }
 
-
+        static public Dictionary<GFrame,Mat> load_images(string path)
+        {
+            var names = Directory.GetFiles(path);
+            var mats = new Dictionary<GFrame,Mat>();
+            foreach (var name in names)
+            {
+                mats.Add(new GFrame(Path.GetFileNameWithoutExtension(name)), new Mat(name));
+            }
+            return mats;
+        }
         
     }
 
@@ -356,7 +366,7 @@ namespace SorterSpheroids
             {
                 this.mm_pixel_ratio_image = h_pix / h_mm;
             }
-            mat_common = new Mat((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm), MatType.CV_8UC1);
+            mat_common = new Mat((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm), MatType.CV_8UC3);
         }
 
         public void add_image(Mat mat, GFrame frame)
@@ -366,14 +376,16 @@ namespace SorterSpheroids
 
 
             var scale_f = frame_mm / w_mm;
-            mat.Resize(new OpenCvSharp.Size( mat.Width*scale_f, mat.Height*scale_f));
+            mat = mat.Resize(new OpenCvSharp.Size( mat.Width*scale_f, mat.Height*scale_f));
             var x = (frame.x - x_mm) * mm_pixel_ratio_image;
             var y = (frame.y - y_mm) * mm_pixel_ratio_image;
            
             var rect_for_ins = new Rect(new Point(x,y),mat.Size());
-           // cv::Rect rectForInsert{ cv::Point{ 100, 100}, imageForInsert.size()};
-           // cv::Mat roi = origImage(rectForInsert);
-           // rectForInsert.copyTo(roi);
+
+
+            mat.CopyTo(new Mat(mat_common, rect_for_ins));
+           Cv2.ImShow("tets1", mat_common);
+            Cv2.WaitKey();
         }
 
         Vec3f[] get_centres_objects(Point[] points)
