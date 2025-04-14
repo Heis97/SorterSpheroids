@@ -28,7 +28,7 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 2520, 1480);
+            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1080);
             var mats = ImageProcessing.load_images("test_ph_3");
             var mat_f = mats.First().Value;
             foreach(var mat in mats )
