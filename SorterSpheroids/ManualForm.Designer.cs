@@ -55,6 +55,14 @@
             this.but_home_A = new System.Windows.Forms.Button();
             this.label_cur_pos = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_vel_deposition = new System.Windows.Forms.TextBox();
+            this.textBox_vel_apiration = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_volume_deposition = new System.Windows.Forms.TextBox();
+            this.label_pos_stop = new System.Windows.Forms.Label();
+            this.label_pos_start = new System.Windows.Forms.Label();
             this.button_absolute_movment_mode = new System.Windows.Forms.Button();
             this.button_relative_movment_mode = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -91,14 +99,6 @@
             this.but_auto_focus = new System.Windows.Forms.Button();
             this.but_find_ports = new System.Windows.Forms.Button();
             this.timer_cur_pos = new System.Windows.Forms.Timer(this.components);
-            this.label_pos_start = new System.Windows.Forms.Label();
-            this.label_pos_stop = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_volume_deposition = new System.Windows.Forms.TextBox();
-            this.textBox_vel_apiration = new System.Windows.Forms.TextBox();
-            this.textBox_vel_deposition = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -314,6 +314,49 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // textBox_vel_deposition
+            // 
+            resources.ApplyResources(this.textBox_vel_deposition, "textBox_vel_deposition");
+            this.textBox_vel_deposition.Name = "textBox_vel_deposition";
+            this.textBox_vel_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_deposition_KeyDown);
+            // 
+            // textBox_vel_apiration
+            // 
+            resources.ApplyResources(this.textBox_vel_apiration, "textBox_vel_apiration");
+            this.textBox_vel_apiration.Name = "textBox_vel_apiration";
+            this.textBox_vel_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_apiration_KeyDown);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // textBox_volume_deposition
+            // 
+            resources.ApplyResources(this.textBox_volume_deposition, "textBox_volume_deposition");
+            this.textBox_volume_deposition.Name = "textBox_volume_deposition";
+            this.textBox_volume_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_deposition_KeyDown);
+            // 
+            // label_pos_stop
+            // 
+            resources.ApplyResources(this.label_pos_stop, "label_pos_stop");
+            this.label_pos_stop.Name = "label_pos_stop";
+            // 
+            // label_pos_start
+            // 
+            resources.ApplyResources(this.label_pos_start, "label_pos_start");
+            this.label_pos_start.Name = "label_pos_start";
             // 
             // button_absolute_movment_mode
             // 
@@ -581,49 +624,6 @@
             // 
             this.timer_cur_pos.Interval = 10;
             this.timer_cur_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
-            // 
-            // label_pos_start
-            // 
-            resources.ApplyResources(this.label_pos_start, "label_pos_start");
-            this.label_pos_start.Name = "label_pos_start";
-            // 
-            // label_pos_stop
-            // 
-            resources.ApplyResources(this.label_pos_stop, "label_pos_stop");
-            this.label_pos_stop.Name = "label_pos_stop";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // textBox_volume_deposition
-            // 
-            resources.ApplyResources(this.textBox_volume_deposition, "textBox_volume_deposition");
-            this.textBox_volume_deposition.Name = "textBox_volume_deposition";
-            this.textBox_volume_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_volume_deposition_KeyDown);
-            // 
-            // textBox_vel_apiration
-            // 
-            resources.ApplyResources(this.textBox_vel_apiration, "textBox_vel_apiration");
-            this.textBox_vel_apiration.Name = "textBox_vel_apiration";
-            this.textBox_vel_apiration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_apiration_KeyDown);
-            // 
-            // textBox_vel_deposition
-            // 
-            resources.ApplyResources(this.textBox_vel_deposition, "textBox_vel_deposition");
-            this.textBox_vel_deposition.Name = "textBox_vel_deposition";
-            this.textBox_vel_deposition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_vel_deposition_KeyDown);
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
             // 
             // ManualForm
             // 

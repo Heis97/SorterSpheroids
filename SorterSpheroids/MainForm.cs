@@ -28,12 +28,12 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-5, -5, 10, 10, 1920, 1080);
-            var mats = ImageProcessing.load_images("test_ph_2");
+            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 2520, 1480);
+            var mats = ImageProcessing.load_images("test_ph_3");
             var mat_f = mats.First().Value;
             foreach(var mat in mats )
             {
-                common_image.add_image(mat.Value- mat_f, mat.Key);
+                common_image.add_image(mat.Value , mat.Key);
             }
             Cv2.ImShow("common", common_image.mat_common);
           /*  var med = 10;

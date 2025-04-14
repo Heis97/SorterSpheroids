@@ -55,12 +55,26 @@ namespace SorterSpheroids
         private void but_scan_cell_Click(object sender, EventArgs e)
         {
             var p_beg = mainForm.get_cur_pos();
+            var p_cur = p_beg.Clone();
 
-            var p_end = p_beg.Clone();
-            p_end.y += 2;
             var vel_xy = 0.5;
             var delt_time = 500;
-            mainForm.scan_thread(new GFrame[] { p_beg, p_end },vel_xy, delt_time);
+            var dist_x = 3;
+            var dist_y = 3;
+            var dx = 0.8;
+            var poses = new List<GFrame>();
+            for (double x = 0; p_cur.x - p_beg.x < dist_x;)
+            {
+                p_cur.y += dist_y;
+                poses.Add(p_cur.Clone());
+                p_cur.x += dx; 
+                poses.Add(p_cur.Clone());
+                p_cur.y -= dist_y;
+                poses.Add(p_cur.Clone());
+                p_cur.x += dx;
+                poses.Add(p_cur.Clone());
+            }
+            mainForm.scan_thread(poses.ToArray(), vel_xy, delt_time);
         }
 
         private void but_choose_cell_Click(object sender, EventArgs e)

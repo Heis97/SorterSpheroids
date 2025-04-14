@@ -157,7 +157,7 @@ namespace SorterSpheroids
             }
         }
 
-        double vel_xy = 0.5 * 60;
+        double vel_xy = 0.2 * 60;
         double vel_z = 1.5 * 60;
         double vel_e = 1 * 60;
         private void textBox_xy_vel_KeyDown(object sender, KeyEventArgs e)
@@ -408,8 +408,8 @@ namespace SorterSpheroids
         }
 
         bool photographing = false;
-        int time_delt = 500;
-        string cur_folder = "test_ph";
+        int time_delt = 600;
+        string cur_folder = "test_ph_3";
         void photo_thr_f()
         {
             while (photographing)

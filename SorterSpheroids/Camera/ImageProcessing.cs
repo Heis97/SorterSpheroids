@@ -377,15 +377,15 @@ namespace SorterSpheroids
 
             var scale_f = frame_mm / w_mm;
             mat = mat.Resize(new OpenCvSharp.Size( mat.Width*scale_f, mat.Height*scale_f));
-            var x = (frame.x - x_mm) * mm_pixel_ratio_image;
+            var x = mat_common.Width - (frame.x - x_mm) * mm_pixel_ratio_image;
             var y = (frame.y - y_mm) * mm_pixel_ratio_image;
            
             var rect_for_ins = new Rect(new Point(x,y),mat.Size());
-
+            Cv2.Rectangle(mat,new Rect(new Point(0,0),new OpenCvSharp.Size(mat.Width,mat.Height)),new Scalar(0,255,0),1);
 
             mat.CopyTo(new Mat(mat_common, rect_for_ins));
-           Cv2.ImShow("tets1", mat_common);
-            Cv2.WaitKey();
+           //Cv2.ImShow("tets1", mat_common);
+           // Cv2.WaitKey();
         }
 
         Vec3f[] get_centres_objects(Point[] points)
