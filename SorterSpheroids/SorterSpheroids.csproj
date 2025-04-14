@@ -140,6 +140,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\ImageStitcher.cs" />
     <Compile Include="Connection\DeviceArduino.cs" />
     <Compile Include="Connection\DevicesArduino\DeviceMarlin.cs" />
     <Compile Include="Connection\DevicesArduino\Tensom.cs" />

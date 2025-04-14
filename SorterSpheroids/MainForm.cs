@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Forms.Application;
 using Point = System.Drawing.Point;
 
 namespace SorterSpheroids
@@ -28,39 +30,52 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1080);
-            var mats = ImageProcessing.load_images("test_ph_3");
-            var mat_f = mats.First().Value;
-            foreach(var mat in mats )
+            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
+             var mats = ImageProcessing.load_images("test_ph_3");
+             var mat_f = mats.First().Value;
+             foreach(var mat in mats )
+             {
+                 common_image.add_image_allign(mat.Value.Clone() - mat_f, mat.Key,new OpenCvSharp.Point(15,15));
+             }
+             Cv2.ImShow("common_allign", common_image.mat_common);
+            //common_image.get_centres_objects(1/(4*Math.PI),0.3,0.3,0.1);
+            var common_image_2 = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
+           mats = ImageProcessing.load_images("test_ph_3");
+            mat_f = mats.First().Value;
+            foreach (var mat in mats)
             {
-                common_image.add_image(mat.Value , mat.Key);
+                common_image_2.add_image(mat.Value.Clone() - mat_f, mat.Key);
             }
-            Cv2.ImShow("common", common_image.mat_common);
-          /*  var med = 10;
-            var min = 3;
+            Cv2.ImShow("common_not", common_image_2.mat_common);
+            /*  var ims = ImageProcessing.load_images_info("test_ph_3");
+              var stitcher = new ImageStitcher();
+              Mat result = stitcher.StitchImages(ims, 0.5);
+              Cv2.ImShow("res",result);*/
+            /*  var med = 10;
+              var min = 3;
 
-            var med_xy = 14;
-            var min_xy = 5;
+              var med_xy = 14;
+              var min_xy = 5;
 
-            OpenCvSharp.Point anchor = new OpenCvSharp.Point(-1, -1);
-            var data = new float[,] {
-                {  -med_xy,-min_xy, 0 },
-                { -min_xy, 0f, min_xy },
-                { 0, min_xy,  med_xy } };
+              OpenCvSharp.Point anchor = new OpenCvSharp.Point(-1, -1);
+              var data = new float[,] {
+                  {  -med_xy,-min_xy, 0 },
+                  { -min_xy, 0f, min_xy },
+                  { 0, min_xy,  med_xy } };
 
-            var data_v = new Vec3f[] {
-               new Vec3f(  -med_xy,-min_xy, 0 ),
-                new Vec3f( -min_xy, 0f, min_xy ),
-               new Vec3f( 0, min_xy,  med_xy ) };
-           var kernel_xy_ln = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data);
-           // var kernel_xy_ln = ImageProcessing.ConvertFloatArrayToMat(data);
-            ImageProcessing.print_float((float[,])ImageProcessing.to_float(kernel_xy_ln));
-            var test_mat = new Mat("test1.png");
-            var gray_xy_ln = new Mat();
-            Cv2.CvtColor(test_mat, test_mat,ColorConversionCodes.RGB2GRAY);
-            Cv2.Filter2D(test_mat, gray_xy_ln, MatType.CV_8UC1, kernel_xy_ln);
-            Cv2.ImShow("test1", 3 * ImageProcessing.sobel_mat(test_mat));
-            Cv2.WaitKey();*/
+              var data_v = new Vec3f[] {
+                 new Vec3f(  -med_xy,-min_xy, 0 ),
+                  new Vec3f( -min_xy, 0f, min_xy ),
+                 new Vec3f( 0, min_xy,  med_xy ) };
+             var kernel_xy_ln = Mat.FromPixelData(3, 3, MatType.CV_32FC1, data);
+             // var kernel_xy_ln = ImageProcessing.ConvertFloatArrayToMat(data);
+              ImageProcessing.print_float((float[,])ImageProcessing.to_float(kernel_xy_ln));
+              var test_mat = new Mat("test1.png");
+              var gray_xy_ln = new Mat();
+              Cv2.CvtColor(test_mat, test_mat,ColorConversionCodes.RGB2GRAY);
+              Cv2.Filter2D(test_mat, gray_xy_ln, MatType.CV_8UC1, kernel_xy_ln);
+              Cv2.ImShow("test1", 3 * ImageProcessing.sobel_mat(test_mat));
+              Cv2.WaitKey();*/
         }
 
         private void MainForm_Load(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Point = OpenCvSharp.Point;
 
 namespace SorterSpheroids
@@ -341,14 +342,44 @@ namespace SorterSpheroids
             }
             return mats;
         }
-        
+        public static OpenCvSharp.Point2f findCentrCont(Point[] contour)
+        {
+            var M = Cv2.Moments(contour);
+            var cX = M.M10 / M.M00;
+            var cY = M.M01 / M.M00;
+            var p =new OpenCvSharp.Point2f((float)cX, (float)cY);
+            return p;
+        }
+
+        static public ImageInfo[] load_images_info(string path,double k_decrease = 0.1, double pixel_mm_ratio = 0.000528169)
+        {
+            var names = Directory.GetFiles(path);
+            var mats = new List<ImageInfo>();
+
+            var mm_pixel_ratio = (1/pixel_mm_ratio)* k_decrease;
+            foreach (var name in names)
+            {
+                var coord = new GFrame(Path.GetFileNameWithoutExtension(name));
+                var coord_pix = coord * mm_pixel_ratio;
+                var mat_orig = new Mat(name);
+                Cv2.Resize(mat_orig,mat_orig,new OpenCvSharp.Size(mat_orig.Width* k_decrease, mat_orig.Height * k_decrease));
+                var im_info = new ImageInfo()
+                {
+                    EstimatedError = new Point(30,30),
+                    EstimatedPosition = new Point(coord_pix.x, coord_pix.y),
+                    Image = mat_orig
+                };
+                mats.Add(im_info);
+            }
+            return mats.ToArray();
+        }
     }
 
     public class ImageCoordinatsConverter
     {
         public Mat mat_common;
-        public int w_pix, h_pix;
-        public double x_mm, y_mm, w_mm, h_mm, pixel_mm_ratio_default, mm_pixel_ratio_image;
+        public int w_pix, h_pix,bin;
+        public double x_mm, y_mm, w_mm, h_mm, pixel_mm_ratio_default, pixel_mm_ratio_common, mm_pixel_ratio_image,k_decr,obj_mm,obj_form;
         public ImageCoordinatsConverter(double x_mm, double y_mm, double  w_mm, double h_mm, int  w_pix,int h_pix,double pixel_mm_ratio = 0.000528169) 
         {            
             this.w_pix = w_pix;
@@ -358,6 +389,8 @@ namespace SorterSpheroids
             this.w_mm = w_mm;
             this.h_mm = h_mm;
             this.pixel_mm_ratio_default = pixel_mm_ratio;
+
+
             if(w_pix / w_mm > h_pix / h_mm)
             {
                 this.mm_pixel_ratio_image = w_pix / w_mm;
@@ -366,39 +399,168 @@ namespace SorterSpheroids
             {
                 this.mm_pixel_ratio_image = h_pix / h_mm;
             }
+            k_decr = 0.3;
+            bin = 50;
+            pixel_mm_ratio_common =  w_mm/w_pix;
             mat_common = new Mat((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm), MatType.CV_8UC3);
         }
 
         public void add_image(Mat mat, GFrame frame)
         {
-            var frame_mm = mat.Width * pixel_mm_ratio_default;
+            var frame_mm_w = mat.Width * pixel_mm_ratio_default;
+            var frame_mm_h = mat.Height * pixel_mm_ratio_default;
 
-
-
-            var scale_f = frame_mm / w_mm;
-            mat = mat.Resize(new OpenCvSharp.Size( mat.Width*scale_f, mat.Height*scale_f));
-
+            mat = mat.Resize(new OpenCvSharp.Size(frame_mm_w * mm_pixel_ratio_image , frame_mm_h * mm_pixel_ratio_image ));
+            //Console.WriteLine(mat.Width + " " + mat.Height);
             Cv2.Flip(mat,mat,FlipMode.Y);
             var x = (frame.x - x_mm) * mm_pixel_ratio_image;
             var y = (frame.y - y_mm) * mm_pixel_ratio_image;
            
             var rect_for_ins = new Rect(new Point(x,y),mat.Size());
-            Cv2.Rectangle(mat,new Rect(new Point(0,0),new OpenCvSharp.Size(mat.Width,mat.Height)),new Scalar(0,55,0),1);
+            //Cv2.Rectangle(mat,new Rect(new Point(0,0),new OpenCvSharp.Size(mat.Width,mat.Height)),new Scalar(0,55,0),1);
+            var mat_black = new Mat(mat_common.Size(), MatType.CV_8UC3);
 
+            mat.CopyTo(new Mat(mat_black, rect_for_ins));
+            mat_common += k_decr * mat_black;
             mat.CopyTo(new Mat(mat_common, rect_for_ins));
-           //Cv2.ImShow("tets1", mat_common);
-           // Cv2.WaitKey();
+            //Cv2.ImShow("tets1", mat_common);
+            //Cv2.WaitKey();
+        }
+        public void add_image_allign(Mat mat, GFrame frame, Point err)
+        {
+            var frame_mm_w = mat.Width * pixel_mm_ratio_default;
+            var frame_mm_h = mat.Height * pixel_mm_ratio_default;
+
+            mat = mat.Resize(new OpenCvSharp.Size(frame_mm_w * mm_pixel_ratio_image, frame_mm_h * mm_pixel_ratio_image));
+            //Console.WriteLine(mat.Width + " " + mat.Height);
+            Cv2.Flip(mat, mat, FlipMode.Y);
+            var x = (frame.x - x_mm) * mm_pixel_ratio_image;
+            var y = (frame.y - y_mm) * mm_pixel_ratio_image;
+
+            var rect_for_ins = new Rect(new Point(x, y), mat.Size());
+           
+            var mat_black = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            var roi_for_allign = new Rect(new Point(x - err.X, y - err.Y), new OpenCvSharp.Size(mat.Width + 2 * err.X, mat.Height + 2 * err.Y));
+            var area_for_allign = new Mat(mat_common, roi_for_allign);
+            
+            var p_estim = estimated_allign(area_for_allign, mat);
+
+            var rect_for_ins_allign = new Rect(new Point(x - err.X + p_estim.X, y - err.Y + p_estim.Y), mat.Size());
+            Console.WriteLine(p_estim.X + " " + p_estim.Y);
+            Cv2.Rectangle(mat, new Rect(new Point(0, 0), new OpenCvSharp.Size(mat.Width, mat.Height)), new Scalar(0, 55, 0), 1);
+            mat.CopyTo(new Mat(mat_common, rect_for_ins_allign));
+            mat_common += k_decr * mat_black;
+            //mat.CopyTo(new Mat(mat_common, rect_for_ins));
+            //Cv2.ImShow("tets1", mat_common);
+            //Cv2.WaitKey();
         }
 
         Vec3f[] get_centres_objects(Point[] points)
         {
+            
             return null;
         }
-
-        public Vec3f[] get_centres_objects()
+        public Point estimated_allign(Mat area_for_allign, Mat mat_allign)
         {
+            var coord_allign = new Point(0, 0);
+            var wind_x = area_for_allign.Width - mat_allign.Width;
+            var wind_y = area_for_allign.Height - mat_allign.Height;
+            double val_min = double.MaxValue;
+            for(int x = 0; x < wind_x; x++)
+            {
+                for (int y = 0; y < wind_y; y++)
+                {
+                    var roi_for_allign = new Rect(new Point(x, y), new OpenCvSharp.Size(mat_allign.Width, mat_allign.Height));
+                    var orig_place = new Mat(area_for_allign, roi_for_allign);
+                    var val1 = (orig_place - mat_allign).ToMat().Mean().Val0;
+                    var val2 = (mat_allign - orig_place).ToMat().Mean().Val0;
+                    var val = Math.Max(val1, val2);
+                    if (val < val_min)
+                    {
+                        val_min = val;
+                        coord_allign = new Point(x, y);
+                    }
+                }
+            }
 
+            return coord_allign;
+        }
+        public Vec3f[] get_centres_objects(double form, double form_err, double circle_diametr_mm, double diametr_err_mm)
+        {
+            var mat = mat_common.Clone();
+            var thr = new Mat();
+            Cv2.CvtColor(mat, thr, ColorConversionCodes.RGB2GRAY);
+            Cv2.GaussianBlur(thr, thr, new OpenCvSharp.Size(7, 7), -1);
+            Cv2.Threshold(thr, thr, bin, 255, ThresholdTypes.Binary);
+            var contours = new OpenCvSharp.Point[0][];
+            var hier = new HierarchyIndex[0];
+            Cv2.FindContours(thr, out contours, out hier, RetrievalModes.Tree, ContourApproximationModes.ApproxSimple);
+           
+            contours = filtr_contours(contours, form, form_err, circle_diametr_mm * mm_pixel_ratio_image, diametr_err_mm * mm_pixel_ratio_image);
+            //Cv2.DrawContours(mat, contours, -1, new Scalar(255, 0, 0), 1, LineTypes.Link8);
+            mat = draw_contours_with_info(mat.Clone(), contours, pixel_mm_ratio_common);
+            mat = draw_contours_centres(mat.Clone(), contours);
+            Cv2.ImShow("conts ",mat);
             return null;
         }
+
+         public static Point[][] filtr_contours(Point[][]  contours, double form, double form_err, double circle_diametr_pix, double diametr_err_pix)
+         {
+            if(contours == null) return null;
+            if(contours.Length == 0) return null;
+            var contours_filtr = new List<Point[]>();
+           
+            for (int i = 0; i < contours.Length; i++)
+            {
+                var s = Cv2.ContourArea(contours[i]);
+                var p = Cv2.ArcLength(contours[i],true);
+                var d_red = 2*Math.Sqrt(s / Math.PI);
+                var form_cont = s/(p*p);
+
+                if(Math.Abs(d_red- circle_diametr_pix) < diametr_err_pix && Math.Abs(form_cont - form) < form*form_err)
+                {
+                    contours_filtr.Add(contours[i]);
+                }
+            }
+
+            return contours_filtr.ToArray();
+        }
+
+        public static Mat draw_contours_with_info(Mat mat,Point[][] contours, double mm_pixel_ratio_image)
+        {
+            Cv2.DrawContours(mat, contours, -1, new Scalar(255, 0, 0), 1, LineTypes.Link8);
+            for (int i = 0; i < contours.Length; i++)
+            {
+                var s = Cv2.ContourArea(contours[i]);
+                var p = Cv2.ArcLength(contours[i], true);
+                var d_red = 2 * Math.Sqrt(s / Math.PI);
+                var form_cont = s / (p * p);
+                var pc = ImageProcessing.findCentrCont(contours[i]);
+
+                string info = "<- " + Math.Round(1000 * d_red * mm_pixel_ratio_image, 1) + "um" + "; "+ Math.Round(1000 * form_cont, 1) + "/" + Math.Round(1000 * 1 / (4 * Math.PI), 1);
+                var dx_offset = 30;
+                Cv2.PutText(mat, info, new Point(pc.X+ dx_offset, pc.Y), HersheyFonts.HersheySimplex, 0.5, new Scalar(0, 0, 0), 3);
+                Cv2.PutText(mat,info,new Point(pc.X + dx_offset, pc.Y),HersheyFonts.HersheySimplex,0.5,new Scalar(0,255,0),1);
+               
+            }
+
+            return mat;
+        }
+
+        public static Mat draw_contours_centres(Mat mat, Point[][] contours)
+        {
+            for (int i = 0; i < contours.Length; i++)
+            {
+                var pc = ImageProcessing.findCentrCont(contours[i]);
+                Cv2.DrawMarker(mat, new Point(pc.X, pc.Y), new Scalar(0, 0, 0), MarkerTypes.TiltedCross, 20,3);
+                Cv2.DrawMarker(mat, new Point(pc.X, pc.Y), new Scalar(255, 255, 0), MarkerTypes.TiltedCross, 20, 1);
+            }
+
+            return mat;
+        }
+
+
     }
+
+
 }

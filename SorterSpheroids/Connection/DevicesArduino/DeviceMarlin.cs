@@ -90,7 +90,17 @@ namespace Connection
                 -left.a ,
                 -left.b , left.f);
         }
-
+        static public GFrame operator *(GFrame left, double right)
+        {
+            return new GFrame(
+                left.x *right,
+                left.y * right,
+                left.z * right,
+                left.e * right,
+                left.a * right,
+                left.b * right,
+                left.f);
+        }
         public override string ToString()
         {
             return x + " " + y + " " + z + " " + e + " " + a + " " + b + " " + f;
