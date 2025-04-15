@@ -409,7 +409,7 @@ namespace SorterSpheroids
 
         bool photographing = false;
         int time_delt = 600;
-        string cur_folder = "test_ph_3";
+        string cur_folder = "test_ph_5";
         void photo_thr_f()
         {
             while (photographing)

@@ -31,7 +31,7 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 2920, 1580);
+            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
              var mats = ImageProcessing.load_images("test_ph_3");
              var mat_f = mats.First().Value;
             var min_mat = (from f in mats
@@ -46,7 +46,15 @@ namespace SorterSpheroids
                 Cv2.WaitKey();
             }
              Cv2.ImShow("common_allign", common_image.mat_common);
-            common_image.get_centres_objects(1/(4*Math.PI),0.3,0.2,0.1);
+            //common_image.get_centres_objects(1/(4*Math.PI),0.3,0.3,0.1);
+            var common_image_2 = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
+           mats = ImageProcessing.load_images("test_ph_3");
+            mat_f = mats.First().Value;
+            foreach (var mat in mats)
+            {
+                common_image_2.add_image(mat.Value.Clone() - mat_f, mat.Key);
+            }
+            Cv2.ImShow("common_not", common_image_2.mat_common);
             /*  var ims = ImageProcessing.load_images_info("test_ph_3");
               var stitcher = new ImageStitcher();
               Mat result = stitcher.StitchImages(ims, 0.5);
