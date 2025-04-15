@@ -30,7 +30,7 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
+            /*var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
              var mats = ImageProcessing.load_images("test_ph_3");
              var mat_f = mats.First().Value;
              foreach(var mat in mats )
@@ -46,7 +46,7 @@ namespace SorterSpheroids
             {
                 common_image_2.add_image(mat.Value.Clone() - mat_f, mat.Key);
             }
-            Cv2.ImShow("common_not", common_image_2.mat_common);
+            Cv2.ImShow("common_not", common_image_2.mat_common);*/
             /*  var ims = ImageProcessing.load_images_info("test_ph_3");
               var stitcher = new ImageStitcher();
               Mat result = stitcher.StitchImages(ims, 0.5);

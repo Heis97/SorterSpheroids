@@ -61,7 +61,7 @@ namespace SorterSpheroids
             var delt_time = 500;
             var dist_x = 3;
             var dist_y = 3;
-            var dx = 0.8;
+            var dx = 0.6;
             var poses = new List<GFrame>();
             for (double x = 0; p_cur.x - p_beg.x < dist_x;)
             {
