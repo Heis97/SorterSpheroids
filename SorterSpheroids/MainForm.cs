@@ -32,23 +32,22 @@ namespace SorterSpheroids
             camera_form = new CameraForm(this);
 
             var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
-             var mats = ImageProcessing.load_images("test_ph_3");
-             var mat_f = mats.First().Value;
+            var mats = ImageProcessing.load_images("test_ph_3");
+            var mat_f = mats.First().Value;
             var min_mat = (from f in mats
                           orderby f.Value.Mean().Val0+ f.Value.Mean().Val1+ f.Value.Mean().Val2
                           select f).ToArray()[0];
 
             foreach (var mat in mats )
-             {
-               
+            {               
                  common_image.add_image(mat.Value.Clone()- min_mat.Value, mat.Key);
                 Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
                 Cv2.WaitKey();
             }
-             Cv2.ImShow("common_allign", common_image.mat_common);
+            Cv2.ImShow("common_allign", common_image.mat_common);
             //common_image.get_centres_objects(1/(4*Math.PI),0.3,0.3,0.1);
             var common_image_2 = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
-           mats = ImageProcessing.load_images("test_ph_3");
+            mats = ImageProcessing.load_images("test_ph_3");
             mat_f = mats.First().Value;
             foreach (var mat in mats)
             {

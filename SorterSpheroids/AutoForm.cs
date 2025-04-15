@@ -58,7 +58,7 @@ namespace SorterSpheroids
             var p_cur = p_beg.Clone();
 
             var vel_xy = 0.5;
-            var delt_time = 500;
+            var delt_time = 50;
             var dist_x = 3;
             var dist_y = 3;
             var dx = 0.6;

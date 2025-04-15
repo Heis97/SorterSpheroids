@@ -408,14 +408,14 @@ namespace SorterSpheroids
         }
 
         bool photographing = false;
-        int time_delt = 600;
         string cur_folder = "test_ph_5";
-        void photo_thr_f()
+        void photo_thr_f(object dt_obj)
         {
+            int dt = (int)dt_obj;
             while (photographing)
             {
                 mainForm.save_photo(cur_folder+"\\"+cur_pos.ToString());
-                Thread.Sleep(time_delt);
+                Thread.Sleep(dt);
             }          
         }
 
@@ -428,9 +428,8 @@ namespace SorterSpheroids
             Sorter?.sendCommand("G90");
             go_to_pos_wait(frms[0], cur_pos);
             var photo_thr = new Thread(photo_thr_f);
-            photo_thr.Start();
+            photo_thr.Start(dt);
             photographing = true;
-            time_delt = dt;
             for (int i = 1; i < frms.Length; i++)
             {
                 go_to_pos_wait(frms[i], cur_pos);
