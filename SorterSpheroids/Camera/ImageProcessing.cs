@@ -378,6 +378,8 @@ namespace SorterSpheroids
     public class ImageCoordinatsConverter
     {
         public Mat mat_common;
+        public Mat mask;
+        public Mat mask_inv;
         public int w_pix, h_pix,bin;
         public double x_mm, y_mm, w_mm, h_mm, pixel_mm_ratio_default, pixel_mm_ratio_common, mm_pixel_ratio_image,k_decr,obj_mm,obj_form;
 
@@ -404,10 +406,16 @@ namespace SorterSpheroids
             k_decr = 0.9;
             bin = 50;
             pixel_mm_ratio_common =  w_mm/w_pix;
-            mat_common = new Mat((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm), MatType.CV_8UC3);
+            var size_common = new OpenCvSharp.Size((int)(mm_pixel_ratio_image * w_mm), (int)(mm_pixel_ratio_image * h_mm));
+            mat_common = new Mat(size_common, MatType.CV_8UC3);
+
+            mask = new Mat(size_common, MatType.CV_8UC3);
+            mask_inv = new Mat(size_common, MatType.CV_8UC3);
+            mask.SetTo(new Scalar(0, 0, 0));
+            mask_inv.SetTo(new Scalar(255,255,255));
         }
 
-        public void add_image(Mat mat, GFrame frame)
+        public void add_image_simple(Mat mat, GFrame frame)
         {
             var frame_mm_w = mat.Width * pixel_mm_ratio_default;
             var frame_mm_h = mat.Height * pixel_mm_ratio_default;
@@ -425,7 +433,135 @@ namespace SorterSpheroids
             //Cv2.ImShow("tets1", mat_common);
             //Cv2.WaitKey();
         }
+
+        public void add_image(Mat mat, GFrame frame)
+        {
+            var frame_mm_w = mat.Width * pixel_mm_ratio_default;
+            var frame_mm_h = mat.Height * pixel_mm_ratio_default;
+
+            mat = mat.Resize(new OpenCvSharp.Size(frame_mm_w * mm_pixel_ratio_image, frame_mm_h * mm_pixel_ratio_image));
+            //Console.WriteLine(mat.Width + " " + mat.Height);
+            Cv2.Flip(mat, mat, FlipMode.Y);
+            var x = (frame.x - x_mm) * mm_pixel_ratio_image;
+            var y = (frame.y - y_mm) * mm_pixel_ratio_image;
+
+            var rect_for_ins = new Rect(new Point(x, y), mat.Size());
+            //Cv2.Rectangle(mat,new Rect(new Point(0,0),new OpenCvSharp.Size(mat.Width,mat.Height)),new Scalar(0,55,0),1);
+
+            var white_mat = new Mat(mat.Size(), MatType.CV_8UC3);
+            var black_mat  = new Mat(mat.Size(), MatType.CV_8UC3);
+            black_mat.SetTo(new Scalar(0, 0, 0));
+            white_mat.SetTo(new Scalar(255, 255, 255));
+
+            
+
+            var black_or = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            black_or.SetTo(new Scalar(0, 0, 0));
+            var white_or = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            white_or.SetTo(new Scalar(255, 255, 255));
+
+            white_mat.CopyTo(new Mat(black_or, rect_for_ins));
+            black_mat.CopyTo(new Mat(white_or, rect_for_ins));
+
+            var black_mat_orig = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            black_mat_orig.SetTo(new Scalar(0, 0, 0));
+            mat.CopyTo(new Mat(black_mat_orig, rect_for_ins));
+
+            var s1 = (black_mat_orig - mask).ToMat();
+            var s2_mat = (black_mat_orig - mask_inv).ToMat();
+            var s2_or = (mat_common - white_or).ToMat();
+
+            Cv2.ImShow("mat_common", mat_common);
+            var s2 = 0.5 * s2_mat.Clone() + 0.5 * s2_or.Clone();
+            mat_common -= black_or;
+            mat_common += (s1 + s2);
+
+            /*  Cv2.ImShow("black_or", black_or);
+              Cv2.ImShow(" white_or", white_or);
+              Cv2.ImShow(" black_mat_orig", black_mat_orig);
+
+              Cv2.ImShow("  mask", mask);
+              Cv2.ImShow(" mask_inv", mask_inv);
+            Cv2.ImShow("s1", s1);
+            Cv2.ImShow("s2_mat", s2_mat);
+            Cv2.ImShow("s2_or", s2_or);
+            */
+            /* Cv2.ImShow("  mask", mask);
+             Cv2.ImShow(" mask_inv", mask_inv);
+             Cv2.ImShow("tets1", mat_common);*/
+            // Cv2.ImShow("tets1", mat_common);
+            //   Cv2.WaitKey();
+            white_mat.CopyTo(new Mat(mask, rect_for_ins));
+            black_mat.CopyTo(new Mat(mask_inv, rect_for_ins));
+        }
         public void add_image_allign(Mat mat, GFrame frame, Point err)
+        {
+            var frame_mm_w = mat.Width * pixel_mm_ratio_default;
+            var frame_mm_h = mat.Height * pixel_mm_ratio_default;
+
+            mat = mat.Resize(new OpenCvSharp.Size(frame_mm_w * mm_pixel_ratio_image, frame_mm_h * mm_pixel_ratio_image));
+            //Console.WriteLine(mat.Width + " " + mat.Height);
+            Cv2.Flip(mat, mat, FlipMode.Y);
+            var x = (frame.x - x_mm) * mm_pixel_ratio_image;
+            var y = (frame.y - y_mm) * mm_pixel_ratio_image;
+
+            var rect_for_ins = new Rect(new Point(x, y), mat.Size());
+            //Cv2.Rectangle(mat,new Rect(new Point(0,0),new OpenCvSharp.Size(mat.Width,mat.Height)),new Scalar(0,55,0),1);
+            var mat_black = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            var roi_for_allign = new Rect(new Point(x - err.X, y - err.Y), new OpenCvSharp.Size(mat.Width + 2 * err.X, mat.Height + 2 * err.Y));
+            var area_for_allign = new Mat(mat_common, roi_for_allign);
+
+            var p_estim = estimated_allign(area_for_allign, mat);
+
+            var rect_for_ins_allign = new Rect(new Point(x - err.X + p_estim.X, y - err.Y + p_estim.Y), mat.Size());
+            rect_for_ins = rect_for_ins_allign;
+            var white_mat = new Mat(mat.Size(), MatType.CV_8UC3);
+            var black_mat = new Mat(mat.Size(), MatType.CV_8UC3);
+            black_mat.SetTo(new Scalar(0, 0, 0));
+            white_mat.SetTo(new Scalar(255, 255, 255));
+
+
+
+            var black_or = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            black_or.SetTo(new Scalar(0, 0, 0));
+            var white_or = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            white_or.SetTo(new Scalar(255, 255, 255));
+
+            white_mat.CopyTo(new Mat(black_or, rect_for_ins));
+            black_mat.CopyTo(new Mat(white_or, rect_for_ins));
+
+            var black_mat_orig = new Mat(mat_common.Size(), MatType.CV_8UC3);
+            black_mat_orig.SetTo(new Scalar(0, 0, 0));
+            mat.CopyTo(new Mat(black_mat_orig, rect_for_ins));
+
+            var s1 = (black_mat_orig - mask).ToMat();
+            var s2_mat = (black_mat_orig - mask_inv).ToMat();
+            var s2_or = (mat_common - white_or).ToMat();
+
+          //  Cv2.ImShow("mat_common", mat_common);
+            var s2 = 0.5 * s2_mat.Clone() + 0.5 * s2_or.Clone();
+            mat_common -= black_or;
+            mat_common += (s1 + s2);
+
+            /*  Cv2.ImShow("black_or", black_or);
+              Cv2.ImShow(" white_or", white_or);
+              Cv2.ImShow(" black_mat_orig", black_mat_orig);
+
+              Cv2.ImShow("  mask", mask);
+              Cv2.ImShow(" mask_inv", mask_inv);
+            Cv2.ImShow("s1", s1);
+            Cv2.ImShow("s2_mat", s2_mat);
+            Cv2.ImShow("s2_or", s2_or);
+            */
+            /* Cv2.ImShow("  mask", mask);
+             Cv2.ImShow(" mask_inv", mask_inv);
+             Cv2.ImShow("tets1", mat_common);*/
+             Cv2.ImShow("mat_common", mat_common);
+               Cv2.WaitKey();
+            white_mat.CopyTo(new Mat(mask, rect_for_ins));
+            black_mat.CopyTo(new Mat(mask_inv, rect_for_ins));
+        }
+        public void add_image_allign_simple(Mat mat, GFrame frame, Point err)
         {
             var frame_mm_w = mat.Width * pixel_mm_ratio_default;
             var frame_mm_h = mat.Height * pixel_mm_ratio_default;
@@ -467,6 +603,11 @@ namespace SorterSpheroids
         }
         public Point estimated_allign(Mat area_for_allign, Mat mat_allign)
         {
+            var area_for_allign_gray = new Mat();
+            var mat_allign_gray = new Mat();
+
+            Cv2.CvtColor(area_for_allign, area_for_allign_gray, ColorConversionCodes.RGB2GRAY);
+            Cv2.CvtColor(mat_allign, mat_allign_gray, ColorConversionCodes.RGB2GRAY);
             var coord_allign = new Point(0, 0);
             var wind_x = area_for_allign.Width - mat_allign.Width;
             var wind_y = area_for_allign.Height - mat_allign.Height;
@@ -483,7 +624,7 @@ namespace SorterSpheroids
                 for (int y = 0; y < wind_y; y++)
                 {
                     var roi_for_allign = new Rect(new Point(x, y), new OpenCvSharp.Size(mat_allign.Width, mat_allign.Height));
-                    var orig_place = new Mat(area_for_allign, roi_for_allign);
+                    var orig_place_gray = new Mat(area_for_allign_gray, roi_for_allign);
                    /* if (x == 15 && y == 15)
                     {
                         Cv2.ImShow("orig_place", orig_place);
@@ -491,8 +632,8 @@ namespace SorterSpheroids
                         Cv2.WaitKey();
                     }*/
                     
-                    var val1 = (orig_place - mat_allign).ToMat().Mean().Val0;
-                    var val2 = (mat_allign - orig_place).ToMat().Mean().Val0;
+                    var val1 = (orig_place_gray - mat_allign_gray).ToMat().Mean().Val0;
+                    var val2 = (mat_allign_gray - orig_place_gray).ToMat().Mean().Val0;
                     var val = Math.Max(val1, val2);
                     data_diff[y, x] = (byte)(val * 150);
                     //Console.WriteLine( val);
@@ -514,8 +655,8 @@ namespace SorterSpheroids
             Cv2.DrawMarker(kernel, coord_allign, new Scalar(255), MarkerTypes.TiltedCross, 5, 1);
             Cv2.Resize(kernel, kernel, new OpenCvSharp.Size(200, 200));
            
-            Cv2.ImShow("orig_place", 3*orig_place_end);
-            Cv2.ImShow("area_for_allign", 3 * mat_allign);
+            Cv2.ImShow("orig_place", orig_place_end);
+            Cv2.ImShow("area_for_allign",  mat_allign);
             Cv2.ImShow("map_diff", kernel);
             Cv2.WaitKey();
             

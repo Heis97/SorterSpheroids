@@ -31,29 +31,22 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
-            var mats = ImageProcessing.load_images("test_ph_3");
+            var common_image = new ImageCoordinatsConverter(-5, 0, 10, 10, 1920, 1580);
+            var mats = ImageProcessing.load_images("test_ph_5\\3");
             var mat_f = mats.First().Value;
             var min_mat = (from f in mats
-                          orderby f.Value.Mean().Val0+ f.Value.Mean().Val1+ f.Value.Mean().Val2
+                          orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
                           select f).ToArray()[0];
 
             foreach (var mat in mats )
             {               
-                 common_image.add_image(mat.Value.Clone()- min_mat.Value, mat.Key);
-                Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
-                Cv2.WaitKey();
+                common_image.add_image_allign(mat.Value.Clone() , mat.Key,new OpenCvSharp.Point(60,60));
+                //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
+                //Cv2.WaitKey();
             }
+
             Cv2.ImShow("common_allign", common_image.mat_common);
-            //common_image.get_centres_objects(1/(4*Math.PI),0.3,0.3,0.1);
-            var common_image_2 = new ImageCoordinatsConverter(-2, -2, 10, 10, 1920, 1580);
-            mats = ImageProcessing.load_images("test_ph_3");
-            mat_f = mats.First().Value;
-            foreach (var mat in mats)
-            {
-                common_image_2.add_image(mat.Value.Clone() - mat_f, mat.Key);
-            }
-            Cv2.ImShow("common_not", common_image_2.mat_common);
+
             /*  var ims = ImageProcessing.load_images_info("test_ph_3");
               var stitcher = new ImageStitcher();
               Mat result = stitcher.StitchImages(ims, 0.5);
