@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using System.Text.RegularExpressions;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using Connection;
 
 namespace SorterSpheroids
 {
@@ -24,6 +25,7 @@ namespace SorterSpheroids
         VideoCapture capture;
         OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080);
         List<Mat> video_mats = new List<Mat>();
+        List<GFrame> video_coords = new List<GFrame>();
         Mat frameMat = new Mat();
         Mat frameMat_buf = new Mat();
         int videoframe_counts = -1;
@@ -73,6 +75,7 @@ namespace SorterSpheroids
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             frameMat = (Mat)e.UserState;
+            Cv2.Flip(frameMat, frameMat, FlipMode.Y);
             frameMat_buf = frameMat.Clone();
             //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
             frameMat = imProcess(frameMat);
@@ -141,6 +144,7 @@ namespace SorterSpheroids
                 {
 
                     video_mats.Add(mat.Clone());
+                    video_coords.Add(mainForm.get_cur_pos());
                 }
                 else if(videoframe_counts >= videoframe_counts_stop)
                 {
@@ -182,8 +186,9 @@ namespace SorterSpheroids
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
             var dir = "recordings";
             Directory.CreateDirectory(dir);
-            var video_scan_name = "video_"+ DateTime.Now.ToString("hh_mm_ss_U"); ;
-            string name = dir + "\\" + video_scan_name + ".mp4";
+            var video_scan_name = "video_"+ DateTime.Now.ToString("hh_mm_ss_U");
+            var name_without_ext = dir + "\\" + video_scan_name;
+            string name = name_without_ext + ".mp4";
             Console.WriteLine("wr" + " " + w + " " + h + " " + fps);
             var video_writer = new VideoWriter(name, -1, fps, new OpenCvSharp.Size(w, h), true);
             //var reswr = video_writer[ind ].Set(VideoWriter.WriterProperty.Quality, 100);
@@ -194,6 +199,9 @@ namespace SorterSpheroids
                 //var p = Detection.detectLineSensor(video_mats[ind - 1][i])[0];
                 //Console.WriteLine(ind + " "  + p);
             }
+
+            MainForm.save_obj(name_without_ext+".json", video_coords.ToArray());
+            video_coords = new List<GFrame>();
             video_mats = new List<Mat>();
             video_writer.Dispose();
             

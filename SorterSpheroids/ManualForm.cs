@@ -321,7 +321,6 @@ namespace SorterSpheroids
         {
             
             var gframe = go_to_pos( gframe_dest ,gframe_cur);
-            if (gframe == null) return null;
             var dist = gframe.norm_all();
             var time =(int)(1000* dist / vel_sec(gframe.f));
             Console.WriteLine("sleep:" + time);
@@ -441,7 +440,6 @@ namespace SorterSpheroids
            
         }
 
-        
 
     }
     public class ScanningObject

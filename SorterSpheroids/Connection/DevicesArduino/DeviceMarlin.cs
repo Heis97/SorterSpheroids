@@ -8,9 +8,15 @@ using System.Diagnostics;
 
 namespace Connection
 {
-    public class GFrame
+    public struct GFrame
     {
-        public double x, y, z, e, a, b,f;
+        public double x {  get; set; }
+        public double y { get; set; }
+        public double z { get; set; }
+        public double e { get; set; }
+        public double a { get; set; }
+        public double b { get; set; }
+        public double f { get; set; }
         public GFrame(double x = 0, double y = 0, double z = 0, double e = 0, double a = 0, double b = 0, double f = 0) 
         { 
             this.x = x;
@@ -36,8 +42,15 @@ namespace Connection
         }
         public GFrame(double[] vals)
         {
-            if (vals == null) return;
-            if (vals.Length < 5) return;
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
+            this.a = 0;
+            this.b = 0;
+            this.e = 0;
+            this.f = 0;
+            if (vals == null) return;        
+            if (vals.Length < 5) return;            
             this.x = vals[0];
             this.y = vals[1];
             this.z = vals[2];

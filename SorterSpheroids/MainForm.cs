@@ -1,4 +1,5 @@
 ﻿using Connection;
+using Newtonsoft.Json;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using Application = System.Windows.Forms.Application;
+using File = System.IO.File;
 using Point = System.Drawing.Point;
 
 namespace SorterSpheroids
@@ -31,22 +34,28 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            var common_image = new ImageCoordinatsConverter(-5, 0, 10, 10, 1920, 1580);
-            var mats = ImageProcessing.load_images("test_ph_5\\3");
-            var mat_f = mats.First().Value;
-            var min_mat = (from f in mats
-                          orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
-                          select f).ToArray()[0];
+            /* var common_image = new ImageCoordinatsConverter(-5, 0, 10, 10, 1920, 1580);
+             var mats = ImageProcessing.load_images("test_ph_5\\3");
+             var mat_f = mats.First().Value;
+             var min_mat = (from f in mats
+                           orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
+                           select f).ToArray()[0];
 
-            foreach (var mat in mats )
-            {               
-                common_image.add_image_allign(mat.Value.Clone() , mat.Key,new OpenCvSharp.Point(60,60));
-                //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
-                //Cv2.WaitKey();
-            }
+             foreach (var mat in mats )
+             {               
+                 common_image.add_image(mat.Value.Clone() , mat.Key);
+                 //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
+                 //Cv2.WaitKey();
+             }
 
-            Cv2.ImShow("common_allign", common_image.mat_common);
+             Cv2.ImShow("common_allign", common_image.mat_common);*/
 
+
+            var frms = new GFrame[] { new GFrame(1, 2, 3, 5), new GFrame(2, 2, 3, 5), new GFrame(3, 2, 3, 5) };
+
+            save_obj("test1.json", frms);
+            var loaded_frms = load_obj<GFrame[]>("test1.json");
+            Console.WriteLine("");
             /*  var ims = ImageProcessing.load_images_info("test_ph_3");
               var stitcher = new ImageStitcher();
               Mat result = stitcher.StitchImages(ims, 0.5);
@@ -187,6 +196,45 @@ namespace SorterSpheroids
         public GFrame get_cur_pos()
         {
             return manual_form.cur_pos;
+        }
+
+        static public void save_obj(string path, object obj)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            serializer.Formatting = Newtonsoft.Json.Formatting.Indented;
+            using (StreamWriter sw = new StreamWriter(path))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, obj);
+            }
+        }
+        static public T load_obj<T>(string path, string text = null)
+        {
+            string jsontext = "";
+
+            try
+            {
+                if (text != null)
+                {
+                    jsontext = text;
+                }
+                else
+                {
+                    using (StreamReader file = File.OpenText(path))
+                    {
+                        jsontext = file.ReadToEnd();
+                    }
+                    // Console.WriteLine(path + "__________________________");
+                    //Console.WriteLine(jsontext);
+                }
+                return JsonConvert.DeserializeObject<T>(jsontext);
+            }
+            catch
+            {
+                return default(T);
+            }
+
         }
     }
 }

@@ -65,7 +65,6 @@
             this.label_pos_start = new System.Windows.Forms.Label();
             this.button_absolute_movment_mode = new System.Windows.Forms.Button();
             this.button_relative_movment_mode = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_set_dm_dist = new System.Windows.Forms.Button();
             this.button_replace_obj = new System.Windows.Forms.Button();
             this.button_memorize_stop_point = new System.Windows.Forms.Button();
@@ -288,7 +287,6 @@
             this.groupBox1.Controls.Add(this.label_pos_start);
             this.groupBox1.Controls.Add(this.button_absolute_movment_mode);
             this.groupBox1.Controls.Add(this.button_relative_movment_mode);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button_set_dm_dist);
             this.groupBox1.Controls.Add(this.button_replace_obj);
             this.groupBox1.Controls.Add(this.button_memorize_stop_point);
@@ -371,11 +369,6 @@
             this.button_relative_movment_mode.Name = "button_relative_movment_mode";
             this.button_relative_movment_mode.UseVisualStyleBackColor = true;
             this.button_relative_movment_mode.Click += new System.EventHandler(this.button_relative_movment_mode_Click);
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
             // 
             // button_set_dm_dist
             // 
@@ -622,7 +615,7 @@
             // 
             // timer_cur_pos
             // 
-            this.timer_cur_pos.Interval = 10;
+            this.timer_cur_pos.Interval = 5;
             this.timer_cur_pos.Tick += new System.EventHandler(this.timer_printer_pos_Tick);
             // 
             // ManualForm
@@ -712,7 +705,6 @@
         private System.Windows.Forms.Button button_replace_obj;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button_set_dm_dist;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button_absolute_movment_mode;
         private System.Windows.Forms.Button button_relative_movment_mode;
         private System.Windows.Forms.Label label_pos_start;

@@ -441,7 +441,7 @@ namespace SorterSpheroids
 
             mat = mat.Resize(new OpenCvSharp.Size(frame_mm_w * mm_pixel_ratio_image, frame_mm_h * mm_pixel_ratio_image));
             //Console.WriteLine(mat.Width + " " + mat.Height);
-            Cv2.Flip(mat, mat, FlipMode.Y);
+           // Cv2.Flip(mat, mat, FlipMode.Y);
             var x = (frame.x - x_mm) * mm_pixel_ratio_image;
             var y = (frame.y - y_mm) * mm_pixel_ratio_image;
 
@@ -683,7 +683,7 @@ namespace SorterSpheroids
             return null;
         }
 
-         public static Point[][] filtr_contours(Point[][]  contours, double form, double form_err, double circle_diametr_pix, double diametr_err_pix)
+        public static Point[][] filtr_contours(Point[][]  contours, double form, double form_err, double circle_diametr_pix, double diametr_err_pix)
          {
             if(contours == null) return null;
             if(contours.Length == 0) return null;
@@ -737,9 +737,42 @@ namespace SorterSpheroids
 
             return mat;
         }
+        public static bool ContourTouchesBorder(Point[] contour, int imgWidth, int imgHeight)
+        {
+            // Проверяем, есть ли хотя бы одна точка контура на границе изображения
+            return contour.Any(p =>
+                p.X <= 1 || p.X >= imgWidth - 1 ||
+                p.Y <= 1 || p.Y >= imgHeight - 1);
 
+            // Используем <= 1 и >= width-1/height-1 для учета возможной погрешности
+        }
 
     }
+    public class ContourCV
+    {
+        public OpenCvSharp.Point[] cont_orig;
+        public double perim;
+        public double area;
+        public double fig;//  fig = area/perim^2
+        public OpenCvSharp.Point2f pc;
+        public ContourCV(Point[] cont)
+        {
+            area = Cv2.ContourArea(cont);
+            perim = Cv2.ArcLength(cont, true);
+            fig = area / (perim* perim);
+            pc = ImageProcessing.findCentrCont(cont);
+            cont_orig = cont;
+        }
 
+        static public ContourCV[] contourCVs(Point[][] conts)
+        {
+            var conts_cv = new List<ContourCV>();
+            for (int i = 0; i < conts.Length; i++)
+            {
+                conts_cv.Add(new ContourCV(conts[i]));
+            }
+            return conts_cv.ToArray();
+        }
 
+    }
 }
