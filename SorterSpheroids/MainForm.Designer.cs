@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.but_manual = new System.Windows.Forms.Button();
             this.but_auto = new System.Windows.Forms.Button();
+            this.button_maintest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // but_manual
@@ -47,10 +48,18 @@
             this.but_auto.UseVisualStyleBackColor = true;
             this.but_auto.Click += new System.EventHandler(this.but_auto_Click);
             // 
+            // button_maintest
+            // 
+            resources.ApplyResources(this.button_maintest, "button_maintest");
+            this.button_maintest.Name = "button_maintest";
+            this.button_maintest.UseVisualStyleBackColor = true;
+            this.button_maintest.Click += new System.EventHandler(this.button_maintest_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_maintest);
             this.Controls.Add(this.but_auto);
             this.Controls.Add(this.but_manual);
             this.Name = "MainForm";
@@ -64,6 +73,7 @@
 
         private System.Windows.Forms.Button but_manual;
         private System.Windows.Forms.Button but_auto;
+        private System.Windows.Forms.Button button_maintest;
     }
 }
 

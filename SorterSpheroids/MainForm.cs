@@ -34,28 +34,14 @@ namespace SorterSpheroids
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);
 
-            /* var common_image = new ImageCoordinatsConverter(-5, 0, 10, 10, 1920, 1580);
-             var mats = ImageProcessing.load_images("test_ph_5\\3");
-             var mat_f = mats.First().Value;
-             var min_mat = (from f in mats
-                           orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
-                           select f).ToArray()[0];
-
-             foreach (var mat in mats )
-             {               
-                 common_image.add_image(mat.Value.Clone() , mat.Key);
-                 //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
-                 //Cv2.WaitKey();
-             }
-
-             Cv2.ImShow("common_allign", common_image.mat_common);*/
+             
 
 
-            var frms = new GFrame[] { new GFrame(1, 2, 3, 5), new GFrame(2, 2, 3, 5), new GFrame(3, 2, 3, 5) };
+           /* var frms = new GFrame[] { new GFrame(1, 2, 3, 5), new GFrame(2, 2, 3, 5), new GFrame(3, 2, 3, 5) };
 
             save_obj("test1.json", frms);
             var loaded_frms = load_obj<GFrame[]>("test1.json");
-            Console.WriteLine("");
+            Console.WriteLine("");*/
             /*  var ims = ImageProcessing.load_images_info("test_ph_3");
               var stitcher = new ImageStitcher();
               Mat result = stitcher.StitchImages(ims, 0.5);
@@ -86,7 +72,32 @@ namespace SorterSpheroids
               Cv2.ImShow("test1", 3 * ImageProcessing.sobel_mat(test_mat));
               Cv2.WaitKey();*/
         }
+        private void button_maintest_Click(object sender, EventArgs e)
+        {
+            var common_image = new ImageCoordinatsConverter(-6, -6, 10, 10, 1920, 1580);
+            var coords = camera_form.video_coords.ToArray();
+            var mats = camera_form.video_mats.ToArray();
+           // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
+            /* var mat_f = mats.First().Value;
+             var min_mat = (from f in mats
+                            orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
+                            select f).ToArray()[0];
+             */
+            var ind = 0;
+            foreach (var mat in mats)
+            {
+                
+                ind++;
+                if (ind>50 && ind <350)
+                {
+                    common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(20,20));
+                    //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
+                    //Cv2.WaitKey();
+                }
+            }
 
+            Cv2.ImShow("common_allign", common_image.mat_common);
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
             camera_form.Location = add_p(ps_loc[0], this.Location);
@@ -236,5 +247,7 @@ namespace SorterSpheroids
             }
 
         }
+
+       
     }
 }

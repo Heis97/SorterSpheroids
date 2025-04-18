@@ -342,6 +342,17 @@ namespace SorterSpheroids
             }
             return mats;
         }
+
+        static public Dictionary<GFrame, Mat> load_images_video(GFrame[] frms, Mat[] images)
+        {
+            var mats = new Dictionary<GFrame, Mat>();
+            for (int i =0; i<frms.Length;i++)
+            {
+                //if()
+                mats.Add(frms[i], images[i]);
+            }
+            return mats;
+        }
         public static OpenCvSharp.Point2f findCentrCont(Point[] contour)
         {
             var M = Cv2.Moments(contour);
@@ -556,8 +567,8 @@ namespace SorterSpheroids
             /* Cv2.ImShow("  mask", mask);
              Cv2.ImShow(" mask_inv", mask_inv);
              Cv2.ImShow("tets1", mat_common);*/
-             Cv2.ImShow("mat_common", mat_common);
-               Cv2.WaitKey();
+           //  Cv2.ImShow("mat_common", mat_common);
+          //     Cv2.WaitKey();
             white_mat.CopyTo(new Mat(mask, rect_for_ins));
             black_mat.CopyTo(new Mat(mask_inv, rect_for_ins));
         }
@@ -651,7 +662,7 @@ namespace SorterSpheroids
             var kernel = Mat.FromPixelData(wind_x, wind_y, MatType.CV_8UC1, data_diff);
             //Cv2.ConvertScaleAbs(kernel, kernel);
             //Cv2.Normalize(kernel, kernel);
-            Cv2.DrawMarker(kernel, coord_allign, new Scalar(0),  MarkerTypes.TiltedCross,5,3);
+           /* Cv2.DrawMarker(kernel, coord_allign, new Scalar(0),  MarkerTypes.TiltedCross,5,3);
             Cv2.DrawMarker(kernel, coord_allign, new Scalar(255), MarkerTypes.TiltedCross, 5, 1);
             Cv2.Resize(kernel, kernel, new OpenCvSharp.Size(200, 200));
            
@@ -659,7 +670,7 @@ namespace SorterSpheroids
             Cv2.ImShow("area_for_allign",  mat_allign);
             Cv2.ImShow("map_diff", kernel);
             Cv2.WaitKey();
-            
+            */
             if (!finded) return new Point(wind_x/2, wind_y/2);
             //Console.WriteLine("__________________"+val_al);
             return coord_allign;

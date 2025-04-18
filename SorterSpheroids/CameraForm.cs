@@ -24,8 +24,8 @@ namespace SorterSpheroids
     {
         VideoCapture capture;
         OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080);
-        List<Mat> video_mats = new List<Mat>();
-        List<GFrame> video_coords = new List<GFrame>();
+        public List<Mat> video_mats = new List<Mat>();
+        public List<GFrame> video_coords = new List<GFrame>();
         Mat frameMat = new Mat();
         Mat frameMat_buf = new Mat();
         int videoframe_counts = -1;
@@ -231,6 +231,8 @@ namespace SorterSpheroids
             saved_video = false;
             videoframe_counts = 0;
             videoframe_counts_stop = videoStart_rec(textBox_video_name.Text)-1;
+            var coords_name = Path.ChangeExtension(textBox_video_name.Text, "json");
+            video_coords = MainForm.load_obj<GFrame[]>(coords_name).ToList();
             Console.WriteLine(" videoframe_counts_stop: "+videoframe_counts_stop);
         }
 

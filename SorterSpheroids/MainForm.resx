@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_manual.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="but_auto.Location" type="System.Drawing.Point, System.Drawing">
     <value>2086, 12</value>
@@ -165,6 +165,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;but_auto.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_maintest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_maintest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2289, 12</value>
+  </data>
+  <data name="button_maintest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 48</value>
+  </data>
+  <data name="button_maintest.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="button_maintest.Text" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="&gt;&gt;button_maintest.Name" xml:space="preserve">
+    <value>button_maintest</value>
+  </data>
+  <data name="&gt;&gt;button_maintest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_maintest.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button_maintest.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
