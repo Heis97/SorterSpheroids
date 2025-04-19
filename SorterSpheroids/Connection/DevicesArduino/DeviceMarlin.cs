@@ -118,6 +118,50 @@ namespace Connection
         {
             return x + " " + y + " " + z + " " + e + " " + a + " " + b + " " + f;
         }
+
+        static public GFrame Max(GFrame[] gFrames)
+        {
+            var max_fr = new GFrame(double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+            for( var i = 0; i < gFrames.Length; i++ )
+            {
+                max_fr = Max(max_fr, gFrames[i]);
+            }
+            return max_fr;
+        }
+
+        static public GFrame Max(GFrame gFrame1, GFrame gFrame2)
+        {
+            var x = Math.Max(gFrame1 .x, gFrame2 .x);
+            var y = Math.Max(gFrame1.y, gFrame2.y);
+            var z = Math.Max(gFrame1.z, gFrame2.z);
+            var e = Math.Max(gFrame1.e, gFrame2.e);
+            var a = Math.Max(gFrame1.a, gFrame2.a);
+            var b = Math.Max(gFrame1.b, gFrame2.b);
+            var f = Math.Max(gFrame1.f, gFrame2.f);
+            return new GFrame(x,y,z,e,a,b,f);
+        }
+
+        static public GFrame Min(GFrame[] gFrames)
+        {
+            var min_fr = new GFrame(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+            for (var i = 0; i < gFrames.Length; i++)
+            {
+                min_fr = Min(min_fr, gFrames[i]);
+            }
+            return min_fr;
+        }
+
+        static public GFrame Min(GFrame gFrame1, GFrame gFrame2)
+        {
+            var x = Math.Min(gFrame1.x, gFrame2.x);
+            var y = Math.Min(gFrame1.y, gFrame2.y);
+            var z = Math.Min(gFrame1.z, gFrame2.z);
+            var e = Math.Min(gFrame1.e, gFrame2.e);
+            var a = Math.Min(gFrame1.a, gFrame2.a);
+            var b = Math.Min(gFrame1.b, gFrame2.b);
+            var f = Math.Min(gFrame1.f, gFrame2.f);
+            return new GFrame(x, y, z, e, a, b, f);
+        }
     }
     public class DeviceMarlin : DeviceArduino
     {

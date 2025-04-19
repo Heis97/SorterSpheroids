@@ -74,29 +74,7 @@ namespace SorterSpheroids
         }
         private void button_maintest_Click(object sender, EventArgs e)
         {
-            var common_image = new ImageCoordinatsConverter(-6, -6, 10, 10, 1920, 1580);
-            var coords = camera_form.video_coords.ToArray();
-            var mats = camera_form.video_mats.ToArray();
-           // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
-            /* var mat_f = mats.First().Value;
-             var min_mat = (from f in mats
-                            orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
-                            select f).ToArray()[0];
-             */
-            var ind = 0;
-            foreach (var mat in mats)
-            {
-                
-                ind++;
-                if (ind>50 && ind <350)
-                {
-                    common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(20,20));
-                    //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
-                    //Cv2.WaitKey();
-                }
-            }
-
-            Cv2.ImShow("common_allign", common_image.mat_common);
+            
         }
         private void MainForm_Load(object sender, EventArgs e)
         {

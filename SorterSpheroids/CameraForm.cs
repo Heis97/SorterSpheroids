@@ -173,16 +173,54 @@ namespace SorterSpheroids
             return mat;
 
         }
+        void analyse()
+        {
+            var coords = video_coords.ToArray();
+            var mats = video_mats.ToArray();
+            var common_image = new ImageCoordinatsConverter(coords, 1920, 1580);
+            var common_image_or = new ImageCoordinatsConverter(coords, 1920, 1580);
+            // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
+            /* var mat_f = mats.First().Value;
+             var min_mat = (from f in mats
+                            orderby f.Value.Mean().Val0 + f.Value.Mean().Val1 + f.Value.Mean().Val2
+                            select f).ToArray()[0];
+             */
+            var ind = 0;
+            bool debug = false;
+            foreach (var mat in mats)
+            {
 
+                ind++;
+                if (ind > 1 && ind<100)
+                {
+                    if (coords[ind].y - coords[ind - 1].y > 0)
+                    {
+                        common_image_or.add_image(mat, coords[ind]);
+                        common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(5,20),debug);
+                        debug = true;
+                    }
+                   
+                    //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
+                    //Cv2.WaitKey();
+                    Console.WriteLine(ind + "/100");
+                }
+            }
+            Cv2.ImShow("common_", common_image_or.mat_common);
+            Cv2.ImShow("common_allign", common_image.mat_common);
+        }
         void save_video(int w, int h)
         {
+            recording = false;
+
+            analyse();
+
             if (!saved_video)
             {
                 comboBox_images.Items.AddRange(video_mats.ToArray());
                 return;
             }
             
-            recording = false;
+            
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
             var dir = "recordings";
             Directory.CreateDirectory(dir);
