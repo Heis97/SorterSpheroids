@@ -191,7 +191,7 @@ namespace SorterSpheroids
             string name = name_without_ext + ".mp4";
             Console.WriteLine("wr" + " " + w + " " + h + " " + fps);
             var video_writer = new VideoWriter(name, -1, fps, new OpenCvSharp.Size(w, h), true);
-            //var reswr = video_writer[ind ].Set(VideoWriter.WriterProperty.Quality, 100);
+            //var reswr = video_writer[ind].Set(VideoWriter.WriterProperty.Quality, 100);
             //Console.WriteLine(reswr);
             for (int i = 0; i < video_mats.Count ; i++)
             {

@@ -30,7 +30,7 @@ namespace SorterSpheroids
             Sorter = new DeviceMarlin(port);
             Sorter?.sendCommand("G91");
             Sorter?.sendCommand("M302 S0");
-            Sorter?.sendCommand("M154 S50");
+            Sorter?.sendCommand("M154 S10");
             timer_cur_pos.Enabled = true;
         }
 
