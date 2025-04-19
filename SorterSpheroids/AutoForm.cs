@@ -58,10 +58,10 @@ namespace SorterSpheroids
             var p_cur = p_beg.Clone();
 
             var vel_xy = 0.5;
-            var delt_time = 50;
+            var delt_time = 2000;
             var dist_x = 3;
             var dist_y = 3;
-            var dx = 0.6;
+            var dx = 0.3;
             var poses = new List<GFrame>();
             for (double x = 0; p_cur.x - p_beg.x < dist_x;)
             {

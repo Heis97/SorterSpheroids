@@ -186,7 +186,7 @@ namespace SorterSpheroids
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
             var dir = "recordings";
             Directory.CreateDirectory(dir);
-            var video_scan_name = "video_"+ DateTime.Now.ToString("hh_mm_ss_U");
+            var video_scan_name = "video_"+ DateTime.Now.ToString("hh_mm_ss_d");
             var name_without_ext = dir + "\\" + video_scan_name;
             string name = name_without_ext + ".mp4";
             Console.WriteLine("wr" + " " + w + " " + h + " " + fps);
