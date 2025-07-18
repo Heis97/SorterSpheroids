@@ -75,6 +75,7 @@ namespace SorterSpheroids
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             frameMat = (Mat)e.UserState;
+           
             Cv2.Flip(frameMat, frameMat, FlipMode.Y);
             frameMat_buf = frameMat.Clone();
             //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
@@ -83,6 +84,7 @@ namespace SorterSpheroids
             pictureBox1.Image?.Dispose();
             try
             {
+                Cv2.Resize(frameMat, frameMat, new OpenCvSharp.Size(1280, 720));
                 var bitmap = BitmapConverter.ToBitmap(frameMat);
                 //Console.WriteLine(bitmap.Width + " " + bitmap.Height + " " + fps);
                 pictureBox1.Image = bitmap;

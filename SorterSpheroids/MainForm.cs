@@ -29,7 +29,8 @@ namespace SorterSpheroids
         public MainForm()
         {
             InitializeComponent();
-            ps_loc = new Point[] { new Point(10,40), new Point(1970, 120), new Point(1970, 120), };//camera, manual, auto
+            ps_loc = new Point[] { new Point(10,40), new Point(1370, 120), new Point(1370, 120), };//camera, manual, auto
+            //ps_loc = new Point[] { new Point(10, 40), new Point(1970, 120), new Point(1970, 120), };//camera, manual, auto
             manual_form = new ManualForm(this);
             auto_form = new AutoForm(this);
             camera_form = new CameraForm(this);

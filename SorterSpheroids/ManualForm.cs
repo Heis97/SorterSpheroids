@@ -204,7 +204,8 @@ namespace SorterSpheroids
                     var res_spl = res.Split('\n');
                     for (int i = 0; i < res_spl.Length; i++)
                     {
-                        var res_spl_2 = res_spl[i].Split(' ');
+
+                        var res_spl_2 = res_spl[i].Replace("  "," ").Replace("  ", " ").Replace("  ", " ").Split(' ');
                        
                         if (res_spl_2.Length >= 6)
                         {
@@ -224,7 +225,26 @@ namespace SorterSpheroids
                                 label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
                             }
                         }
-                          
+                        if (res_spl_2.Length >= 6)
+                        {
+                            if(res_spl_2[0].Length>0)
+                            if (res_spl_2[0][0] == 'X')
+                            {
+                                var double_vals = new double[5];
+                                // var text = "X: " + res_spl_2[1] + "\nY:" + res_spl_2[2] + "\nZd:" + res_spl_2[3] + "\nZm" + res_spl_2[4] + "\nE" + res_spl_2[5];
+                                // label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
+
+                                for (int k = 0; k < 5; k++)
+                                {
+                                    var val = res_spl_2[k].Substring(2);
+                                    double_vals[k] = MainForm.to_double(val);
+                                }
+                                cur_pos = new GFrame(double_vals);
+                                cur_pos.f = vel_xy;
+                                var text = "X: " + cur_pos.x + "\nY:" + cur_pos.y + "\nZd:" + cur_pos.z + "\nZm" + cur_pos.a + "\nE" + cur_pos.e;
+                                label_cur_pos.BeginInvoke((MethodInvoker)(() => label_cur_pos.Text = text));
+                            }
+                        }
                         if (res_spl_2.Length >= 4)
                         {
 
