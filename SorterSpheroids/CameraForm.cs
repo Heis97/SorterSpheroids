@@ -23,14 +23,14 @@ namespace SorterSpheroids
     public partial class CameraForm : Form
     {
         VideoCapture capture;
-        OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080);
+        OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1280,720);
         public List<Mat> video_mats = new List<Mat>();
         public List<GFrame> video_coords = new List<GFrame>();
         Mat frameMat = new Mat();
         Mat frameMat_buf = new Mat();
         int videoframe_counts = -1;
         int videoframe_counts_stop = 10000;
-        int fps = 40;
+        int fps = 20;
         bool saved_video = true;
         enum paint_mode { draw_centr,none};
         double cur_contr = 0;
@@ -101,13 +101,13 @@ namespace SorterSpheroids
                 MessageBox.Show("Не удалось открыть камеру "+number);
                 return;
             }
-            capture.Set(VideoCaptureProperties.FrameWidth, 1920);
-            capture.Set(VideoCaptureProperties.FrameHeight, 1080);
+            capture.Set(VideoCaptureProperties.FrameWidth, cameraSize.Width);//1920
+            capture.Set(VideoCaptureProperties.FrameHeight, cameraSize.Height);//1080
 
-            capture.Set(VideoCaptureProperties.Fps, 40);
+            capture.Set(VideoCaptureProperties.Fps, this.fps);
             capture.Set(VideoCaptureProperties.FourCC, OpenCvSharp.VideoWriter.FourCC("MJPG"));
 
-            var fps = capture.Get(VideoCaptureProperties.Fps);
+            var _fps = capture.Get(VideoCaptureProperties.Fps);
             var w = capture.Get(VideoCaptureProperties.FrameWidth);
             var h = capture.Get(VideoCaptureProperties.FrameHeight);
 
@@ -115,7 +115,7 @@ namespace SorterSpheroids
 
             ClientSize = new System.Drawing.Size(capture.FrameWidth, capture.FrameHeight);
             backgroundWorker1.RunWorkerAsync();
-            Console.WriteLine(w + " " + h + " " + fps);
+            Console.WriteLine(w + " " + h + " " + _fps);
 
         }
         private int videoStart_rec(string number)
@@ -212,13 +212,13 @@ namespace SorterSpheroids
         {
             recording = false;
 
-            analyse();
+            //analyse();
 
-            if (!saved_video)
+            /*if (!saved_video)
             {
                 comboBox_images.Items.AddRange(video_mats.ToArray());
                 return;
-            }
+            }*/
             
             
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
@@ -238,7 +238,7 @@ namespace SorterSpheroids
                 //Console.WriteLine(ind + " "  + p);
             }
 
-            MainForm.save_obj(name_without_ext+".json", video_coords.ToArray());
+            //MainForm.save_obj(name_without_ext+".json", video_coords.ToArray());
             video_coords = new List<GFrame>();
             video_mats = new List<Mat>();
             video_writer.Dispose();
