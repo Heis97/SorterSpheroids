@@ -744,11 +744,11 @@ namespace SorterSpheroids
             var val_al = mat_allign.Mean().Val0;
             if (val_al < 0.5) return new Point(wind_x / 2, wind_y / 2);
 
-            var data_diff = new byte[wind_x, wind_y];
+            var data_diff = new byte[wind_y, wind_x];
 
-            for (int x = 0; x < wind_x; x++)
+            for (int x = 0; x < wind_x-1; x++)
             {
-                for (int y = 0; y < wind_y; y++)
+                for (int y = 0; y < wind_y - 1; y++)
                 {
                     var roi_for_allign = new Rect(new Point(x, y), new OpenCvSharp.Size(mat_allign.Width, mat_allign.Height));
                     var orig_place_gray = new Mat(area_for_allign_gray, roi_for_allign);
@@ -785,7 +785,7 @@ namespace SorterSpheroids
             var kernel = Mat.FromPixelData(wind_x, wind_y, MatType.CV_8UC1, data_diff);
             //Cv2.ConvertScaleAbs(kernel, kernel);
             //Cv2.Normalize(kernel, kernel);
-            //if(debug)
+            if(debug)
             {
                 var k_res = 10;
                 Cv2.CvtColor(kernel, kernel, ColorConversionCodes.GRAY2RGB);

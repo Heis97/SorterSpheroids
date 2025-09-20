@@ -23,14 +23,14 @@ namespace SorterSpheroids
     public partial class CameraForm : Form
     {
         VideoCapture capture;
-        OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1280,720);
+        OpenCvSharp.Size  cameraSize = new OpenCvSharp.Size(1920,1080); //new OpenCvSharp.Size(1280,720);
         public List<Mat> video_mats = new List<Mat>();
         public List<GFrame> video_coords = new List<GFrame>();
         Mat frameMat = new Mat();
         Mat frameMat_buf = new Mat();
         int videoframe_counts = -1;
         int videoframe_counts_stop = 10000;
-        int fps = 20;
+        int fps = 40;
         bool saved_video = true;
         enum paint_mode { draw_centr,none};
         double cur_contr = 0;
@@ -193,13 +193,13 @@ namespace SorterSpheroids
             {
 
                 ind++;
-                if (ind > 1 && ind<100)
+                if (ind > 1 && ind< mats.Length-1)
                 {
                     if (coords[ind].y - coords[ind - 1].y > 0)
                     {
                         common_image_or.add_image(mat, coords[ind]);
                         common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(5,20),debug);
-                        debug = true;
+                       // debug = true;
                     }
                    
                     //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
@@ -214,13 +214,13 @@ namespace SorterSpheroids
         {
             recording = false;
 
-            //analyse();
+            analyse();
 
-            /*if (!saved_video)
+            if (!saved_video)
             {
                 comboBox_images.Items.AddRange(video_mats.ToArray());
                 return;
-            }*/
+            }
             
             
             int fcc = VideoWriter.FourCC('h', '2', '6', '4'); //'M', 'J', 'P', 'G';'m', 'p', '4', 'v';'M', 'P', '4', 'V';'H', '2', '6', '4';'h', '2', '6', '4'
@@ -270,7 +270,8 @@ namespace SorterSpheroids
             recording = true;
             saved_video = false;
             videoframe_counts = 0;
-            videoframe_counts_stop = videoStart_rec(textBox_video_name.Text)-1;
+            var k_dec = 1.0;
+            videoframe_counts_stop =(int)( (videoStart_rec(textBox_video_name.Text)-1) / k_dec);
             var coords_name = Path.ChangeExtension(textBox_video_name.Text, "json");
             video_coords = MainForm.load_obj<GFrame[]>(coords_name).ToList();
             Console.WriteLine(" videoframe_counts_stop: "+videoframe_counts_stop);
