@@ -179,8 +179,8 @@ namespace SorterSpheroids
         {
             var coords = video_coords.ToArray();
             var mats = video_mats.ToArray();
-            var common_image = new ImageCoordinatsConverter(coords, 1920, 1580);
-            var common_image_or = new ImageCoordinatsConverter(coords, 1920, 1580);
+            var common_image = new ImageCoordinatsConverter(coords, 1920, 1080);//1580
+            var common_image_or = new ImageCoordinatsConverter(coords, 1920, 1080);
             // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
             /* var mat_f = mats.First().Value;
              var min_mat = (from f in mats
@@ -188,23 +188,26 @@ namespace SorterSpheroids
                             select f).ToArray()[0];
              */
             var ind = 0;
+            var max_ind = 230;
+            var len = Math.Min(max_ind, mats.Length - 1);
             bool debug = false;
+            //debug = true;
             foreach (var mat in mats)
             {
 
                 ind++;
-                if (ind > 1 && ind< mats.Length-1)
+                if (ind > 1 && ind< len)
                 {
                     if (coords[ind].y - coords[ind - 1].y > 0)
                     {
                         common_image_or.add_image(mat, coords[ind]);
-                        common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(5,20),debug);
+                        common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(1,1),debug);
                        // debug = true;
                     }
                    
                     //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
                     //Cv2.WaitKey();
-                    Console.WriteLine(ind + "/100");
+                    Console.WriteLine(ind + "/"+(len));
                 }
             }
             Cv2.ImShow("common_", common_image_or.mat_common);
@@ -240,7 +243,7 @@ namespace SorterSpheroids
                 //Console.WriteLine(ind + " "  + p);
             }
 
-            //MainForm.save_obj(name_without_ext+".json", video_coords.ToArray());
+            MainForm.save_obj(name_without_ext+".json", video_coords.ToArray());
             video_coords = new List<GFrame>();
             video_mats = new List<Mat>();
             video_writer.Dispose();

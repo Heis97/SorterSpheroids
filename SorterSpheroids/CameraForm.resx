@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="but_start_recording.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 126</value>
+    <value>330, 129</value>
   </data>
   <data name="but_start_recording.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -154,7 +154,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_centr_object.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 158</value>
+    <value>128, 146</value>
   </data>
   <data name="checkBox_centr_object.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 17</value>
@@ -184,7 +184,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_boarder_object.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 135</value>
+    <value>128, 120</value>
   </data>
   <data name="checkBox_boarder_object.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 17</value>
@@ -214,7 +214,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_focal_area.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 112</value>
+    <value>128, 91</value>
   </data>
   <data name="checkBox_focal_area.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -244,7 +244,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 85</value>
+    <value>16, 72</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 13</value>
@@ -271,7 +271,7 @@
     <value>NoControl</value>
   </data>
   <data name="but_start_video.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 91</value>
+    <value>540, 91</value>
   </data>
   <data name="but_start_video.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -298,7 +298,7 @@
     <value>NoControl</value>
   </data>
   <data name="but_stop_recording.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 55</value>
+    <value>330, 74</value>
   </data>
   <data name="but_stop_recording.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -322,7 +322,7 @@
     <value>15</value>
   </data>
   <data name="textBox_video_name.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 65</value>
+    <value>540, 65</value>
   </data>
   <data name="textBox_video_name.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 20</value>
@@ -343,7 +343,7 @@
     <value>16</value>
   </data>
   <data name="textBox_camera_number.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 37</value>
+    <value>515, 27</value>
   </data>
   <data name="textBox_camera_number.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 20</value>
@@ -370,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="but_con_cam.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 22</value>
+    <value>601, 12</value>
   </data>
   <data name="but_con_cam.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 49</value>
@@ -583,7 +583,7 @@
     <value>1</value>
   </data>
   <data name="textBox_focus_binary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 110</value>
+    <value>30, 106</value>
   </data>
   <data name="textBox_focus_binary.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 20</value>

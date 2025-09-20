@@ -426,7 +426,7 @@ namespace SorterSpheroids
             mask.SetTo(new Scalar(0, 0, 0));
             mask_inv.SetTo(new Scalar(255,255,255));
         }
-
+        // 0.000528169
         public ImageCoordinatsConverter(GFrame[] gFrames, int w_pix, int h_pix, double pixel_mm_ratio = 0.000528169)
         {
 
