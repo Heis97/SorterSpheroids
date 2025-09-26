@@ -179,8 +179,8 @@ namespace SorterSpheroids
         {
             var coords = video_coords.ToArray();
             var mats = video_mats.ToArray();
-            var common_image = new ImageCoordinatsConverter(coords, 1920, 1080);//1580
-            var common_image_or = new ImageCoordinatsConverter(coords, 1920, 1080);
+            var common_image = new ImageCoordinatsConverter(coords, 1320, 1080);//1580
+            var common_image_or = new ImageCoordinatsConverter(coords, 1320, 1080);
             // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
             /* var mat_f = mats.First().Value;
              var min_mat = (from f in mats
@@ -188,7 +188,7 @@ namespace SorterSpheroids
                             select f).ToArray()[0];
              */
             var ind = 0;
-            var max_ind = 230;
+            var max_ind = 180;
             var len = Math.Min(max_ind, mats.Length - 1);
             bool debug = false;
             //debug = true;
@@ -200,9 +200,11 @@ namespace SorterSpheroids
                 {
                     if (coords[ind].y - coords[ind - 1].y > 0)
                     {
-                        common_image_or.add_image(mat, coords[ind]);
-                        common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(1,1),debug);
-                       // debug = true;
+                        //common_image_or.add_image(mat, coords[ind]);
+                        common_image_or.add_image_simple(mat, coords[ind]);
+
+                        //common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(1,1),debug);
+                        // debug = true;
                     }
                    
                     //Cv2.ImShow("mat", 5 * (mat.Value.Clone() - min_mat.Value));
@@ -211,7 +213,7 @@ namespace SorterSpheroids
                 }
             }
             Cv2.ImShow("common_", common_image_or.mat_common);
-            Cv2.ImShow("common_allign", common_image.mat_common);
+            //Cv2.ImShow("common_allign", common_image.mat_common);
         }
         void save_video(int w, int h)
         {
