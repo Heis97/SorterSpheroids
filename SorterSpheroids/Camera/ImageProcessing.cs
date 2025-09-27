@@ -427,13 +427,15 @@ namespace SorterSpheroids
             mask_inv.SetTo(new Scalar(255,255,255));
         }
         // 0.000528169
-        public ImageCoordinatsConverter(GFrame[] gFrames, int w_pix, int h_pix, double pixel_mm_ratio = 0.0011)
+
+
+        public ImageCoordinatsConverter(GFrame[] gFrames, int w_pix, int h_pix, double pixel_mm_ratio = 0.00104)
         {
 
             var max_fr = GFrame.Max(gFrames);
             var min_fr = GFrame.Min(gFrames);
 
-            var board_mm = 2;
+            var board_mm = 4;
             this.x_mm = min_fr.x - board_mm/2;
             this.y_mm = min_fr.y - board_mm / 2;
 
@@ -757,7 +759,7 @@ namespace SorterSpheroids
                     var diff2 = (mat_allign_gray - orig_place_gray).ToMat();
                     var val1 = diff1.Mean().Val0;
                     var val2 = diff2.Mean().Val0;
-                    var val = val1;
+                    var val = val1;// Math.Max(val1, val2);
                     data_diff[y, x] = (byte)(val * 150);
                     if (debug)
                     {

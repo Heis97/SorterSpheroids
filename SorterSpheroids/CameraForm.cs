@@ -37,6 +37,7 @@ namespace SorterSpheroids
         bool recording = false;
         MainForm mainForm;
         OpenCvSharp.Point point_of_center_1;
+        bool online = false;
 
         public CameraForm(MainForm mainForm)
         {
@@ -48,6 +49,7 @@ namespace SorterSpheroids
         {
             var num = int.Parse(textBox_camera_number.Text);
             videoStart(num);
+            online = true;
         }
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -75,8 +77,7 @@ namespace SorterSpheroids
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             frameMat = (Mat)e.UserState;
-           
-            Cv2.Flip(frameMat, frameMat, FlipMode.Y);
+            if (online) { Cv2.Flip(frameMat, frameMat, FlipMode.Y); };
             frameMat_buf = frameMat.Clone();
             //Console.WriteLine(frameMat.Width+ " " + frameMat.Height + " " + fps);
             frameMat = imProcess(frameMat);
@@ -179,8 +180,8 @@ namespace SorterSpheroids
         {
             var coords = video_coords.ToArray();
             var mats = video_mats.ToArray();
-            var common_image = new ImageCoordinatsConverter(coords, 1320, 1080);//1580
-            var common_image_or = new ImageCoordinatsConverter(coords, 1320, 1080);
+            var common_image = new ImageCoordinatsConverter(coords, 3300, 2000);//1580
+            //var common_image_or = new ImageCoordinatsConverter(coords, 6000,3000);
             // var mats = ImageProcessing.load_images_video(camera_form.video_coords.ToArray(), camera_form.video_mats.ToArray());
             /* var mat_f = mats.First().Value;
              var min_mat = (from f in mats
@@ -192,18 +193,20 @@ namespace SorterSpheroids
             var len = Math.Min(max_ind, mats.Length - 1);
             bool debug = false;
             //debug = true;
+            int crop_vert = 20;
+            int crop_horz = 20;
             foreach (var mat in mats)
             {
-
+                var mat_crop = new Mat(mat,new Rect(crop_horz, crop_vert, mat.Width - 2 * crop_horz, mat.Height-2*crop_vert));
                 ind++;
                 if (ind > 1 && ind< len)
                 {
                     if (coords[ind].y - coords[ind - 1].y > 0)
                     {
                         //common_image_or.add_image(mat, coords[ind]);
-                        common_image_or.add_image_simple(mat, coords[ind]);
+                        //common_image_or.add_image_simple(mat, coords[ind]);
 
-                        //common_image.add_image_allign(mat, coords[ind],new OpenCvSharp.Point(1,1),debug);
+                        common_image.add_image_allign(mat_crop, coords[ind],new OpenCvSharp.Point(5,80),debug);
                         // debug = true;
                     }
                    
@@ -212,17 +215,21 @@ namespace SorterSpheroids
                     Console.WriteLine(ind + "/"+(len));
                 }
             }
-            Cv2.ImShow("common_", common_image_or.mat_common);
+            // Cv2.ImShow("common_", common_image_or.mat_common);
             //Cv2.ImShow("common_allign", common_image.mat_common);
+
+            Cv2.Resize(common_image.mat_common, common_image.mat_common, new OpenCvSharp.Size(1920, 1080));
+            Cv2.ImShow("2", common_image.mat_common);
         }
         void save_video(int w, int h)
         {
             recording = false;
 
-            analyse();
+           
 
             if (!saved_video)
             {
+                analyse();
                 comboBox_images.Items.AddRange(video_mats.ToArray());
                 return;
             }
