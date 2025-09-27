@@ -50,8 +50,6 @@ namespace SorterSpheroids
             var num = int.Parse(textBox_camera_number.Text);
             videoStart(num);
             online = true;
-            this.mainForm.manual_form.Visible = false;
-            this.mainForm.manual_form.Show(this);
         }
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
