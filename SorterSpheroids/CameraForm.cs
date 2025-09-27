@@ -118,7 +118,7 @@ namespace SorterSpheroids
 
 
 
-            ClientSize = new System.Drawing.Size(capture.FrameWidth, capture.FrameHeight);
+            ClientSize = new System.Drawing.Size(1280, 720);//capture.FrameWidth, capture.FrameHeight
             backgroundWorker1.RunWorkerAsync();
             Console.WriteLine(w + " " + h + " " + _fps);
 
