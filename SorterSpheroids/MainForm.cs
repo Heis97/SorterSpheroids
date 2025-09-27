@@ -22,9 +22,9 @@ namespace SorterSpheroids
 {
     public partial class MainForm : Form
     {
-        AutoForm auto_form;
-        ManualForm manual_form;
-        CameraForm camera_form;
+        public AutoForm auto_form;
+        public ManualForm manual_form;
+        public CameraForm camera_form;
         Point[] ps_loc = new Point[2];
         public MainForm()
         {
